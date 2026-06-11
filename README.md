@@ -16,6 +16,6 @@
 - Ant Design
 
 ### Tools
-- Cursor
+- VSCode
 - Figma
 - IntelliJ
