@@ -5,13 +5,9 @@
 ```
 
 ### Language
-##### Front
 - React (v19.2.6)
 - Typescript
 - styled-components
-
-##### Back
-- Spring Boot (버전)
 
 ### Package Manager
 - yarn (v1.22.22)
@@ -22,3 +18,4 @@
 ### Tools
 - Cursor
 - Figma
+- IntelliJ
