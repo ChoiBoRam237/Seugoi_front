@@ -35,6 +35,7 @@ export const LayoutWrapper = styled.div`
     width: 100%;
     max-width: 47.9375rem;
     height: 100%;
+    min-height: 100dvh;
     padding: 0 1.5625rem;
 
     @media (max-width: 767px) {

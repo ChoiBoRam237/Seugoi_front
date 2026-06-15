@@ -5,6 +5,10 @@
 export enum LinkEnum {
     SPLASH = '/',
     LOGIN = 'login',
-    HOME = 'home',
     CALLBACK = 'callback',
+    HOME = 'home',
+    STUDY = 'study',
+    ADDSTUDY = 'add-study',
+    CHAT = 'chat',
+    MYPAGE = 'mypage',
 }

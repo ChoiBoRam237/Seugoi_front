@@ -92,11 +92,9 @@ export const LoginButton = styled.button`
     justify-content: center;
     column-gap: 0.6875rem;
     padding: 0.9375rem;
-    border: none;
     border-radius: 0.625rem;
     background-color: var(--yellow);
     margin-top: -1.9375rem;
-    cursor: pointer;
 
     font-size: 1rem;
     color: black;

@@ -14,3 +14,10 @@
 body, p {
     margin: 0;
 }
+
+button {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+}
