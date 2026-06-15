@@ -25,6 +25,10 @@ const LayoutContainer = styled.div`
     justify-content: center;
     align-items: center;
     background-color: var(--background);
+
+    @media (max-width: 320px) {
+        width: 20rem;
+    }
 `;
 
 export const LayoutWrapper = styled.div`

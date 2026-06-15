@@ -1,6 +1,7 @@
 import { BiCodeAlt } from "react-icons/bi";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { LoginButton, LoginCharacter, LoginContainer, LoginImageWrapper, LoginInnerWrapper, LoginLogo, LoginPerson, LoginPersonWrapper, LoginTitle, LoginTitleWrapper, LoginWrapper } from "./indexStyles";
+import { useControlLogin } from "./index.control";
 import logo from '@/assets/text-logo.svg';
 import person from '@/assets/person.svg';
 import character from './_assets/character.svg';
@@ -10,6 +11,8 @@ import character from './_assets/character.svg';
  */
 
 export const Login = () => {
+    const controller = useControlLogin();
+
     return (
         <LoginContainer>
             <LoginWrapper>
@@ -28,7 +31,7 @@ export const Login = () => {
                         </LoginPersonWrapper>
                     </LoginImageWrapper>
 
-                    <LoginButton>
+                    <LoginButton onClick={controller.onLogin}>
                         <RiKakaoTalkFill size={20} color="black" />
                         <span>카카오로 로그인</span>
                     </LoginButton>

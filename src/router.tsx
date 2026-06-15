@@ -7,6 +7,7 @@ import { Layout } from './components/layout';
 // pages
 import { Splash } from './pages/splash';
 import { Login } from './pages/login';
+import { Callback } from './pages/login/callback';
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
                     { // 로그인
                         path: `/${LinkEnum.LOGIN}`,
                         element: <Login />
+                    },
+                    { // 콜백
+                        path: `/${LinkEnum.CALLBACK}`,
+                        element: <Callback />
                     }
                 ]
             },

@@ -6,4 +6,5 @@ export enum LinkEnum {
     SPLASH = '/',
     LOGIN = 'login',
     HOME = 'home',
+    CALLBACK = 'callback',
 }

@@ -7,7 +7,6 @@ import styled from 'styled-components';
 export const LoginContainer = styled.div`
     width: 100%;
     height: 100%;
-    min-height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -61,6 +60,7 @@ export const LoginImageWrapper = styled.div`
 export const LoginCharacter = styled.div<{ $src: string }>`
     width: 12.5625rem;
     height: 19.5625rem;
+    flex-shrink: 0;
 
     background-image: ${({ $src }) => `url("${$src}")`};
     background-size: contain;
