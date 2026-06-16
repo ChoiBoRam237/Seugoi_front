@@ -14,6 +14,7 @@
 
 ### Library
 - Ant Design
+- Swiper.js
 
 ### Tools
 - VSCode

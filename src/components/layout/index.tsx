@@ -42,3 +42,10 @@ export const LayoutWrapper = styled.div`
         max-width: 100%;
     }
 `;
+
+export const LayoutInnerWrapper = styled.div`
+    width: 100%;
+    height: 100%;
+    padding-top: 5.4375rem;
+    padding-bottom: calc(4.125rem + 1.5rem);
+`;

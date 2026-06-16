@@ -19,6 +19,7 @@ export const MenuContainer = styled.div`
     border-radius: 1.875rem 1.875rem 0 0;
     padding: 0.4375rem 2.5rem;
     background-color: var(--second-primary);
+    z-index: 10;
 `;
 
 export const MenuWrapper = styled.div`
@@ -35,6 +36,11 @@ export const MenuInnerWrapper = styled.div`
     align-items: center;
     justify-content: space-evenly;
     column-gap: 3.125rem;
+
+    @media (max-width: 376px) {
+        justify-content: space-between;
+        column-gap: 1rem;
+    }
 `;
 
 export const MenuPlusButton = styled.button`

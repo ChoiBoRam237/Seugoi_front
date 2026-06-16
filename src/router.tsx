@@ -8,6 +8,7 @@ import { Layout } from './components/layout';
 import { Splash } from './pages/splash';
 import { Login } from './pages/login';
 import { Callback } from './pages/login/callback';
+import { Home } from './pages/home';
 
 const router = createBrowserRouter([
     {
@@ -23,9 +24,13 @@ const router = createBrowserRouter([
                         path: `/${LinkEnum.LOGIN}`,
                         element: <Login />
                     },
-                    { // 콜백
+                    { // 카카오 로그인 콜백
                         path: `/${LinkEnum.CALLBACK}`,
                         element: <Callback />
+                    },
+                    { // 메인화면
+                        path: `/${LinkEnum.HOME}`,
+                        element: <Home />
                     }
                 ]
             },
