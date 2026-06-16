@@ -4,7 +4,7 @@ import styled from "styled-components";
  * @brief 푸터 컴포넌트 스타일
  */
 
-export const FooterContainer = styled.div`
+export const MenuContainer = styled.div`
     position: fixed;
     bottom: 0;
     left: 50%;
@@ -21,7 +21,7 @@ export const FooterContainer = styled.div`
     background-color: var(--second-primary);
 `;
 
-export const FooterWrapper = styled.div`
+export const MenuWrapper = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
@@ -29,7 +29,7 @@ export const FooterWrapper = styled.div`
     column-gap: 1.9375rem;
 `;
 
-export const FooterInnerWrapper = styled.div`
+export const MenuInnerWrapper = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
@@ -37,7 +37,7 @@ export const FooterInnerWrapper = styled.div`
     column-gap: 3.125rem;
 `;
 
-export const FooterPlusButton = styled.button`
+export const MenuPlusButton = styled.button`
     width: 3.1875rem;
     height: 3.1875rem;
     display: flex;
