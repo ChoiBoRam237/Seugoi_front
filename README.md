@@ -19,4 +19,3 @@
 ### Tools
 - VSCode
 - Figma
-- IntelliJ
