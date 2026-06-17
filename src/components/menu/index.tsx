@@ -22,12 +22,12 @@ export const Menu = () => {
                         <TiHome size={25} color={controller.getBgColor(`/${LinkEnum.HOME}`)} />
                     </button>
 
-                    <button onClick={() => controller.onClick(`/${LinkEnum.STUDY}`)}>
-                        <RiBook2Fill size={25} color={controller.getBgColor(`/${LinkEnum.STUDY}`)} />
+                    <button onClick={() => controller.onClick(`/${LinkEnum.STUDY}/${LinkEnum.LIST}`)}>
+                        <RiBook2Fill size={25} color={controller.getBgColor(`/${LinkEnum.STUDY}/${LinkEnum.LIST}`)} />
                     </button>
                 </MenuInnerWrapper>
 
-                <MenuPlusButton onClick={() => controller.onClick(`/${LinkEnum.ADDSTUDY}`)}>
+                <MenuPlusButton onClick={() => controller.onClick(`/${LinkEnum.STUDY}/${LinkEnum.GENERATE}`)}>
                     <FiPlus size={35} color="white" />
                 </MenuPlusButton>
                 

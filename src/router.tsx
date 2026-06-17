@@ -9,6 +9,7 @@ import { Splash } from './pages/splash';
 import { Login } from './pages/login';
 import { Callback } from './pages/login/callback';
 import { Home } from './pages/home';
+import { GenerateStudy } from './pages/generate-study';
 
 const router = createBrowserRouter([
     {
@@ -31,6 +32,15 @@ const router = createBrowserRouter([
                     { // 메인화면
                         path: `/${LinkEnum.HOME}`,
                         element: <Home />
+                    },
+                    {
+                        path: `/${LinkEnum.STUDY}`,
+                        children: [
+                            { // 스터디 생성
+                                path: LinkEnum.GENERATE,
+                                element: <GenerateStudy />
+                            }
+                        ]
                     }
                 ]
             },

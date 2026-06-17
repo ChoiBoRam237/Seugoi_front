@@ -8,7 +8,8 @@ export enum LinkEnum {
     CALLBACK = 'callback',
     HOME = 'home',
     STUDY = 'study',
-    ADDSTUDY = 'add-study',
+    GENERATE = 'generate',
+    LIST = 'list',
     CHAT = 'chat',
     MYPAGE = 'mypage',
 }

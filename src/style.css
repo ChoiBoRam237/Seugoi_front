@@ -2,9 +2,12 @@
     --background: #121117;
     --primary: #52DD63;
     --second-primary: #252831;
+    --third-primary: #30343F;
 
     --yellow: #FEDC00;
     --yellow-hover: #E4C600;
 
     --green-light: #81FF90;
+
+    --disabled: #B2B2BB;
 };

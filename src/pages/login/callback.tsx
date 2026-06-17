@@ -22,7 +22,7 @@ export const Callback = () => {
             // 브라우저 쿠키에 유저 정보 저장
             cookie.setCookie("user", JSON.stringify({
                 userId: data.userId,
-                name: data.nickname,
+                name: data.nickName,
                 email: data.email,
                 profileImageUrl: data.profileImageUrl
             }));
@@ -53,6 +53,7 @@ export const Callback = () => {
 const CallbackContainer = styled.div`
     width: 100%;
     height: 100%;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     row-gap: 1rem;

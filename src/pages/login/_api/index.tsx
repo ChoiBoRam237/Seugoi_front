@@ -13,5 +13,5 @@ export const loginApi = {
                     code
                 }
             })
-        ).data,
+        ).data.data,
 };

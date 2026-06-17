@@ -18,7 +18,6 @@ export const Layout = () => {
 
 const LayoutContainer = styled.div`
     width: 100%;
-    min-width: 100vw;
     height: 100%;
     min-height: 100dvh;
     display: flex;
