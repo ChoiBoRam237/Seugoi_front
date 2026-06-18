@@ -8,6 +8,10 @@
     --yellow-hover: #E4C600;
 
     --green-light: #81FF90;
+    
+    --white-80: rgba(255, 255, 255, 0.8);
+    --white-50: rgba(255, 255, 255, 0.5);
 
     --disabled: #B2B2BB;
+
 };

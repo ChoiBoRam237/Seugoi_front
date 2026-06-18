@@ -16,7 +16,7 @@ export const SearchHeaderContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     column-gap: 0.9375rem;
-    padding: 1.5625rem 1.875rem;
+    padding: 1.5625rem;
     z-index: 10;
     background-color: var(--background);
 `;
@@ -27,7 +27,7 @@ export const SearchHeaderInputWrapper = styled.div`
     display: flex;
     align-items: center;
     column-gap: 0.9375rem;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--white-50);
     border-radius: 0.625rem;
     padding: 0.6875rem 0.875rem;
 `;
@@ -35,11 +35,7 @@ export const SearchHeaderInputWrapper = styled.div`
 export const SearchHeaderInput = styled.input`
     width: 100%;
     height: 100%;
-    background-color: transparent;
-    border: none;
-    outline: none;
 
-    font-family: 'Pretendard-Medium' !important;
     font-size: 1rem;
     line-height: 1.375rem;
     color: white;

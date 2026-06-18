@@ -45,14 +45,13 @@ export const StudyingContent = styled.div`
 `;
 
 export const StudyingTitle = styled.p`
-    font-family: 'Pretendard-ExtraBold' !important;
+    font-family: 'Pretendard-Bold' !important;
     font-size: 1.375rem;
     color: white;
 `;
 
 export const StudyingText = styled.p`
-    font-family: 'Pretendard-SemiBold' !important;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     color: white;
 `;
 

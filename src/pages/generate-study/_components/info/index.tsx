@@ -1,34 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import type { UploadChangeParam, UploadFile } from "antd/es/upload";
 import { BiImageAdd } from "react-icons/bi";
 import { IoPerson } from "react-icons/io5";
 import { CommonInput } from "@/components/common/input";
 import { CommonButton } from "@/components/common/button";
-import { GenerateTitle } from "../../indexStyles";
-import { InfoCategory, InfoContainer, InfoImageUpload, InfoImageUploadText, InfoInnerContainer, InfoInputRequired, InfoInputTitle, InfoInputTitleWrapper, InfoInputWrapper, InfoPeopleCheckbox, InfoPeopleCheckboxWrapper, InfoPeopleCountInnerWrapper, InfoPeopleCountInput, InfoPeopleCountWrapper, InfoShowImage, InfoUpload, InfoWrapper } from "./indexStyles";
+import { CommonGenerateContainer, CommonGenerateTitle } from "../../indexStyles";
+import { InfoCategory, InfoImageUpload, InfoImageUploadText, InfoInnerContainer, InfoInputRequired, InfoInputTitle, InfoInputTitleWrapper, InfoInputWrapper, InfoPeopleCheckbox, InfoPeopleCheckboxWrapper, InfoPeopleCountInnerWrapper, InfoPeopleCountInput, InfoPeopleCountWrapper, InfoShowImage, InfoUpload, InfoWrapper } from "./indexStyles";
 
 /**
- * @brief 스터디의 기본정보 컴포넌트
+ * @brief 스터디 생성 -> 기본 정보 컴포넌트
  */
 
 interface InfoProps {
     bgFile: File; // 대표 이미지
     setBgFile: React.Dispatch<React.SetStateAction<File>>;
+    previewBgFile: string; // 이미지 미리보기
+    setPreviewBgFile: React.Dispatch<React.SetStateAction<string>>;
     studyName: string; // 스터디 이름
     setStudyName: React.Dispatch<React.SetStateAction<string>>;
     categories: string[]; // 카테고리
     handleCategoryChange: (value: string, index: number) => void;
     peopleCount: string; // 인원
     setPeopleCount: React.Dispatch<React.SetStateAction<string>>;
+    isDataCheck: boolean; // 필수 작성 데이터 체크
+    onNext: () => void; // 다음 버튼 클릭 시
 }
 
 export const Info = (props: InfoProps) => {
-    const [previewBgFile, setPreviewBgFile] = useState<string>(""); // 이미지 미리보기
-
     return (
-        <InfoContainer>
+        <CommonGenerateContainer>
             <InfoInnerContainer>
-                <GenerateTitle>스터디의 기본 정보를<br />입력해주세요!</GenerateTitle>
+                <CommonGenerateTitle>스터디의 기본 정보를<br />입력해주세요!</CommonGenerateTitle>
 
                 <InfoWrapper>
                     <InfoInputWrapper>
@@ -41,19 +43,20 @@ export const Info = (props: InfoProps) => {
                             name="image-file"
                             accept="image/*"
                             showUploadList={false}
+                            beforeUpload={() => false}
                             onChange={(info: UploadChangeParam<UploadFile>) => {
-                                const file = info.file.originFileObj;
+                                const file = info.fileList[info.fileList.length - 1].originFileObj;
                                 if (file) {
                                     props.setBgFile(file);
-                                    setPreviewBgFile(URL.createObjectURL(file));
+                                    props.setPreviewBgFile(URL.createObjectURL(file));
                                 }
                             }}
                         >
                             {props.bgFile ? (
-                                <InfoShowImage $src={previewBgFile} />
+                                <InfoShowImage $src={props.previewBgFile} />
                             ) : (
                                 <InfoImageUpload>
-                                    <BiImageAdd size={33} color="rgba(255, 255, 255, 0.5)" />
+                                    <BiImageAdd size={33} color="var(--white-50)" />
                                     <InfoImageUploadText>어두운 배경의 사진은 잘 보이지 않습니다</InfoImageUploadText>
                                 </InfoImageUpload>
                             )}
@@ -77,12 +80,12 @@ export const Info = (props: InfoProps) => {
                         <InfoInputTitle>카테고리</InfoInputTitle>
 
                         <InfoCategory>
-                            {Array.from({ length: 3 }).map((_, index) => (
+                            {props.categories.map((category, index) => (
                                 <CommonInput
                                     key={index}
                                     className="small"
                                     placeholder={`#카테고리 ${index+1}`}
-                                    value={props.categories[index]}
+                                    value={category}
                                     onChange={(e) => props.handleCategoryChange(e.target.value, index)}
                                 />
                             ))}
@@ -124,10 +127,11 @@ export const Info = (props: InfoProps) => {
             </InfoInnerContainer>
 
             <CommonButton
-                disabled={false}
+                disabled={props.isDataCheck}
                 bgColor="var(--primary)"
                 text="다음"
+                onClick={props.onNext}
             />
-        </InfoContainer>
+        </CommonGenerateContainer>
     )
 }

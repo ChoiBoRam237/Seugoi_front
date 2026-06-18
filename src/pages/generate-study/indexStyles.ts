@@ -7,6 +7,7 @@ import styled from "styled-components";
 export const GenerateContainer = styled.div`
     width: 100%;
     height: 100%;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     padding-bottom: 1.5rem;
@@ -18,7 +19,7 @@ export const GenerateHeader = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.875rem 0;
+    padding: 1.875rem 1.5625rem;
 `;
 
 export const GenerateHeaderNumberWrapper = styled.div`
@@ -43,10 +44,27 @@ export const GenerateHeaderNumber = styled.button`
     &.active {
         background-color: var(--primary);
     }
+
+    &:disabled {
+        color: var(--white-50);
+    }
 `;
 
-export const GenerateTitle = styled.p`
-    font-family: 'Pretendard-ExtraBold' !important;
+
+// 공통 스타일
+export const CommonGenerateContainer = styled.div`
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 2.1875rem;
+    padding: 0 1.5625rem;
+`;
+
+export const CommonGenerateTitle = styled.p`
+    font-family: 'Pretendard-Bold' !important;
     font-size: 1.5rem;
     color: white;
 `;

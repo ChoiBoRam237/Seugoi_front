@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 /**
- * @brief 공통 버튼 컴포넌트 스타일
+ * @brief button 컴포넌트 스타일
  */
 
 export const Button = styled.button<{ $bgColor: string }>`
@@ -14,7 +14,6 @@ export const Button = styled.button<{ $bgColor: string }>`
     border-radius: 0.625rem;
     background-color: ${({ $bgColor }) => $bgColor};
 
-    font-family: 'Pretendard-Medium' !important;
     font-size: 1rem;
     color: white;
 

@@ -4,7 +4,7 @@ import { StudyingBgImage, StudyingContainer, StudyingContent, StudyingGradient, 
  * @brief 현재 진행중인 스터디 컴포넌트
  */
 
-export const StudyingItem = () => {
+export const CommonStudyingItem = () => {
     return (
         <StudyingContainer>
             <StudyingBgImage $src="" />

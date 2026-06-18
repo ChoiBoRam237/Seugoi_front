@@ -1,13 +1,14 @@
 import { Button } from "./indexStyles";
 
 /**
- * @brief button 공통 컴포넌트
+ * @brief button 컴포넌트
  */
 
 interface ButtonProps {
     disabled?: boolean;
     bgColor: string;
     text: string;
+    onClick: () => void;
 }
 
 export const CommonButton = (props: ButtonProps) => {
@@ -15,6 +16,7 @@ export const CommonButton = (props: ButtonProps) => {
         <Button
             disabled={props.disabled}
             $bgColor={props.bgColor}
+            onClick={props.onClick}
         >
             {props.text}
         </Button>

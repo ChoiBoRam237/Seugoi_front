@@ -32,7 +32,7 @@ export const HomeStudyingWrapper = styled.div`
 `;
 
 export const HomeStudyingTitle = styled.p`
-    font-family: 'Pretendard-ExtraBold' !important;
+    font-family: 'Pretendard-Bold' !important;
     font-size: 1.5rem;
     color: white;
 `;
@@ -74,13 +74,11 @@ export const HomeTodayPhrase = styled.div`
 `;
 
 export const HomeTodayPhraseTitle = styled.p`
-    font-family: 'Pretendard-Medium' !important;
     font-size: 0.875rem;
     color: var(--primary);
 `;
 
 export const HomeTodayPhraseContent = styled.p`
-    font-family: 'Pretendard-Medium' !important;
     font-size: 0.875rem;
     color: white;
 `;

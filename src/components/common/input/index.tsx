@@ -2,7 +2,7 @@ import React from "react";
 import { Input } from "./indexStyles";
 
 /**
- * @brief input 공통 컴포넌트
+ * @brief input 컴포넌트
  */
 
 interface InputProps {

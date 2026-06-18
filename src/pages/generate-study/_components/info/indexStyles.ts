@@ -3,17 +3,8 @@ import { NumericFormat } from "react-number-format";
 import styled from "styled-components";
 
 /**
- * @brief 스터디의 기본정보 컴포넌트 스타일
+ * @brief 스터디 생성 -> 기본 정보 컴포넌트 스타일
  */
-
-export const InfoContainer = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    row-gap: 2.1875rem;
-`;
 
 export const InfoInnerContainer = styled.div`
     width: 100%;
@@ -43,13 +34,11 @@ export const InfoInputTitleWrapper = styled.div`
 `;
 
 export const InfoInputTitle = styled.p`
-    font-family: 'Pretendard-Medium' !important;
     font-size: 1rem;
     color: white;
 `;
 
 export const InfoInputRequired = styled.p`
-    font-family: 'Pretendard-Medium' !important;
     font-size: 1rem;
     color: red;
 `;
@@ -77,9 +66,8 @@ export const InfoImageUpload = styled.div`
 `;
 
 export const InfoImageUploadText = styled.p`
-    font-family: 'Pretendard-Medium' !important;
     font-size: 0.875rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--white-50);
 `;
 
 export const InfoShowImage = styled.div<{ $src: string }>`
@@ -130,7 +118,6 @@ export const InfoPeopleCountInput = styled(NumericFormat)`
     outline: none;
     background-color: transparent;
 
-    font-family: 'Pretendard-Medium' !important;
     font-size: 1rem;
     color: white;
 
@@ -150,7 +137,7 @@ export const InfoPeopleCheckboxWrapper = styled.div`
 export const InfoPeopleCheckbox = styled(Checkbox)`
     .ant-checkbox {
         background-color: transparent !important;
-        border-color: rgba(255, 255, 255, 0.5) !important;
+        border-color: var(--white-50) !important;
 
         &::after {
             top: 50% !important;

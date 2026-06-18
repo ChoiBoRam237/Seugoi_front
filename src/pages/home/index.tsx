@@ -1,15 +1,15 @@
 import { SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { Menu } from "@/components/menu";
 import { cookie } from "@/util/cookies";
-import { SearchHeader } from "@/components/common/search-header";
 import { LayoutInnerWrapper } from '@/components/layout';
-import { StudyingItem } from '@/components/common/studying-item';
+import { Menu } from "@/components/menu";
+import { CommonSearchHeader } from "@/components/common/search-header";
+import { CommonStudyingItem } from '@/components/common/studying-item';
+import { CommonStudyItem } from '@/components/common/study-item';
 import { HomeContainer, HomeLogo, HomePopularList, HomePopularTitle, HomePopularTitleWrapper, HomePopularWrapper, HomeStudyingInnerWrapper, HomeStudyingItem, HomeStudyingSwiper, HomeStudyingTitle, HomeStudyingWrapper, HomeTodayPhrase, HomeTodayPhraseContent, HomeTodayPhraseLine, HomeTodayPhraseTitle } from "./indexStyles";
 import { useControlHome } from "./index.control";
 import logoImg from "@/assets/text-logo.svg";
 import { BiSolidBarChartAlt2 } from "react-icons/bi";
-import { StudyItem } from '@/components/common/study-item';
 
 /**
  * @brief 메인화면
@@ -17,12 +17,12 @@ import { StudyItem } from '@/components/common/study-item';
 
 export const Home = () => {
     const controller = useControlHome();
-    const userName = JSON.parse(cookie.getCookie("user")).name;
+    const userName = cookie.getCookie("user").name;
     
     return (
         <>
             {/* 검색 헤더 컴포넌트 */}
-            <SearchHeader
+            <CommonSearchHeader
                 logo={<HomeLogo $src={logoImg} />}
                 searchIng={controller.searchIng}
                 setSearchIng={controller.setSearchIng}
@@ -45,7 +45,7 @@ export const Home = () => {
                                 {Array.from({ length: 3 }).map((_, index) => (
                                     <SwiperSlide key={index}>
                                         <HomeStudyingItem>
-                                            <StudyingItem />
+                                            <CommonStudyingItem />
                                         </HomeStudyingItem>
                                     </SwiperSlide>
                                 ))}
@@ -68,7 +68,7 @@ export const Home = () => {
                         
                         <HomePopularList>
                             {Array.from({ length: 4 }).map((_, index) => (
-                                <StudyItem key={index} />
+                                <CommonStudyItem key={index} />
                             ))}
                         </HomePopularList>
                     </HomePopularWrapper>

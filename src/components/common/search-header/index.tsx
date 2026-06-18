@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { SearchHeaderContainer, SearchHeaderInput, SearchHeaderInputWrapper } from "./indexStyles";
 import { RiSearchLine } from "react-icons/ri";
 import { IoIosArrowBack } from "react-icons/io";
@@ -15,7 +15,7 @@ interface Props {
     setSearchValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const SearchHeader = (props: Props) => {
+export const CommonSearchHeader = (props: Props) => {
     return (
         <SearchHeaderContainer>
             {!props.searchIng ? (
@@ -39,10 +39,11 @@ export const SearchHeader = (props: Props) => {
                     </button>
 
                     <SearchHeaderInputWrapper>
-                        <RiSearchLine size={22} color="rgba(255, 255, 255, 0.5)" />
+                        <RiSearchLine size={22} color="var(--white-50)" />
 
                         <SearchHeaderInput
                             id="search-header-input"
+                            placeholder="검색어를 입력하세요"
                             value={props.searchValue}
                             onChange={(e) => props.setSearchValue(e.target.value)}
                         />

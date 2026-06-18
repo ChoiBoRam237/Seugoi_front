@@ -12,7 +12,7 @@ export const cookie = {
     },
 
     getCookie: (name: string) => {
-        return Cookies.get(name);
+        return JSON.parse(Cookies.get(name));
     },
 
     removeCookie: (name: string) => {
