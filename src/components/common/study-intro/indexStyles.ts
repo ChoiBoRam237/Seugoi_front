@@ -14,7 +14,7 @@ export const IntroContainer = styled.div`
 // 스터디 제목
 export const IntroStudyTitle = styled.textarea`
     width: 100%;
-    height: 1.8125rem;
+    height: 2.25rem;
     resize: none;
     overflow: hidden;
 
@@ -76,7 +76,7 @@ export const IntroContentWrapper = styled.div`
 
 export const IntroContentTextarea = styled.textarea`
     width: 100%;
-    height: 1rem;
+    height: 1.3125rem;
     resize: none;
     overflow: hidden;
 

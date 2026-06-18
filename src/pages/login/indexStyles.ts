@@ -11,6 +11,7 @@ export const LoginContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 0 1.5625rem;
 `;
 
 export const LoginWrapper = styled.div`

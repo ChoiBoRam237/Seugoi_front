@@ -12,7 +12,8 @@ export const cookie = {
     },
 
     getCookie: (name: string) => {
-        return JSON.parse(Cookies.get(name));
+        const value = Cookies.get(name);
+        return value ? JSON.parse(value) : null;
     },
 
     removeCookie: (name: string) => {
@@ -20,4 +21,9 @@ export const cookie = {
             path: "/",
         });
     },
+
+    clearCookie: () => {
+        Cookies.remove("token");
+        Cookies.remove("user");
+    }
 };

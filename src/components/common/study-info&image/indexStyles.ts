@@ -41,6 +41,7 @@ export const InfoAndImageTitleWrapper = styled.div`
 export const InfoAndImageTitle = styled.p`
     font-family: 'Pretendard-Bold' !important;
     font-size: 2.5rem;
+    line-height: 2.75rem;
     color: white;
 `;
 
@@ -66,5 +67,6 @@ export const InfoAndImageDday = styled.div`
     padding: 0.375rem 0.75rem;
 
     font-size: 0.875rem;
+    line-height: 1rem;
     color: white;
 `;

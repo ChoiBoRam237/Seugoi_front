@@ -92,7 +92,7 @@ export const GenerateStudy = () => {
                     recommend={controller.recommend}
                     setRecommend={controller.setRecommend}
                     isDataCheck={!controller.isDataCheck()}
-                    onGenerateStudy={() => {}}
+                    onGenerateStudy={controller.onGenerateStudy}
                 />
             )}
         </GenerateContainer>

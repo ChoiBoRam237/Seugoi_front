@@ -9,14 +9,23 @@
 - React (v19.2.6)
 - Typescript
 - styled-components
+- tailwindCSS
 
 ### Package Manager
 - yarn (v1.22.22)
 
-### Library
+### Build Tool
+- Vite
+
+#### UI Library
+- daypicker/react
 - Ant Design
 - Swiper.js
 
-### Tools
+#### Util Library
+- date-fns
+- js-cookie
+
+#### Tools
 - VSCode
 - Figma

@@ -20,7 +20,7 @@ interface InfoProps {
     setStudyName: React.Dispatch<React.SetStateAction<string>>;
     categories: string[]; // 카테고리
     handleCategoryChange: (value: string, index: number) => void;
-    peopleCount: string; // 인원
+    peopleCount: string; // 모집 인원
     setPeopleCount: React.Dispatch<React.SetStateAction<string>>;
     isDataCheck: boolean; // 필수 작성 데이터 체크
     onNext: () => void; // 다음 버튼 클릭 시
@@ -94,7 +94,7 @@ export const Info = (props: InfoProps) => {
 
                     <InfoInputWrapper>
                         <InfoInputTitleWrapper>
-                            <InfoInputTitle>인원</InfoInputTitle>
+                            <InfoInputTitle>모집 인원</InfoInputTitle>
                             <InfoInputRequired>*</InfoInputRequired>
                         </InfoInputTitleWrapper>
 

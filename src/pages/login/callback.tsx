@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import styled from "styled-components";
-import { loginApi } from "./_api";
+import { loginGetApi } from "./_api/GET";
 import type { AxiosError } from "axios";
 import { useEffect } from "react";
 import { cookie } from "@/util/cookies";
@@ -16,7 +16,7 @@ export const Callback = () => {
     const getCallback = useMutation({
         mutationFn: async () => {
             const params = searchParams.get("code");
-            return await loginApi.getKakaoCallback(params);
+            return await loginGetApi.getKakaoCallback(params);
         },
         onSuccess: (data) => {
             // 브라우저 쿠키에 유저 정보 저장
@@ -27,8 +27,11 @@ export const Callback = () => {
                 profileImageUrl: data.profileImageUrl
             }));
 
-            // 브라우저 쿠키에 accessToken 저장
-            cookie.setCookie("accessToken", data.accessToken);
+            // 브라우저 쿠키에 token 저장
+            cookie.setCookie("token", JSON.stringify({
+                accessToken: data.accessToken,
+                refreshToken: data.refreshToken
+            }));
 
             // 저장 후 메인화면으로 이동동
             navigate(`/${LinkEnum.HOME}`);

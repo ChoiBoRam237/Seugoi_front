@@ -94,7 +94,7 @@ export const InfoCategory = styled.div`
     gap: 0.5rem;
 `;
 
-// 인원
+// 모집 인원
 export const InfoPeopleCountWrapper = styled.div`
     width: 100%;
     display: flex;
