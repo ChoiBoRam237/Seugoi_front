@@ -14,13 +14,13 @@ interface InfoAndImageProps {
 export const CommonStudyInfoAndImage = (props: InfoAndImageProps) => {
     return (
         <InfoAndImageBgWrapper>
-            <InfoAndImageBg $src={props.bgImage} />
+            <InfoAndImageBg $src={props?.bgImage} />
 
             <InfoAndImageWrapper>
                 <InfoAndImageTitleWrapper>
-                    <InfoAndImageTitle>{props.studyName}</InfoAndImageTitle>
+                    <InfoAndImageTitle>{props?.studyName}</InfoAndImageTitle>
 
-                    {props.categories.length > 0 && (
+                    {props?.categories?.length > 0 && (
                         <InfoAndImageCategoryWrapper>
                             {props.categories.map((category, index) => (
                                 <InfoAndImageCategory key={index}>{category}</InfoAndImageCategory>
@@ -29,8 +29,8 @@ export const CommonStudyInfoAndImage = (props: InfoAndImageProps) => {
                     )}
                 </InfoAndImageTitleWrapper>
 
-                {props.dDay !== null && (
-                    <InfoAndImageDday>{`D-${props.dDay}`}</InfoAndImageDday>
+                {props?.dDay !== null && (
+                    <InfoAndImageDday>{`D-${props?.dDay}`}</InfoAndImageDday>
                 )}
             </InfoAndImageWrapper>
         </InfoAndImageBgWrapper>

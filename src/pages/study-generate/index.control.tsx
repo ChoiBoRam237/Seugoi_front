@@ -48,15 +48,15 @@ export const useControlStudyGenerate = () => {
     const postStudyGenerate = useMutation({
         mutationFn: async () => {
             const formData = new FormData();
-            formData.append("userId", userCode); // 유저 아이디
+            formData.append("userCode", userCode); // 유저 아이디
             formData.append("studyName", studyName); // 스터디 이름
             categories.filter(item => item !== '').forEach(category => formData.append("categories", category)); // 카테고리
             formData.append("peopleCount", peopleCount); // 모집 인원
             endPeriod !== "" && formData.append("endPeriod", endPeriod); // 스터디 종료 기간
-            formData.append("studyTitle", studyTitle); // 스터디 제목
-            formData.append("summary", summary); // 간단 요약
+            studyTitle !== "" && formData.append("studyTitle", studyTitle); // 스터디 제목
+            summary !== "" && formData.append("summary", summary); // 간단 요약
             introduction.filter(item => item !== '').forEach(intro => formData.append("introduction", intro)); // 소개글
-            formData.append("description", description); // 설명글
+            description !== "" && formData.append("description", description); // 설명글
             recommend.filter(item => item !== '').forEach(recom => formData.append("recommend", recom)); // 추천글
             formData.append("bgImageUrl", bgFile); // 배경 이미지
             dDay !== null && formData.append("dday", dDay.toString()); // 디데이

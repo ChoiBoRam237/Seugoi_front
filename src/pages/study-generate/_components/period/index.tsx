@@ -41,7 +41,7 @@ export const Period = (props: PeriodProps) => {
                             return;
                         }
 
-                        const selectedDate = format(value, "yyyy.MM.dd");
+                        const selectedDate = format(value, "yyyy-MM-dd");
 
                         // 이미 선택한 날짜와 같은 날짜를 클릭할 경우 취소
                         if (selectedDate === props.endPeriod) {

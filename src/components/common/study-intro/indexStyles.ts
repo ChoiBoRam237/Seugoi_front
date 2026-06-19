@@ -34,10 +34,6 @@ export const IntroPeopleCount = styled.div`
     column-gap: 0.25rem;
 `;
 
-export const IntroPeopleCountTextWrapper = styled.div`
-    display: flex;
-`;
-
 export const IntroPeopleCountText = styled.p`
     font-size: 0.875rem;
     color: var(--white-50);
@@ -46,6 +42,7 @@ export const IntroPeopleCountText = styled.p`
 // 프로필
 export const IntroProfile = styled.div`
     display: flex;
+    align-items: center;
     column-gap: 0.5rem;
 `;
 

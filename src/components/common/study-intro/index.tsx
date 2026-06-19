@@ -3,8 +3,7 @@ import { IoPerson } from "react-icons/io5";
 import { PiInfinityBold } from "react-icons/pi";
 import { FaExclamation } from "react-icons/fa";
 import { FaLightbulb } from "react-icons/fa";
-import { IntroContainer, IntroContentBox, IntroContentBoxInput, IntroContentBoxInputWrapper, IntroContentInnerWrapper, IntroContentSubTitle, IntroContentTextarea, IntroContentWrapper, IntroPeopleCount, IntroPeopleCountText, IntroPeopleCountTextWrapper, IntroProfile, IntroProfileImg, IntroProfileText, IntroStudyTitle } from "./indexStyles";
-import { cookie } from "@/util/cookies";
+import { IntroContainer, IntroContentBox, IntroContentBoxInput, IntroContentBoxInputWrapper, IntroContentInnerWrapper, IntroContentSubTitle, IntroContentTextarea, IntroContentWrapper, IntroPeopleCount, IntroPeopleCountText, IntroProfile, IntroProfileImg, IntroProfileText, IntroStudyTitle } from "./indexStyles";
 
 /**
  * @brief 스터디 정보 입력 및 읽기전용 컴포넌트
@@ -15,6 +14,7 @@ interface IntroProps {
     studyTitle: string; // 스터디 제목
     setStudyTitle?: React.Dispatch<React.SetStateAction<string>>;
     peopleCount: string; // 모집 인원
+    joinCount: number; // 가입한 인원수
     summary: string; // 간단 요약
     setSummary?: React.Dispatch<React.SetStateAction<string>>;
     introduction: string[]; // 스터디 소개글
@@ -23,12 +23,12 @@ interface IntroProps {
     setDescription?: React.Dispatch<React.SetStateAction<string>>;
     recommend: string[]; // 추천글
     setRecommend?: React.Dispatch<React.SetStateAction<string[]>>;
+
+    profileImgUrl: string; // 관리자 이미지
+    userName: string; // 관리자 이름
 }
 
 export const CommonStudyIntro = (props: IntroProps) => {
-    const profileImgUrl = cookie.getCookie("user").profileImageUrl;
-    const userName = cookie.getCookie("user").name;
-
     // textarea onChange
     const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>, setState: React.Dispatch<React.SetStateAction<string>>) => {
         const textarea = e.target;
@@ -53,7 +53,7 @@ export const CommonStudyIntro = (props: IntroProps) => {
                 id="study-title"
                 readOnly={props.readOnly}
                 placeholder="스터디 제목을 입력해주세요"
-                value={props.studyTitle}
+                value={props?.studyTitle}
                 onChange={(e) => onChange(e, props.setStudyTitle)}
             />
 
@@ -62,20 +62,20 @@ export const CommonStudyIntro = (props: IntroProps) => {
                 <IoPerson size={15} color="var(--primary)" />
 
                 <div className="flex">
-                    <IntroPeopleCountText>모집인원 : 1 /&nbsp;</IntroPeopleCountText>
+                    <IntroPeopleCountText>모집인원 : {props?.joinCount} /&nbsp;</IntroPeopleCountText>
                     
-                    {props.peopleCount === '-' ? (
+                    {props?.peopleCount === '-' ? (
                         <PiInfinityBold size={18} color="var(--white-50)" />
                     ) : (
-                        <IntroPeopleCountText>{props.peopleCount}</IntroPeopleCountText>
+                        <IntroPeopleCountText>{props?.peopleCount}</IntroPeopleCountText>
                     )}
                 </div>
             </IntroPeopleCount>
 
             {/* 프로필 */}
             <IntroProfile>
-                <IntroProfileImg $src={profileImgUrl} />
-                <IntroProfileText>{userName}</IntroProfileText>
+                <IntroProfileImg $src={props?.profileImgUrl} />
+                <IntroProfileText>{props?.userName}</IntroProfileText>
             </IntroProfile>
 
             {/* 글 */}
@@ -84,16 +84,16 @@ export const CommonStudyIntro = (props: IntroProps) => {
                     id="study-summary"
                     readOnly={props.readOnly}
                     placeholder="스터디를 간단 요약해 적어주세요"
-                    value={props.summary}
+                    value={props?.summary}
                     onChange={(e) => onChange(e, props.setSummary)}
                 />
 
-                {props.introduction.length > 0 && (
+                {props?.introduction?.length > 0 && (
                     <IntroContentInnerWrapper>
                         <IntroContentSubTitle>저희의 스터디는 이렇게 진행돼요!</IntroContentSubTitle>
 
                         <IntroContentBox>
-                            {props.introduction?.map((value, index) => (
+                            {props?.introduction?.map((value, index) => (
                                 <IntroContentBoxInputWrapper key={index}>
                                     <FaExclamation size={14} color="red" />
                                     <IntroContentBoxInput
@@ -112,16 +112,16 @@ export const CommonStudyIntro = (props: IntroProps) => {
                     id="study-description"
                     readOnly={props.readOnly}
                     placeholder="스터디 설명을 적어주세요"
-                    value={props.description}
+                    value={props?.description}
                     onChange={(e) => onChange(e, props.setDescription)}
                 />
 
-                {props.recommend.length > 0 && (
+                {props?.recommend?.length > 0 && (
                     <IntroContentInnerWrapper>
                         <IntroContentSubTitle>이런 분들에게 좋아요!</IntroContentSubTitle>
 
                         <IntroContentBox>
-                            {props.recommend?.map((value, index) => (
+                            {props?.recommend?.map((value, index) => (
                                 <IntroContentBoxInputWrapper key={index}>
                                     <FaLightbulb size={15} color="var(--yellow)" />
                                     <IntroContentBoxInput

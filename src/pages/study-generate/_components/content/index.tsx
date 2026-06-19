@@ -4,6 +4,7 @@ import { CommonStudyIntro } from "@/components/common/study-intro";
 import { CommonStudyInfoAndImage } from "@/components/common/study-info&image";
 import { CommonGenerateContainer } from "../../../study-generate/indexStyles";
 import { ContentContainer } from "./indexStyles";
+import { useUserInfo } from "@/hooks/useUserInfo";
 
 /**
  * @brief 스터디 생성 -> 내용 컴포넌트
@@ -33,6 +34,8 @@ interface ContentProps {
 }
 
 export const Content = (props: ContentProps) => {
+    const userInfo = useUserInfo();
+
     return (
         <ContentContainer>
             <CommonStudyInfoAndImage
@@ -47,6 +50,7 @@ export const Content = (props: ContentProps) => {
                     studyTitle={props.studyTitle}
                     setStudyTitle={props.setStudyTitle}
                     peopleCount={props.peopleCount}
+                    joinCount={1}
                     summary={props.summary}
                     setSummary={props.setSummary}
                     introduction={props.introduction}
@@ -55,6 +59,9 @@ export const Content = (props: ContentProps) => {
                     setDescription={props.setDescription}
                     recommend={props.recommend}
                     setRecommend={props.setRecommend}
+
+                    profileImgUrl={userInfo.userProfileUrl}
+                    userName={userInfo.userName}
                 />
 
                 <CommonButton

@@ -15,8 +15,8 @@ export const AxiosComponent = () => {
 
     // 토큰 갱신 mutation 설정
     const tokenMutation = useMutation({
-        mutationFn: () => (
-            commonApi.getRefreshApi({
+        mutationFn: async () => (
+            await commonApi.getRefreshApi({
                 headers: {
                     Authorization: `Bearer ${token.refreshToken}`,
                 },
