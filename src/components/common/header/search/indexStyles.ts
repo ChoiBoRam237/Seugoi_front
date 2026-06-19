@@ -16,9 +16,9 @@ export const SearchHeaderContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     column-gap: 0.9375rem;
-    padding: 1.5625rem;
-    z-index: 10;
+    padding: 1.5rem;
     background-color: var(--background);
+    z-index: 10;
 `;
 
 export const SearchHeaderInputWrapper = styled.div`

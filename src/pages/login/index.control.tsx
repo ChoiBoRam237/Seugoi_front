@@ -1,8 +1,8 @@
+import { KAKAO_AUTH_URL, KAKAO_CLIENT_ID, KAKAO_REDIRECT_URL } from "@/util/api";
+
 /**
  * @brief 로그인 컨트롤
  */
-
-import { KAKAO_AUTH_URL, KAKAO_CLIENT_ID, KAKAO_REDIRECT_URL } from "@/util/api";
 
 export const useControlLogin = () => {
     const onLogin = () => {

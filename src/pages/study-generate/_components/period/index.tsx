@@ -2,7 +2,7 @@ import React from "react";
 import { differenceInDays, format } from "date-fns";
 import { GoChevronLeft } from "react-icons/go";
 import { GoChevronRight } from "react-icons/go";
-import { CommonButton } from "@/components/common/button";
+import { CommonButton } from "@/components/molecules/button";
 import { CommonGenerateContainer, CommonGenerateTitle } from "../../indexStyles";
 import { PeriodCalendar, PeriodCalendarDate, PeriodCalendarMonth, PeriodCalendarWrapper, PeriodCalendarYear, PeriodContainer, PeriodImage } from "./indexStyles";
 import image from "@/assets/logo.svg";
@@ -35,8 +35,23 @@ export const Period = (props: PeriodProps) => {
                     mode="single"
                     selected={new Date(props.endPeriod)}
                     onSelect={(value) => {
+                        if (!value) {
+                            props.setEndPeriod("");
+                            props.setDDay(null);
+                            return;
+                        }
+
+                        const selectedDate = format(value, "yyyy.MM.dd");
+
+                        // 이미 선택한 날짜와 같은 날짜를 클릭할 경우 취소
+                        if (selectedDate === props.endPeriod) {
+                            props.setEndPeriod("");
+                            props.setDDay(null);
+                            return;
+                        }
+
                         const dday = differenceInDays(value, new Date());
-                        props.setEndPeriod(format(value, "yyyy.MM.dd"));
+                        props.setEndPeriod(selectedDate);
                         props.setDDay(dday);
                     }}
                     hideWeekdays={true}

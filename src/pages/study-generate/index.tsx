@@ -3,17 +3,18 @@ import { TiHome } from "react-icons/ti";
 import { LinkEnum } from "@/meta/link";
 import { GenerateContainer, GenerateHeader, GenerateHeaderNumber, GenerateHeaderNumberWrapper } from "./indexStyles";
 import { Info } from "./_components/info";
-import { useControlGenerateStudy } from "./index.control";
+import { useControlStudyGenerate } from "./index.control";
 import { Content } from "./_components/content";
 import { Period } from "./_components/period";
+import { GenerateModal } from "./_components/modal";
 
 /**
  * @brief 스터디 생성
  */
 
-export const GenerateStudy = () => {
+export const StudyGenerate = () => {
     const navigate = useNavigate();
-    const controller = useControlGenerateStudy();
+    const controller = useControlStudyGenerate();
 
     const isNumberActive = (status: string) => {
         return controller.status === status ? 'active' : '';
@@ -81,6 +82,7 @@ export const GenerateStudy = () => {
                     categories={controller.categories}
                     peopleCount={controller.peopleCount}
                     dDay={controller.dDay}
+                    
                     studyTitle={controller.studyTitle}
                     setStudyTitle={controller.setStudyTitle}
                     summary={controller.summary}
@@ -92,7 +94,17 @@ export const GenerateStudy = () => {
                     recommend={controller.recommend}
                     setRecommend={controller.setRecommend}
                     isDataCheck={!controller.isDataCheck()}
-                    onGenerateStudy={controller.onGenerateStudy}
+
+                    isLoading={controller.isLoading}
+                    onStudyGenerate={controller.onStudyGenerate}
+                />
+            )}
+
+            {(controller.generateOpen && controller.studyId !== null) && (
+                <GenerateModal
+                    open={controller.generateOpen}
+                    setOpen={controller.setGenerateOpen}
+                    onClick={() => navigate(`/${LinkEnum.STUDY}/${controller.studyId}`)}
                 />
             )}
         </GenerateContainer>

@@ -18,8 +18,10 @@
 - Vite
 
 #### UI Library
+- react-icons
 - daypicker/react
-- Ant Design
+- ant-design
+- ant-design/icons
 - Swiper.js
 
 #### Util Library

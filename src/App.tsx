@@ -1,5 +1,6 @@
-import { Router } from "./router";
 import { ConfigProvider } from "antd";
+import { AxiosComponent } from "./hooks/useAxiosPrivate";
+import { Router } from "./router";
 
 function App() {
 	return (
@@ -10,6 +11,7 @@ function App() {
 				},
 			}}
 		>
+			<AxiosComponent />
 			<Router />
 		</ConfigProvider>
 	);

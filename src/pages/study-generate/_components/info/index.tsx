@@ -2,10 +2,11 @@ import React from "react";
 import type { UploadChangeParam, UploadFile } from "antd/es/upload";
 import { BiImageAdd } from "react-icons/bi";
 import { IoPerson } from "react-icons/io5";
-import { CommonInput } from "@/components/common/input";
-import { CommonButton } from "@/components/common/button";
+import { CommonInput } from "@/components/molecules/input";
+import { CommonButton } from "@/components/molecules/button";
 import { CommonGenerateContainer, CommonGenerateTitle } from "../../indexStyles";
 import { InfoCategory, InfoImageUpload, InfoImageUploadText, InfoInnerContainer, InfoInputRequired, InfoInputTitle, InfoInputTitleWrapper, InfoInputWrapper, InfoPeopleCheckbox, InfoPeopleCheckboxWrapper, InfoPeopleCountInnerWrapper, InfoPeopleCountInput, InfoPeopleCountWrapper, InfoShowImage, InfoUpload, InfoWrapper } from "./indexStyles";
+import Upload from "antd/es/upload";
 
 /**
  * @brief 스터디 생성 -> 기본 정보 컴포넌트
@@ -43,13 +44,31 @@ export const Info = (props: InfoProps) => {
                             name="image-file"
                             accept="image/*"
                             showUploadList={false}
-                            beforeUpload={() => false}
+                            beforeUpload={(file) => {
+                                const isLt10MB = file.size / 1024 / 1024 <= 10;
+                        
+                                if (!isLt10MB) {
+                                    alert("이미지 용량은 10MB 이하만 업로드 가능합니다.");
+                                    return Upload.LIST_IGNORE;
+                                }
+                        
+                                return false; // 자동 업로드 방지
+                            }}
                             onChange={(info: UploadChangeParam<UploadFile>) => {
                                 const file = info.fileList[info.fileList.length - 1].originFileObj;
-                                if (file) {
-                                    props.setBgFile(file);
-                                    props.setPreviewBgFile(URL.createObjectURL(file));
+                                
+                                if (!file) return;
+
+                                const isLt10MB = file.size / 1024 / 1024 <= 10;
+
+                                if (!isLt10MB) {
+                                    props.setBgFile(undefined);
+                                    props.setPreviewBgFile("");
+                                    return;
                                 }
+
+                                props.setBgFile(file);
+                                props.setPreviewBgFile(URL.createObjectURL(file));
                             }}
                         >
                             {props.bgFile ? (

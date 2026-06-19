@@ -19,7 +19,7 @@ export const GenerateHeader = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.875rem 1.5625rem;
+    padding: 1.875rem 1.5rem;
 `;
 
 export const GenerateHeaderNumberWrapper = styled.div`
@@ -60,7 +60,7 @@ export const CommonGenerateContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
     row-gap: 2.1875rem;
-    padding: 0 1.5625rem;
+    padding: 0 1.5rem;
 `;
 
 export const CommonGenerateTitle = styled.p`

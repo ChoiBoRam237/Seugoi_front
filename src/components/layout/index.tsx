@@ -1,12 +1,16 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import '@/style.css';
+import { useScrollup } from '@/hooks/useScrollUp';
 
 /**
  * @brief 레이아웃
  */
 
 export const Layout = () => {
+    const navigate = useNavigate();
+    useScrollup({ item: navigate });
+
     return (
         <LayoutContainer>
             <LayoutWrapper>
@@ -44,7 +48,7 @@ export const LayoutWrapper = styled.div`
 export const LayoutInnerWrapper = styled.div`
     width: 100%;
     height: 100%;
-    padding: 0 1.5625rem;
+    padding: 0 1.5rem;
     padding-top: 5.4375rem;
     padding-bottom: calc(4.125rem + 1.5rem);
 `;

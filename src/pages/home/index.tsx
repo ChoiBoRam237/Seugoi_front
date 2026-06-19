@@ -1,15 +1,15 @@
 import { SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { BiSolidBarChartAlt2 } from "react-icons/bi";
 import { cookie } from "@/util/cookies";
 import { LayoutInnerWrapper } from '@/components/layout';
 import { Menu } from "@/components/menu";
-import { CommonSearchHeader } from "@/components/common/search-header";
+import { CommonSearchHeader } from "@/components/common/header/search";
 import { CommonStudyingItem } from '@/components/common/studying-item';
 import { CommonStudyItem } from '@/components/common/study-item';
 import { HomeContainer, HomeLogo, HomePopularList, HomePopularTitle, HomePopularTitleWrapper, HomePopularWrapper, HomeStudyingInnerWrapper, HomeStudyingItem, HomeStudyingSwiper, HomeStudyingTitle, HomeStudyingWrapper, HomeTodayPhrase, HomeTodayPhraseContent, HomeTodayPhraseLine, HomeTodayPhraseTitle } from "./indexStyles";
 import { useControlHome } from "./index.control";
 import logoImg from "@/assets/text-logo.svg";
-import { BiSolidBarChartAlt2 } from "react-icons/bi";
 
 /**
  * @brief 메인화면

@@ -1,18 +1,15 @@
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
-import { generateStudyPostApi } from "./_api/POST";
-import { cookie } from "@/util/cookies";
+import { postStudyGenerateApi } from "./_api/POST";
 import type { AxiosError } from "axios";
-import { useNavigate } from "react-router-dom";
-import { LinkEnum } from "@/meta/link";
+import { useUserInfo } from "@/hooks/useUserInfo";
 
 /**
  * @brief 스터디 생성 컨트롤
  */
 
-export const useControlGenerateStudy = () => {
-    const navigate = useNavigate();
-    const userId = cookie.getCookie("user").userId;
+export const useControlStudyGenerate = () => {
+    const { userCode } = useUserInfo();
     const [status, setStatus] = useState<string>("info"); // 정보: info / 기간: period / 내용: content
     const [bgFile, setBgFile] = useState<File>(); // 대표 이미지
     const [previewBgFile, setPreviewBgFile] = useState<string>(""); // 이미지 미리보기
@@ -28,6 +25,9 @@ export const useControlGenerateStudy = () => {
     const [introduction, setIntroduction] = useState<string[]>(["", "", ""]); // 스터디 소개
     const [description, setDescription] = useState<string>(""); // 설명글
     const [recommend, setRecommend] = useState<string[]>(["", "", ""]); // 추천글
+
+    const [studyId, setStudyId] = useState<number | null>(null); // 생성된 스터디 아이디
+    const [generateOpen, setGenerateOpen] = useState<boolean>(false); // 스터디 생성 모달 오픈
 
     const handleCategoryChange = (value: string, index: number) => {
         const formatted = (value.length === 0 || value === '#') // 값이 없거나, #만 있을 경우
@@ -45,10 +45,10 @@ export const useControlGenerateStudy = () => {
     }
 
     // 스터디 생성 api
-    const postGenerateStudy = useMutation({
+    const postStudyGenerate = useMutation({
         mutationFn: async () => {
             const formData = new FormData();
-            formData.append("userId", userId); // 유저 아이디
+            formData.append("userId", userCode); // 유저 아이디
             formData.append("studyName", studyName); // 스터디 이름
             categories.filter(item => item !== '').forEach(category => formData.append("categories", category)); // 카테고리
             formData.append("peopleCount", peopleCount); // 모집 인원
@@ -60,17 +60,18 @@ export const useControlGenerateStudy = () => {
             recommend.filter(item => item !== '').forEach(recom => formData.append("recommend", recom)); // 추천글
             formData.append("bgImageUrl", bgFile); // 배경 이미지
             dDay !== null && formData.append("dday", dDay.toString()); // 디데이
-            return await generateStudyPostApi.postGenerateStudy(formData);
+            return await postStudyGenerateApi.postStudyGenerate(formData);
         },
         onSuccess: (data) => {
-            navigate(`/${LinkEnum.STUDY}/${data.id}`);
+            setStudyId(data.id);
+            setGenerateOpen(true);
         },
         onError: (error: AxiosError) => {
             console.error("스터디 생성 에러 : ", error);
         }
     });
-    const onGenerateStudy = () => {
-        postGenerateStudy.mutate();
+    const onStudyGenerate = () => {
+        postStudyGenerate.mutate();
     }
 
     return {
@@ -90,6 +91,10 @@ export const useControlGenerateStudy = () => {
         description, setDescription,
         recommend, setRecommend,
 
-        isDataCheck, onGenerateStudy,
+        studyId,
+        generateOpen, setGenerateOpen,
+
+        isLoading: postStudyGenerate.isPending,
+        isDataCheck, onStudyGenerate,
     }
 }

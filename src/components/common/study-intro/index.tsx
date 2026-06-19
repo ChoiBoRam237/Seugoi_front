@@ -88,22 +88,25 @@ export const CommonStudyIntro = (props: IntroProps) => {
                     onChange={(e) => onChange(e, props.setSummary)}
                 />
 
-                <IntroContentInnerWrapper>
-                    <IntroContentSubTitle>저희의 스터디는 이렇게 진행돼요!</IntroContentSubTitle>
+                {props.introduction.length > 0 && (
+                    <IntroContentInnerWrapper>
+                        <IntroContentSubTitle>저희의 스터디는 이렇게 진행돼요!</IntroContentSubTitle>
 
-                    <IntroContentBox>
-                        {props.introduction?.map((value, index) => (
-                            <IntroContentBoxInputWrapper key={index}>
-                                <FaExclamation size={14} color="red" />
-                                <IntroContentBoxInput
-                                    placeholder="스터디 소개를 적어주세요"
-                                    value={value}
-                                    onChange={(e) => onChangeIntroduction(e.target.value, index)}
-                                />
-                            </IntroContentBoxInputWrapper>
-                        ))}
-                    </IntroContentBox>
-                </IntroContentInnerWrapper>
+                        <IntroContentBox>
+                            {props.introduction?.map((value, index) => (
+                                <IntroContentBoxInputWrapper key={index}>
+                                    <FaExclamation size={14} color="red" />
+                                    <IntroContentBoxInput
+                                        readOnly={props.readOnly}
+                                        placeholder="스터디 소개를 적어주세요"
+                                        value={value}
+                                        onChange={(e) => onChangeIntroduction(e.target.value, index)}
+                                    />
+                                </IntroContentBoxInputWrapper>
+                            ))}
+                        </IntroContentBox>
+                    </IntroContentInnerWrapper>
+                )}
 
                 <IntroContentTextarea
                     id="study-description"
@@ -113,22 +116,25 @@ export const CommonStudyIntro = (props: IntroProps) => {
                     onChange={(e) => onChange(e, props.setDescription)}
                 />
 
-                <IntroContentInnerWrapper>
-                    <IntroContentSubTitle>이런 분들에게 좋아요!</IntroContentSubTitle>
+                {props.recommend.length > 0 && (
+                    <IntroContentInnerWrapper>
+                        <IntroContentSubTitle>이런 분들에게 좋아요!</IntroContentSubTitle>
 
-                    <IntroContentBox>
-                        {props.recommend?.map((value, index) => (
-                            <IntroContentBoxInputWrapper key={index}>
-                                <FaLightbulb size={15} color="var(--yellow)" />
-                                <IntroContentBoxInput
-                                    placeholder="이 스터디를 추천할 유형을 적어주세요"
-                                    value={value}
-                                    onChange={(e) => onChangeRecommend(e.target.value, index)}
-                                />
-                            </IntroContentBoxInputWrapper>
-                        ))}
-                    </IntroContentBox>
-                </IntroContentInnerWrapper>
+                        <IntroContentBox>
+                            {props.recommend?.map((value, index) => (
+                                <IntroContentBoxInputWrapper key={index}>
+                                    <FaLightbulb size={15} color="var(--yellow)" />
+                                    <IntroContentBoxInput
+                                        readOnly={props.readOnly}
+                                        placeholder="이 스터디를 추천할 유형을 적어주세요"
+                                        value={value}
+                                        onChange={(e) => onChangeRecommend(e.target.value, index)}
+                                    />
+                                </IntroContentBoxInputWrapper>
+                            ))}
+                        </IntroContentBox>
+                    </IntroContentInnerWrapper>
+                )}
             </IntroContentWrapper>
         </IntroContainer>
     )
