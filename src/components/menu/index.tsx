@@ -8,10 +8,10 @@ import { useControlMenu } from "./index.control";
 import { LinkEnum } from "@/meta/link";
 
 /**
- * @brief 푸터 컴포넌트
+ * @brief 메뉴바 컴포넌트
  */
 
-export const Menu = () => {
+export const MenuBar = () => {
     const controller = useControlMenu();
 
     return (

@@ -90,11 +90,18 @@ export const HomeTodayPhraseLine = styled.div`
 `;
 
 // 요즘 뜨고있는
-export const HomePopularWrapper = styled.div`
+export const HomePopularContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    row-gap: 1rem;
+    row-gap: 1.25rem;
+`;
+
+export const HomePopularWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `;
 
 export const HomePopularTitleWrapper = styled.div`

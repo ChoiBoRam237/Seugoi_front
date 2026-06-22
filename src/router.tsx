@@ -11,6 +11,7 @@ import { Callback } from './pages/login/callback';
 import { Home } from './pages/home';
 import { StudyGenerate } from './pages/study-generate';
 import { StudyDetail } from './pages/study-detail';
+import { StudyList } from './pages/study-list';
 
 const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
                     {
                         path: `/${LinkEnum.STUDY}`,
                         children: [
+                            {
+                                path: LinkEnum.LIST,
+                                element: <StudyList />
+                            },
                             { // 스터디 생성
                                 path: LinkEnum.GENERATE,
                                 element: <StudyGenerate />

@@ -4,14 +4,29 @@ import { StudyContainer, StudyContent, StudyGradient, StudyImg, StudyText, Study
  * @brief 스터디 아이템 컴포넌트
  */
 
-export const CommonStudyItem = () => {
+interface StudyItemProps {
+    bgImageUrl: string;
+    studyName: string;
+    categories: string[];
+    isBookmark: boolean;
+    onClick: () => void;
+}
+
+export const CommonStudyItem = (props: StudyItemProps) => {
     return (
         <StudyContainer>
-            <StudyImg $src="" />
+            <StudyImg $src={props.bgImageUrl} />
             <StudyGradient />
             <StudyContent>
-                <StudyTitle>스터디 제목</StudyTitle>
-                <StudyText>#해시태그 #뭐뭐뭐</StudyText>
+                <StudyTitle>{props.studyName}</StudyTitle>
+                
+                {props.categories.length > 0 && (
+                    <StudyText>
+                        {props.categories.map((category, _) => (
+                            <>{category}</>
+                        ))}
+                    </StudyText>
+                )}
             </StudyContent>
         </StudyContainer>
     )

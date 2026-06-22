@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 /**
- * @brief 푸터 컴포넌트 스타일
+ * @brief 메뉴바 컴포넌트 스타일
  */
 
 export const MenuContainer = styled.div`

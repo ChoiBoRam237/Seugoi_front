@@ -3,11 +3,12 @@ import 'swiper/css';
 import { BiSolidBarChartAlt2 } from "react-icons/bi";
 import { cookie } from "@/util/cookies";
 import { LayoutInnerWrapper } from '@/components/layout';
-import { Menu } from "@/components/menu";
+import { MenuBar } from "@/components/menu";
 import { CommonSearchHeader } from "@/components/common/header/search";
 import { CommonStudyingItem } from '@/components/common/studying-item';
 import { CommonStudyItem } from '@/components/common/study-item';
-import { HomeContainer, HomeLogo, HomePopularList, HomePopularTitle, HomePopularTitleWrapper, HomePopularWrapper, HomeStudyingInnerWrapper, HomeStudyingItem, HomeStudyingSwiper, HomeStudyingTitle, HomeStudyingWrapper, HomeTodayPhrase, HomeTodayPhraseContent, HomeTodayPhraseLine, HomeTodayPhraseTitle } from "./indexStyles";
+import { CommonSort } from '@/components/common/sort';
+import { HomeContainer, HomeLogo, HomePopularContainer, HomePopularList, HomePopularTitle, HomePopularTitleWrapper, HomePopularWrapper, HomeStudyingInnerWrapper, HomeStudyingItem, HomeStudyingSwiper, HomeStudyingTitle, HomeStudyingWrapper, HomeTodayPhrase, HomeTodayPhraseContent, HomeTodayPhraseLine, HomeTodayPhraseTitle } from "./indexStyles";
 import { useControlHome } from "./index.control";
 import logoImg from "@/assets/text-logo.svg";
 
@@ -60,23 +61,37 @@ export const Home = () => {
                     </HomeStudyingWrapper>
 
                     {/* 요즘 뜨고있는 스터디 */}
-                    <HomePopularWrapper>
-                        <HomePopularTitleWrapper>
-                            <BiSolidBarChartAlt2 size={20} color='white' />
-                            <HomePopularTitle>요즘 뜨고있는</HomePopularTitle>
-                        </HomePopularTitleWrapper>
-                        
+                    <HomePopularContainer>
+                        <HomePopularWrapper>
+                            <HomePopularTitleWrapper>
+                                <BiSolidBarChartAlt2 size={20} color='white' />
+                                <HomePopularTitle>요즘 뜨고있는</HomePopularTitle>
+                            </HomePopularTitleWrapper>
+
+                            <CommonSort
+                                selected={controller.selectedSort}
+                                setSelected={controller.setSelectedSort}
+                            />    
+                        </HomePopularWrapper>
+
                         <HomePopularList>
                             {Array.from({ length: 4 }).map((_, index) => (
-                                <CommonStudyItem key={index} />
+                                <CommonStudyItem
+                                    key={index}
+                                    bgImageUrl=''
+                                    studyName='name'
+                                    categories={[]}
+                                    isBookmark={false}
+                                    onClick={() => {}}
+                                />
                             ))}
                         </HomePopularList>
-                    </HomePopularWrapper>
+                    </HomePopularContainer>
                 </HomeContainer>
             </LayoutInnerWrapper>
 
             {/* 메뉴바 컴포넌트 */}
-            <Menu />
+            <MenuBar />
         </>
     )
 }

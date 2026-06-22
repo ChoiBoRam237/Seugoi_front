@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 
 /**
- * @brief 푸터 컴포넌트 컨트롤
+ * @brief 메뉴바 컴포넌트 컨트롤
  */
 
 export const useControlMenu = () => {
