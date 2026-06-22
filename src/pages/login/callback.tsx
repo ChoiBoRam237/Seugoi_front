@@ -21,7 +21,7 @@ export const Callback = () => {
         onSuccess: (data) => {
             // 브라우저 쿠키에 유저 정보 저장
             cookie.setCookie("user", JSON.stringify({
-                userId: data.userId,
+                userCode: data.userCode,
                 name: data.nickName,
                 email: data.email,
                 profileImageUrl: data.profileImageUrl

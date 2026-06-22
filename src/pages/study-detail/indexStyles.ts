@@ -24,3 +24,31 @@ export const DetailWrapper = styled.div`
     row-gap: 2rem;
     padding: 0 1.5rem;
 `;
+
+export const DetailSelectWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    column-gap: 0.625rem;
+    padding: 0 1.5625rem;
+`;
+
+export const DetailSelection = styled.div`
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+    border-radius: 0.625rem;
+    padding: 0.625rem 0.875rem;
+
+    font-family: 'Pretendard-Medium' !important;
+    font-size: 1rem;
+    color: white;
+
+    &.active {
+        border: none;
+        background-color: white;
+        color: var(--background);
+    }
+`;

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { postStudyGenerateApi } from "./_api/POST";
 import type { AxiosError } from "axios";
 import { useUserInfo } from "@/hooks/useUserInfo";
+import { useScrollup } from "@/hooks/useScrollUp";
 
 /**
  * @brief 스터디 생성 컨트롤
@@ -26,7 +27,7 @@ export const useControlStudyGenerate = () => {
     const [description, setDescription] = useState<string>(""); // 설명글
     const [recommend, setRecommend] = useState<string[]>(["", "", ""]); // 추천글
 
-    const [studyId, setStudyId] = useState<number | null>(null); // 생성된 스터디 아이디
+    const [studyCode, setStudyCode] = useState<number | null>(null); // 생성된 스터디 아이디
     const [generateOpen, setGenerateOpen] = useState<boolean>(false); // 스터디 생성 모달 오픈
 
     const handleCategoryChange = (value: string, index: number) => {
@@ -63,7 +64,7 @@ export const useControlStudyGenerate = () => {
             return await postStudyGenerateApi.postStudyGenerate(formData);
         },
         onSuccess: (data) => {
-            setStudyId(data.id);
+            setStudyCode(data.id);
             setGenerateOpen(true);
         },
         onError: (error: AxiosError) => {
@@ -73,6 +74,8 @@ export const useControlStudyGenerate = () => {
     const onStudyGenerate = () => {
         postStudyGenerate.mutate();
     }
+
+    useScrollup({ item: status });
 
     return {
         status, setStatus,
@@ -91,7 +94,7 @@ export const useControlStudyGenerate = () => {
         description, setDescription,
         recommend, setRecommend,
 
-        studyId,
+        studyCode,
         generateOpen, setGenerateOpen,
 
         isLoading: postStudyGenerate.isPending,

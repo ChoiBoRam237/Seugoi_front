@@ -1,6 +1,6 @@
 import { LinkEnum } from "@/meta/link";
 import { CommonArrowHeader } from "@/components/common/header/arrow";
-import { DetailContainer, DetailWrapper } from "./indexStyles";
+import { DetailContainer, DetailSelection, DetailSelectWrapper, DetailWrapper } from "./indexStyles";
 import { CommonStudyInfoAndImage } from "@/components/common/study-info&image";
 import { CommonButton } from "@/components/molecules/button";
 import { CommonStudyIntro } from "@/components/common/study-intro";
@@ -32,6 +32,24 @@ export const StudyDetail = () => {
                 dDay={controller.studyData.dDay}
             />
 
+            {controller.studyData.isJoined && (
+                <DetailSelectWrapper>
+                    <DetailSelection
+                        className={controller.status === "homework" ? "active" : ""}
+                        onClick={() => controller.setStatus("homework")}
+                    >
+                        과제 하기
+                    </DetailSelection>
+
+                    <DetailSelection 
+                        className={controller.status === "introduction" ? "active" : ""}
+                        onClick={() => controller.setStatus("introduction")}
+                    >
+                        스터디 소개
+                    </DetailSelection>
+                </DetailSelectWrapper>
+            )}
+
             <DetailWrapper>
                 <CommonStudyIntro
                     readOnly={true}
@@ -47,11 +65,14 @@ export const StudyDetail = () => {
                     userName={controller.adminData.nickname}
                 />
                 
-                <CommonButton
-                    bgColor="var(--primary)"
-                    text="스터디 가입하기"
-                    onClick={() => {}}
-                />
+                {!controller.studyData.isJoined && (
+                    <CommonButton
+                        loading={controller.isJoinLoading}
+                        bgColor="var(--primary)"
+                        text="스터디 가입하기"
+                        onClick={controller.handleStudyJoin}
+                    />
+                )}
             </DetailWrapper>
         </DetailContainer>
     )

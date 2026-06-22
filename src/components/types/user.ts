@@ -3,7 +3,7 @@
  */
 
 export interface IUser {
-    userId: number; // 유저 아이디
+    userCode: number; // 유저 코드
     kakaoId: number; // 카카오 아이디
     nickname: string; // 이름
     profileImageUrl: string; // 프로필 이미지

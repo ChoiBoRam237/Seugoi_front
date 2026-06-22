@@ -42,7 +42,7 @@ const router = createBrowserRouter([
                                 element: <StudyGenerate />
                             },
                             { // 스터디 상세
-                                path: ':studyId',
+                                path: ':studyCode',
                                 element: <StudyDetail />
                             }
                         ]

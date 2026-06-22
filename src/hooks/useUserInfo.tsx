@@ -3,7 +3,7 @@ import { cookie } from "@/util/cookies";
 /**
  * @brief 유저 정보 hook
  * @returns
- * userCode: 사용자 아이디
+ * userCode: 사용자 코드
  * userName: 사용자 이름
  * userEmail: 사용자 이메일
  * userProfileUrl: 사용자 프로필 이미지
@@ -11,7 +11,7 @@ import { cookie } from "@/util/cookies";
 
 export const useUserInfo = () => {
     const userInfo = cookie.getCookie("user");
-    const userCode = userInfo.userId ?? 0;
+    const userCode = userInfo.userCode ?? 0;
     const userName = userInfo.name ?? "";
     const userEmail = userInfo.email ?? "";
     const userProfileUrl = userInfo.profileImageUrl ?? "";

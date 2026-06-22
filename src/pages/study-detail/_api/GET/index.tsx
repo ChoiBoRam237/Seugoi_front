@@ -6,8 +6,8 @@ import { privateBase } from "@/util/api";
 
 export const getStudyDetailApi = {
     // 특정 스터디 상세 조회
-    getStudyDetail: async (studyId: string) =>
+    getStudyDetail: async (userCode: string, studyCode: string) =>
         await (
-            await privateBase.get(`/v3/study/${studyId}`)
+            await privateBase.get(`/v3/study/${userCode}/${studyCode}`)
         ).data.data,
 }

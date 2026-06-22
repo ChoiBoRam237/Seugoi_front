@@ -100,11 +100,11 @@ export const StudyGenerate = () => {
                 />
             )}
 
-            {(controller.generateOpen && controller.studyId !== null) && (
+            {(controller.generateOpen && controller.studyCode !== null) && (
                 <GenerateModal
                     open={controller.generateOpen}
                     setOpen={controller.setGenerateOpen}
-                    onClick={() => navigate(`/${LinkEnum.STUDY}/${controller.studyId}`)}
+                    onClick={() => navigate(`/${LinkEnum.STUDY}/${controller.studyCode}`)}
                 />
             )}
         </GenerateContainer>
