@@ -66,7 +66,6 @@ export const AxiosComponent = () => {
                             cookie.setCookie("token", {
                                 ...token,
                                 accessToken: result.accessToken,
-                                expiresIn: result.expiresIn,
                             });
 
                             return privateBase(prevRequest);

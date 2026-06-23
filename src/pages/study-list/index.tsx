@@ -1,11 +1,12 @@
 import { MdFormatListBulleted } from "react-icons/md";
-import { ListContainer, ListFilter, ListFilterContainer, ListFilterWrapper, ListNoData, ListSortContainer, ListTitle, ListTitleWrapper, ListWrap, ListWrapper } from "./indexStyles";
-import { studyFilter } from "./index.constants";
 import { MenuBar } from "@/components/menu";
-import { useControlStudyList } from "./index.control";
 import { CommonSort } from "@/components/common/sort";
 import { CommonStudyItem } from "@/components/common/study-item";
 import { Loading } from "@/components/loading";
+import { CommonStudyingItem } from "@/components/common/studying-item";
+import { ListContainer, ListFilter, ListFilterContainer, ListFilterWrapper, ListFlex, ListFlexItem, ListNoData, ListSortContainer, ListTitle, ListTitleWrapper, ListWrap, ListWrapper } from "./indexStyles";
+import { useControlStudyList } from "./index.control";
+import { studyFilter } from "./index.constants";
 
 /**
  * @brief 스터디 목록
@@ -13,8 +14,6 @@ import { Loading } from "@/components/loading";
 
 export const StudyList = () => {
     const controller = useControlStudyList();
-
-    if (controller.isLoading) <Loading />;
 
     return (
         <>
@@ -48,27 +47,39 @@ export const StudyList = () => {
                 </ListWrapper>
 
                 {/* list */}
-                {controller.studyList.length > 0 ? (
+                {!controller.isLoading ? (
                     <>
-                        {controller.selectedFilter.value === "ALL" ? (
-                            <ListWrap>
-                                {controller.studyList.map((item, index) => (
-                                    <CommonStudyItem
-                                        key={index}
-                                        bgImageUrl={item.bgImageUrl}
-                                        studyName={item.studyName}
-                                        categories={item.categories}
-                                        isBookmark={item.isBookmark}
-                                        onClick={() => {}}
-                                    />
-                                ))}
-                            </ListWrap>
+                        {controller.studyList.length > 0 ? (
+                            <>
+                                {controller.selectedFilter.value === "JOINED" ? (
+                                    <ListFlex>
+                                        {controller.studyList.map((item, index) => (
+                                            <ListFlexItem>
+                                                <CommonStudyingItem
+                                                    key={index}
+                                                    item={item}
+                                                />
+                                            </ListFlexItem>
+                                        ))}
+                                    </ListFlex>
+                                ) : (
+                                    <ListWrap>
+                                        {controller.studyList.map((item, index) => (
+                                            <CommonStudyItem
+                                                key={index}
+                                                item={item}
+                                                onFetch={controller.onFetch}
+                                            />
+                                        ))}
+                                    </ListWrap>
+                                )}
+                            </>
                         ) : (
-                            <></>
+                            <ListNoData>스터디가 존재하지 않습니다.</ListNoData>
                         )}
                     </>
                 ) : (
-                    <ListNoData>스터디가 존재하지 않습니다.</ListNoData>
+                    <Loading />
                 )}
             </ListContainer>
 

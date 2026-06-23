@@ -6,11 +6,12 @@ import { privateBase } from "@/util/api";
 
 export const postStudyDetailApi = {
     // 스터디 가입
-    postStudyJoin: async (userCode: number, studyCode: number) =>
+    postStudyJoin: async (studyCode: number) =>
         await (
-            await privateBase.post(`/v3/study/join`, {
-                userCode,
-                studyCode
+            await privateBase.post(`/v3/api/study/join`, {
+                params: {
+                    studyCode
+                }
             })
         ).data.data,
 }

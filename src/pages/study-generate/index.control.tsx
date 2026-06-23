@@ -2,7 +2,6 @@ import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { postStudyGenerateApi } from "./_api/POST";
 import type { AxiosError } from "axios";
-import { useUserInfo } from "@/hooks/useUserInfo";
 import { useScrollup } from "@/hooks/useScrollUp";
 
 /**
@@ -10,7 +9,6 @@ import { useScrollup } from "@/hooks/useScrollUp";
  */
 
 export const useControlStudyGenerate = () => {
-    const { userCode } = useUserInfo();
     const [status, setStatus] = useState<string>("info"); // 정보: info / 기간: period / 내용: content
     const [bgFile, setBgFile] = useState<File>(); // 대표 이미지
     const [previewBgFile, setPreviewBgFile] = useState<string>(""); // 이미지 미리보기
@@ -35,7 +33,7 @@ export const useControlStudyGenerate = () => {
             ? ''
             : value.startsWith("#")
                 ? value
-                : `# ${value}`;
+                : `#${value}`;
         
         setCategories(prev => prev.map((item, i) => (i === index ? formatted : item)));
     };
@@ -49,7 +47,6 @@ export const useControlStudyGenerate = () => {
     const postStudyGenerate = useMutation({
         mutationFn: async () => {
             const formData = new FormData();
-            formData.append("userCode", userCode); // 유저 아이디
             formData.append("studyName", studyName); // 스터디 이름
             categories.filter(item => item !== '').forEach(category => formData.append("categories", category)); // 카테고리
             formData.append("peopleCount", peopleCount); // 모집 인원

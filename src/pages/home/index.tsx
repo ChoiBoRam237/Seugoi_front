@@ -75,16 +75,12 @@ export const Home = () => {
                         </HomePopularWrapper>
 
                         <HomePopularList>
-                            {Array.from({ length: 4 }).map((_, index) => (
+                            {/* {Array.from({ length: 4 }).map((_, index) => (
                                 <CommonStudyItem
                                     key={index}
-                                    bgImageUrl=''
-                                    studyName='name'
-                                    categories={[]}
-                                    isBookmark={false}
-                                    onClick={() => {}}
+                                    item={}
                                 />
-                            ))}
+                            ))} */}
                         </HomePopularList>
                     </HomePopularContainer>
                 </HomeContainer>

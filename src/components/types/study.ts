@@ -3,18 +3,18 @@
  */
 
 export interface IStudy {
-    adminCode: number; // 관리자 코드
-    studyCode: number; // 스터디 코드
+    code: number; // 스터디 코드
     studyName: string; // 스터디 이름
     categories: string[]; // 카테고리
     progress: number; // 과제 진행상황
     dDay: number; // 디데이
     bgImageUrl: string; // 배경 이미지
+    isAdmin: boolean; // 관리자인지 아닌지
     isBookmark: boolean; // 찜 여부
 }
 
 export interface IStudyDetail {
-    studyCode: number; // 스터디 코드
+    code: number; // 스터디 코드
     studyName: string; // 스터디 이름
     categories: string[]; // 카테고리
     studyTitle: string; // 스터디 제목

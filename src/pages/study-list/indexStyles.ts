@@ -80,6 +80,18 @@ export const ListWrap = styled.div`
     }
 `;
 
+export const ListFlex = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.125rem;
+`;
+
+export const ListFlexItem = styled.div`
+    width: 100%;
+    height: 9.5625rem;
+`;
+
 export const ListNoData = styled.div`
     flex: 1;
     width: 100%;

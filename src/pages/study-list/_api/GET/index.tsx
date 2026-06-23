@@ -5,13 +5,12 @@ import { privateBase } from "@/util/api";
  */
 
 export const getStudyListApi = {
-    getStudyList: async (userCode: number, filter: string, sort: string) =>
+    getStudyList: async (filterValue: string, sortValue: string) =>
         await (
-            await privateBase.get(`/v3/study`, {
+            await privateBase.get(`/v3/api/study`, {
                 params: {
-                    userCode,
-                    filter,
-                    sort
+                    filterValue,
+                    sortValue
                 }
             })
         ).data.data,

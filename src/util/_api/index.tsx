@@ -8,6 +8,6 @@ import { publicBase } from "../api";
 export const commonApi = {
     getRefreshApi: async (config?: AxiosRequestConfig<any>) =>
         await (
-            await publicBase.get(`/v3/kakao/refresh`, config)
+            await publicBase.get(`/v3/api/token/refresh`, config)
         ).data.data,
 }

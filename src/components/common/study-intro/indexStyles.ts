@@ -27,6 +27,14 @@ export const IntroStudyTitle = styled.textarea`
     }
 `;
 
+export const IntroStudyTitlePre = styled.pre`
+    width: 100%;
+    height: auto;
+    font-family: 'Pretendard-Bold' !important;
+    font-size: 1.5rem;
+    color: white;
+`;
+
 // 모집 인원
 export const IntroPeopleCount = styled.div`
     display: flex;
@@ -77,6 +85,13 @@ export const IntroContentTextarea = styled.textarea`
     resize: none;
     overflow: hidden;
 
+    font-size: 0.875rem;
+    color: var(--white-80);
+`;
+
+export const IntroContentPre = styled.pre`
+    width: 100%;
+    height: auto;
     font-size: 0.875rem;
     color: var(--white-80);
 `;

@@ -3,7 +3,7 @@ import { IoPerson } from "react-icons/io5";
 import { PiInfinityBold } from "react-icons/pi";
 import { FaExclamation } from "react-icons/fa";
 import { FaLightbulb } from "react-icons/fa";
-import { IntroContainer, IntroContentBox, IntroContentBoxInput, IntroContentBoxInputWrapper, IntroContentInnerWrapper, IntroContentSubTitle, IntroContentTextarea, IntroContentWrapper, IntroPeopleCount, IntroPeopleCountText, IntroProfile, IntroProfileImg, IntroProfileText, IntroStudyTitle } from "./indexStyles";
+import { IntroContainer, IntroContentBox, IntroContentBoxInput, IntroContentBoxInputWrapper, IntroContentInnerWrapper, IntroContentPre, IntroContentSubTitle, IntroContentTextarea, IntroContentWrapper, IntroPeopleCount, IntroPeopleCountText, IntroProfile, IntroProfileImg, IntroProfileText, IntroStudyTitle, IntroStudyTitlePre } from "./indexStyles";
 
 /**
  * @brief 스터디 정보 입력 및 읽기전용 컴포넌트
@@ -49,13 +49,16 @@ export const CommonStudyIntro = (props: IntroProps) => {
     return (
         <IntroContainer>
             {/* 스터디 제목 */}
-            <IntroStudyTitle
-                id="study-title"
-                readOnly={props.readOnly}
-                placeholder="스터디 제목을 입력해주세요"
-                value={props?.studyTitle}
-                onChange={(e) => onChange(e, props.setStudyTitle)}
-            />
+            {props.readOnly ? (
+                <IntroStudyTitlePre>{props.studyTitle}</IntroStudyTitlePre>
+            ) : (
+                <IntroStudyTitle
+                    id="study-title"
+                    placeholder="스터디 제목을 입력해주세요"
+                    value={props?.studyTitle}
+                    onChange={(e) => onChange(e, props.setStudyTitle)}
+                />
+            )}
 
             {/* 모집인원 */}
             <IntroPeopleCount>
@@ -80,13 +83,16 @@ export const CommonStudyIntro = (props: IntroProps) => {
 
             {/* 글 */}
             <IntroContentWrapper>
-                <IntroContentTextarea
-                    id="study-summary"
-                    readOnly={props.readOnly}
-                    placeholder="스터디를 간단 요약해 적어주세요"
-                    value={props?.summary}
-                    onChange={(e) => onChange(e, props.setSummary)}
-                />
+                {props.readOnly ? (
+                    <IntroContentPre>{props.summary}</IntroContentPre>
+                ) : (
+                    <IntroContentTextarea
+                        id="study-summary"
+                        placeholder="스터디를 간단 요약해 적어주세요"
+                        value={props?.summary}
+                        onChange={(e) => onChange(e, props.setSummary)}
+                    />
+                )}
 
                 {props?.introduction?.length > 0 && (
                     <IntroContentInnerWrapper>
@@ -108,13 +114,16 @@ export const CommonStudyIntro = (props: IntroProps) => {
                     </IntroContentInnerWrapper>
                 )}
 
-                <IntroContentTextarea
-                    id="study-description"
-                    readOnly={props.readOnly}
-                    placeholder="스터디 설명을 적어주세요"
-                    value={props?.description}
-                    onChange={(e) => onChange(e, props.setDescription)}
-                />
+                {props.readOnly ? (
+                    <IntroContentPre>{props.description}</IntroContentPre>
+                ) : (
+                    <IntroContentTextarea
+                        id="study-description"
+                        placeholder="스터디 설명을 적어주세요"
+                        value={props?.description}
+                        onChange={(e) => onChange(e, props.setDescription)}
+                    />
+                )}
 
                 {props?.recommend?.length > 0 && (
                     <IntroContentInnerWrapper>

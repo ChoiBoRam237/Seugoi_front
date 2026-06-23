@@ -8,7 +8,7 @@ export const loginGetApi = {
     // 카카오 로그인 정보 조회
     getKakaoCallback: async (code: string) =>
         await (
-            await publicBase.get(`/v3/kakao/callback`, {
+            await publicBase.get(`/v3/api/kakao/callback`, {
                 params: {
                     code
                 }

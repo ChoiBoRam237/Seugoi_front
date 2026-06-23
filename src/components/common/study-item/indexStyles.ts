@@ -54,3 +54,9 @@ export const StudyText = styled.p`
     font-size: 0.6875rem;
     color: rgba(255, 255, 255, 0.75);
 `;
+
+export const StudyBookmark = styled.button`
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+`;

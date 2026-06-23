@@ -1,21 +1,34 @@
+import { IStudy } from "@/components/types/study";
+import { BASE_URL } from "@/util/api";
 import { StudyingBgImage, StudyingContainer, StudyingContent, StudyingGradient, StudyingProgress, StudyingText, StudyingTitle } from "./indexStyles";
+import { useNavigate } from "react-router-dom";
+import { LinkEnum } from "@/meta/link";
 
 /**
  * @brief 현재 진행중인 스터디 컴포넌트
  */
 
-export const CommonStudyingItem = () => {
+interface StudyingItemProps {
+    item: IStudy;
+}
+
+export const CommonStudyingItem = (props: StudyingItemProps) => {
+    const navigate = useNavigate();
+
     return (
-        <StudyingContainer>
-            <StudyingBgImage $src="" />
+        <StudyingContainer onClick={() => navigate(`/${LinkEnum.STUDY}/${props.item.code}`)}>
+            <StudyingBgImage $src={`${BASE_URL}${props.item.bgImageUrl}`} />
             <StudyingGradient />
 
             <StudyingContent>
-                <StudyingTitle>스터디 제목</StudyingTitle>
-                <StudyingText>D-173 현재 진행상황</StudyingText>
+                <StudyingTitle>{props.item.studyName}</StudyingTitle>
+                <div className="flex items-center gap-1">
+                    {props.item.dDay !== null && <StudyingText>{`D-${props.item.dDay}`}</StudyingText>}
+                    <StudyingText>현재 진행상황</StudyingText>
+                </div>
                 <StudyingProgress
                     type="line"
-                    percent={50}
+                    percent={props.item.progress}
                     showInfo={false}
                     railColor="white"
                     strokeColor="var(--primary)"
