@@ -33,7 +33,7 @@ export const useControlStudyGenerate = () => {
             ? ''
             : value.startsWith("#")
                 ? value
-                : `#${value}`;
+                : `# ${value}`;
         
         setCategories(prev => prev.map((item, i) => (i === index ? formatted : item)));
     };
@@ -48,7 +48,7 @@ export const useControlStudyGenerate = () => {
         mutationFn: async () => {
             const formData = new FormData();
             formData.append("studyName", studyName); // 스터디 이름
-            categories.filter(item => item !== '').forEach(category => formData.append("categories", category)); // 카테고리
+            categories.filter(item => item !== '').forEach(category => formData.append("categories", category.replace(/^#\s+/, "#"))); // 카테고리
             formData.append("peopleCount", peopleCount); // 모집 인원
             endPeriod !== "" && formData.append("endPeriod", endPeriod); // 스터디 종료 기간
             studyTitle !== "" && formData.append("studyTitle", studyTitle); // 스터디 제목

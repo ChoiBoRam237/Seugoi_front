@@ -1,4 +1,5 @@
 import React from "react";
+import Upload from "antd/es/upload";
 import type { UploadChangeParam, UploadFile } from "antd/es/upload";
 import { BiImageAdd } from "react-icons/bi";
 import { IoPerson } from "react-icons/io5";
@@ -6,7 +7,6 @@ import { CommonInput } from "@/components/molecules/input";
 import { CommonButton } from "@/components/molecules/button";
 import { CommonGenerateContainer, CommonGenerateTitle } from "../../indexStyles";
 import { InfoCategory, InfoImageUpload, InfoImageUploadText, InfoInnerContainer, InfoInputRequired, InfoInputTitle, InfoInputTitleWrapper, InfoInputWrapper, InfoPeopleCheckbox, InfoPeopleCheckboxWrapper, InfoPeopleCountInnerWrapper, InfoPeopleCountInput, InfoPeopleCountWrapper, InfoShowImage, InfoUpload, InfoWrapper } from "./indexStyles";
-import Upload from "antd/es/upload";
 
 /**
  * @brief 스터디 생성 -> 기본 정보 컴포넌트
@@ -51,6 +51,11 @@ export const Info = (props: InfoProps) => {
                                     alert("이미지 용량은 10MB 이하만 업로드 가능합니다.");
                                     return Upload.LIST_IGNORE;
                                 }
+
+                                if (!file.type.includes("image")) {
+                                    alert("이미지만 업로드가 가능합니다.")
+                                    return Upload.LIST_IGNORE;
+                                }
                         
                                 return false; // 자동 업로드 방지
                             }}
@@ -82,18 +87,17 @@ export const Info = (props: InfoProps) => {
                         </InfoUpload>
                     </InfoInputWrapper>
 
-                    <InfoInputWrapper>
-                        <InfoInputTitleWrapper>
-                            <InfoInputTitle>스터디 이름</InfoInputTitle>
-                            <InfoInputRequired>*</InfoInputRequired>
-                        </InfoInputTitleWrapper>
-
-                        <CommonInput
-                            placeholder="스터디 이름"
-                            value={props.studyName}
-                            onChange={(e) => props.setStudyName(e.target.value)}
-                        />
-                    </InfoInputWrapper>
+                    <CommonInput
+                        labelText="스터디 이름"
+                        required={true}
+                        input={[
+                            { 
+                                placeholder: "스터디 이름", 
+                                value: props.studyName, 
+                                onChange: (e) => props.setStudyName(e.target.value) 
+                            }
+                        ]}
+                    />
 
                     <InfoInputWrapper>
                         <InfoInputTitle>카테고리</InfoInputTitle>
@@ -103,9 +107,13 @@ export const Info = (props: InfoProps) => {
                                 <CommonInput
                                     key={index}
                                     className="small"
-                                    placeholder={`#카테고리 ${index+1}`}
-                                    value={category}
-                                    onChange={(e) => props.handleCategoryChange(e.target.value, index)}
+                                    input={[
+                                        { 
+                                            placeholder: `#카테고리 ${index+1}`, 
+                                            value: category, 
+                                            onChange: (e) => props.handleCategoryChange(e.target.value, index)
+                                        }
+                                    ]}
                                 />
                             ))}
                         </InfoCategory>

@@ -10,7 +10,7 @@ export const Button = styled.button<{ $bgColor: string }>`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
+    padding: 0.75rem;
     border-radius: 0.625rem;
     background-color: ${({ $bgColor }) => $bgColor};
 

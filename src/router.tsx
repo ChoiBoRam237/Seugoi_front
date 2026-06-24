@@ -12,6 +12,7 @@ import { Home } from './pages/home';
 import { StudyGenerate } from './pages/study-generate';
 import { StudyDetail } from './pages/study-detail';
 import { StudyList } from './pages/study-list';
+import { GenerateBoard } from './pages/generate-board';
 
 const router = createBrowserRouter([
     {
@@ -49,9 +50,13 @@ const router = createBrowserRouter([
                             { // 스터디 상세
                                 path: ':studyCode',
                                 element: <StudyDetail />
+                            },
+                            { // 과제/공지 생성
+                                path: `:studyCode/${LinkEnum.GENERATE}`,
+                                element: <GenerateBoard />
                             }
                         ]
-                    }
+                    },
                 ]
             },
         ]

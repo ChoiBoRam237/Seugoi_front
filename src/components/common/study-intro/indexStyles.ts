@@ -15,7 +15,6 @@ export const IntroContainer = styled.div`
 export const IntroStudyTitle = styled.textarea`
     width: 100%;
     height: 2.25rem;
-    resize: none;
     overflow: hidden;
 
     font-family: 'Pretendard-Bold' !important;
@@ -82,7 +81,6 @@ export const IntroContentWrapper = styled.div`
 export const IntroContentTextarea = styled.textarea`
     width: 100%;
     height: 1.3125rem;
-    resize: none;
     overflow: hidden;
 
     font-size: 0.875rem;

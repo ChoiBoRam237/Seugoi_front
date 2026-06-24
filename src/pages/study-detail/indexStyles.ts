@@ -11,7 +11,6 @@ export const DetailContainer = styled.div`
     display: flex;
     flex-direction: column;
     row-gap: 1.375rem;
-    padding-top: 4.6875rem;
     padding-bottom: 1.5rem;
 `;
 

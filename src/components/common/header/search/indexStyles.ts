@@ -11,7 +11,7 @@ export const SearchHeaderContainer = styled.div`
     transform: translateX(-50%);
     width: 100%;
     max-width: 47.9375rem;
-    height: 5.4375rem;
+    height: 4.6875rem;
     display: flex;
     align-items: center;
     justify-content: space-between;

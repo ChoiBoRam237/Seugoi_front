@@ -11,6 +11,8 @@ export const HomeContainer = styled.div`
     display: flex;
     flex-direction: column;
     row-gap: 1.5625rem;
+    padding: 0 1.5rem;
+    padding-bottom: calc(4.125rem + 1.5rem);
 `;
 
 export const HomeLogo = styled.div<{ $src: string }>`

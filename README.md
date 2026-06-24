@@ -21,7 +21,6 @@
 - react-icons
 - daypicker/react
 - ant-design
-- ant-design/icons
 - Swiper.js
 
 #### Util Library

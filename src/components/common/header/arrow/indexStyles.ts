@@ -31,6 +31,6 @@ export const ArrowHeaderText = styled.p`
     left: 50%;
     transform: translate(-50%, -50%);
 
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     color: white;
 `;

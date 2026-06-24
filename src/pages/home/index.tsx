@@ -46,7 +46,7 @@ export const Home = () => {
                                 {Array.from({ length: 3 }).map((_, index) => (
                                     <SwiperSlide key={index}>
                                         <HomeStudyingItem>
-                                            <CommonStudyingItem />
+                                            {/* <CommonStudyingItem /> */}
                                         </HomeStudyingItem>
                                     </SwiperSlide>
                                 ))}

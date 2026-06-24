@@ -26,7 +26,6 @@ const LayoutContainer = styled.div`
     min-height: 100dvh;
     display: flex;
     justify-content: center;
-    align-items: center;
     background-color: var(--background);
 
     @media (max-width: 320px) {
@@ -35,10 +34,11 @@ const LayoutContainer = styled.div`
 `;
 
 export const LayoutWrapper = styled.div`
+    flex: 1;
     width: 100%;
     max-width: 47.9375rem;
-    height: 100%;
-    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
 
     @media (max-width: 767px) {
         max-width: 100%;
@@ -46,9 +46,9 @@ export const LayoutWrapper = styled.div`
 `;
 
 export const LayoutInnerWrapper = styled.div`
+    flex: 1;
     width: 100%;
-    height: 100%;
-    padding: 0 1.5rem;
-    padding-top: 5.4375rem;
-    padding-bottom: calc(4.125rem + 1.5rem);
+    display: flex;
+    flex-direction: column;
+    padding-top: 4.6875rem;
 `;
