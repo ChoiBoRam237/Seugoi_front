@@ -19,7 +19,7 @@ export const SortCreateStyle = createGlobalStyle`
     .ant-select-content {
         width: auto !important;
         margin-inline-end: 0 !important;
-        font-family: 'Pretendard-SemiBold' !important;
+        font-family: "Pretendard-SemiBold" !important;
         font-size: 0.875rem !important;
         color: white !important;
     }
@@ -48,6 +48,6 @@ export const SortCreateStyle = createGlobalStyle`
 
     .ant-select-item-option-selected {
         background-color: #272A34 !important;
-        font-family: 'Pretendard-Bold' !important;
+        font-family: "Pretendard-Bold" !important;
     }
 `;

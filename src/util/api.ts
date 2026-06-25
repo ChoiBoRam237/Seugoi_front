@@ -22,7 +22,7 @@ export const BASE_URL = import.meta.env.VITE_BE;
 export const publicBase = axios.create({
     baseURL: BASE_URL,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     withCredentials: true,
 });
@@ -31,7 +31,7 @@ export const publicBase = axios.create({
 export const privateBase = axios.create({
     baseURL: BASE_URL,
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     withCredentials: true,
 });
@@ -43,8 +43,8 @@ export const privateBase = axios.create({
 // export const privateBaseWithToken = () => {
 // 	let tokenData = cookie.getCookie("token");
 // 	console.log(tokenData)
-// 	let token = '';
-// 	let refreshToken = '';
+// 	let token = "";
+// 	let refreshToken = "";
 
 // 	// 토큰 데이터가 쿠키에 저장되어 있는 체크
 // 	if (tokenData) {
@@ -55,7 +55,7 @@ export const privateBase = axios.create({
 // 	const instance = axios.create({
 // 		baseURL: BASE_URL,
 // 		headers: {
-// 			'Content-Type': 'application/json',
+// 			"Content-Type": "application/json",
 // 			Authorization: `Bearer ${token}`
 // 		},
 // 		withCredentials: true,
@@ -88,7 +88,7 @@ export const privateBase = axios.create({
 // 					cookie.setCookie("token", updateTokenData);
 
 // 					// 새로운 accessToken으로 원래 요청 다시 실행
-// 					originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+// 					originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
 //           			return axios(originalRequest);
 // 				} catch(tokenRefreshError) {
 // 					cookie.clearCookie(); // 저장했던 토큰, 유저 데이터 삭제

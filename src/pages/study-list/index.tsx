@@ -7,6 +7,7 @@ import { CommonStudyingItem } from "@/components/common/studying-item";
 import { ListContainer, ListFilter, ListFilterContainer, ListFilterWrapper, ListFlex, ListFlexItem, ListNoData, ListSortContainer, ListTitle, ListTitleWrapper, ListWrap, ListWrapper } from "./indexStyles";
 import { useControlStudyList } from "./index.control";
 import { studyFilter } from "./index.constants";
+import { LinkEnum } from "@/meta/link";
 
 /**
  * @brief 스터디 목록
@@ -58,6 +59,7 @@ export const StudyList = () => {
                                                 <CommonStudyingItem
                                                     key={index}
                                                     item={item}
+                                                    prevUrl={`/${LinkEnum.STUDY}/${LinkEnum.LIST}`}
                                                 />
                                             </ListFlexItem>
                                         ))}
@@ -68,6 +70,7 @@ export const StudyList = () => {
                                             <CommonStudyItem
                                                 key={index}
                                                 item={item}
+                                                prevUrl={`/${LinkEnum.STUDY}/${LinkEnum.LIST}`}
                                                 onFetch={controller.onFetch}
                                             />
                                         ))}

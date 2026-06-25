@@ -45,7 +45,7 @@ export const StudyingContent = styled.div`
 `;
 
 export const StudyingTitle = styled.p`
-    font-family: 'Pretendard-Bold' !important;
+    font-family: "Pretendard-Bold" !important;
     font-size: 1.375rem;
     color: white;
 `;

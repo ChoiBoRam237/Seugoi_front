@@ -29,7 +29,7 @@ export const ListTitleWrapper = styled.div`
 `;
 
 export const ListTitle = styled.p`
-    font-family: 'Pretendard-Bold' !important;
+    font-family: "Pretendard-Bold" !important;
     font-size: 1.5rem;
     color: white;
 `;
@@ -48,7 +48,7 @@ export const ListFilterWrapper = styled.div`
 `;
 
 export const ListFilter = styled.button`
-    font-family: 'Pretendard-Bold' !important;
+    font-family: "Pretendard-Bold" !important;
     font-size: 1.125rem;
     color: var(--white-50);
 

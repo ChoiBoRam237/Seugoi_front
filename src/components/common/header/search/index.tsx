@@ -32,7 +32,7 @@ export const CommonSearchHeader = (props: Props) => {
                         className="flex-shrink-0"
                         onClick={() => {
                             props.setSearchIng(false);
-                            props.setSearchValue('');
+                            props.setSearchValue("");
                         }}
                     >
                         <IoIosArrowBack size={25} color="white" />

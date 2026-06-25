@@ -1,18 +1,18 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { LinkEnum } from './meta/link';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { LinkEnum } from "./meta/link";
 
 // layout
-import { Layout } from './components/layout';
+import { Layout } from "./components/layout";
 
 // pages
-import { Splash } from './pages/splash';
-import { Login } from './pages/login';
-import { Callback } from './pages/login/callback';
-import { Home } from './pages/home';
-import { StudyGenerate } from './pages/study-generate';
-import { StudyDetail } from './pages/study-detail';
-import { StudyList } from './pages/study-list';
-import { GenerateBoard } from './pages/generate-board';
+import { Splash } from "./pages/splash";
+import { Login } from "./pages/login";
+import { Callback } from "./pages/login/callback";
+import { Home } from "./pages/home";
+import { StudyGenerate } from "./pages/study-generate";
+import { StudyDetail } from "./pages/study-detail";
+import { StudyList } from "./pages/study-list";
+import { GenerateBoard } from "./pages/generate-board";
 
 const router = createBrowserRouter([
     {
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
                                 element: <StudyGenerate />
                             },
                             { // 스터디 상세
-                                path: ':studyCode',
+                                path: ":studyCode",
                                 element: <StudyDetail />
                             },
                             { // 과제/공지 생성

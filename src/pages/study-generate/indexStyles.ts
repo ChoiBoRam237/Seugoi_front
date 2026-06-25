@@ -37,7 +37,7 @@ export const GenerateHeaderNumber = styled.button`
     border-radius: 50%;
     background-color: var(--third-primary);
 
-    font-family: 'Pretendard-SemiBold' !important;
+    font-family: "Pretendard-SemiBold" !important;
     font-size: 1rem;
     color: white;
 
@@ -64,7 +64,7 @@ export const CommonGenerateContainer = styled.div`
 `;
 
 export const CommonGenerateTitle = styled.p`
-    font-family: 'Pretendard-Bold' !important;
+    font-family: "Pretendard-Bold" !important;
     font-size: 1.5rem;
     color: white;
 `;

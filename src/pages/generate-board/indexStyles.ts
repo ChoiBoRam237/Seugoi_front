@@ -33,7 +33,7 @@ export const BoardTabs = styled(Tabs)`
     }
 
     .ant-tabs-tab-btn {
-        font-family: 'Pretendard-Bold' !important;
+        font-family: "Pretendard-Bold" !important;
         font-size: 1rem !important;
         color: white !important;
     }

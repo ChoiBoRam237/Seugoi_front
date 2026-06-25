@@ -1,7 +1,7 @@
-import { Outlet, useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import '@/style.css';
-import { useScrollup } from '@/hooks/useScrollUp';
+import { Outlet, useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import "@/style.css";
+import { useScrollup } from "@/hooks/useScrollUp";
 
 /**
  * @brief 레이아웃

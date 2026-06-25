@@ -33,7 +33,7 @@ export const ModalContainer = styled.div`
 `;
 
 export const ModalTitle = styled.p`
-    font-family: 'Pretendard-Bold' !important;
+    font-family: "Pretendard-Bold" !important;
     font-size: 1.25rem;
     color: white;
 `;

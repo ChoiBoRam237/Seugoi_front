@@ -29,3 +29,9 @@ export interface IStudyDetail {
     isJoined: boolean; // 가입 여부
     bgImageUrl: string; // 배경 이미지
 }
+
+export interface ICommonStudyResponse {
+    code: number;
+    userCode: number;
+    studyCode: number;
+}

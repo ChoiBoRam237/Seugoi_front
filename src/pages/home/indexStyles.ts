@@ -34,7 +34,7 @@ export const HomeStudyingWrapper = styled.div`
 `;
 
 export const HomeStudyingTitle = styled.p`
-    font-family: 'Pretendard-Bold' !important;
+    font-family: "Pretendard-Bold" !important;
     font-size: 1.5rem;
     color: white;
 `;
@@ -113,7 +113,7 @@ export const HomePopularTitleWrapper = styled.div`
 `;
 
 export const HomePopularTitle = styled.p`
-    font-family: 'Pretendard-SemiBold' !important;
+    font-family: "Pretendard-SemiBold" !important;
     font-size: 1rem;
     color: white;
 `;

@@ -2,18 +2,19 @@ import { LinkEnum } from "@/meta/link";
 import { CommonArrowHeader } from "@/components/common/header/arrow";
 import { DetailContainer, DetailSelection, DetailSelectWrapper, DetailWrapper } from "./indexStyles";
 import { CommonStudyInfoAndImage } from "@/components/common/study-info&image";
-import { CommonButton } from "@/components/molecules/button";
-import { CommonStudyIntro } from "@/components/common/study-intro";
 import { useControlStudyDetail } from "./index.control";
 import { Loading } from "@/components/loading";
 import { BASE_URL } from "@/util/api";
 import { LayoutInnerWrapper } from "@/components/layout";
+import { useLocation } from "react-router-dom";
+import { Study } from "./_components/study";
 
 /**
  * @brief 스터디 상세페이지
  */
 
 export const StudyDetail = () => {
+    const location = useLocation();
     const controller = useControlStudyDetail();
 
     return (
@@ -23,7 +24,7 @@ export const StudyDetail = () => {
                 && controller.studyData !== null 
                 && controller.adminData !== null ? (
                     <>
-                        <CommonArrowHeader moveUrl={`/${LinkEnum.HOME}`} />
+                        <CommonArrowHeader moveUrl={location?.state?.prevUrl ?? `/${LinkEnum.HOME}`} />
 
                         <CommonStudyInfoAndImage
                             bgImage={`${BASE_URL}${controller.studyData.bgImageUrl}`}
@@ -35,10 +36,10 @@ export const StudyDetail = () => {
                         {(controller.isAdmin || controller.studyData.isJoined) && (
                             <DetailSelectWrapper>
                                 <DetailSelection
-                                    className={controller.status === "homework" ? "active" : ""}
-                                    onClick={() => controller.setStatus("homework")}
+                                    className={controller.status === "assignment" ? "active" : ""}
+                                    onClick={() => controller.setStatus("assignment")}
                                 >
-                                    과제 하기
+                                    과제 보기
                                 </DetailSelection>
 
                                 <DetailSelection 
@@ -51,27 +52,15 @@ export const StudyDetail = () => {
                         )}
 
                         <DetailWrapper>
-                            <CommonStudyIntro
-                                readOnly={true}
-                                studyTitle={controller.studyData.studyTitle ?? " "}
-                                peopleCount={controller.studyData.peopleCount}
-                                joinCount={controller.studyData.joinCount ?? 0}
-                                summary={controller.studyData.summary ?? " "}
-                                introduction={controller.studyData.introduction}
-                                description={controller.studyData.description ?? " "}
-                                recommend={controller.studyData.recommend}
-
-                                profileImgUrl={controller.adminData.profileImageUrl}
-                                userName={controller.adminData.nickname}
-                            />
-                            
-                            {(!controller.isAdmin && !controller.studyData.isJoined) && (
-                                <CommonButton
-                                    loading={controller.isJoinLoading}
-                                    bgColor="var(--primary)"
-                                    text="스터디 가입하기"
-                                    onClick={controller.handleStudyJoin}
+                            {controller.status === "introduction" ? (
+                                <Study
+                                    studyCode={controller.studyData.code}
+                                    studyData={controller.studyData}
+                                    adminData={controller.adminData}
+                                    isAdmin={controller.isAdmin}
                                 />
+                            ) : (
+                                <></>
                             )}
                         </DetailWrapper>
                     </>

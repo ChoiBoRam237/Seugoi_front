@@ -10,17 +10,13 @@ interface TextareaProps {
     value: string;
     setValue: React.Dispatch<React.SetStateAction<string>>;
     labelText: string;
-    required: boolean;
 }
 
 export const CommonTextarea = (props: TextareaProps) => {
     return (
         <TextareaWrapper>
             {props.labelText && (
-                <TextareaLabel>
-                    {props.labelText}&nbsp;
-                    {props.required && <span className="text-[#FF0000]">*</span>}
-                </TextareaLabel>
+                <TextareaLabel>{props.labelText}</TextareaLabel>
             )}
 
             <Textarea

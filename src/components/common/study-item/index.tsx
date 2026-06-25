@@ -14,6 +14,7 @@ import React from "react";
 
 interface StudyItemProps {
     item: IStudy;
+    prevUrl: string;
     onFetch: () => void;
 }
 
@@ -22,7 +23,15 @@ export const CommonStudyItem = (props: StudyItemProps) => {
     const controller = useControlStudyItem(props);
 
     return (
-        <StudyContainer onClick={() => navigate(`/${LinkEnum.STUDY}/${props.item.code}`)}>
+        <StudyContainer
+            onClick={() => {
+                navigate(`/${LinkEnum.STUDY}/${props.item.code}`, {
+                    state: {
+                        prevUrl: props.prevUrl
+                    }
+                });
+            }}
+        >
             <StudyImg $src={`${BASE_URL}${props.item.bgImageUrl}`} />
             <StudyGradient />
             <StudyContent>
@@ -40,6 +49,7 @@ export const CommonStudyItem = (props: StudyItemProps) => {
             {!props.item.isAdmin && (
                 <StudyBookmark
                     onClick={(e) => {
+                        e.preventDefault();
                         e.stopPropagation();
                         controller.onBookmark(props.item.code);
                     }}

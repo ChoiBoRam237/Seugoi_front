@@ -2,9 +2,9 @@ import { BiCodeAlt } from "react-icons/bi";
 import { RiKakaoTalkFill } from "react-icons/ri";
 import { LoginButton, LoginCharacter, LoginContainer, LoginImageWrapper, LoginInnerWrapper, LoginLogo, LoginPerson, LoginPersonWrapper, LoginTitle, LoginTitleWrapper, LoginWrapper } from "./indexStyles";
 import { useControlLogin } from "./index.control";
-import logo from '@/assets/text-logo.svg';
-import person from '@/assets/person.svg';
-import character from './_assets/character.svg';
+import logo from "@/assets/text-logo.svg";
+import person from "@/assets/person.svg";
+import character from "./_assets/character.svg";
 
 /**
  * @brief 로그인

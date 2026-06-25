@@ -6,11 +6,11 @@ import { privateBase } from "@/util/api";
 
 export const postStudyGenerateApi = {
     // 스터디 생성
-    postStudyGenerate: async (data: FormData) =>
+    postStudyGenerate: async (formData: FormData) =>
         await (
-            await privateBase.post(`/v3/api/study/generate`, data, {
+            await privateBase.post(`/v3/api/study/generate`, formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
+                    "Content-Type": "multipart/form-data",
                 },
             })
         ).data.data,

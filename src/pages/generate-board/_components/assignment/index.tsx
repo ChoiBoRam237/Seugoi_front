@@ -11,13 +11,17 @@ import { BoardProps } from "../..";
 import { AsgmtImageItem, AsgmtImageItemX, AsgmtImageLabel, AsgmtImageLabelWrapper, AsgmtImageList, AsgmtImageUplaod, AsgmtImageWrapper } from "./indexStyles";
 import { UploadChangeParam, UploadFile } from "antd/es/upload";
 import { useControlAssignment } from "./index.control";
+import { CommonModal } from "@/components/molecules/modal";
+import { LinkEnum } from "@/meta/link";
+import { useNavigate } from "react-router-dom";
 
 /**
  * @brief 과제 추가
  */
 
 export const Assignment = (props: BoardProps) => {
-    const controller = useControlAssignment(props);
+    const navigate = useNavigate();
+    const controller = useControlAssignment();
 
     return (
         <BoardContainer>
@@ -25,7 +29,6 @@ export const Assignment = (props: BoardProps) => {
                 <CommonInput
                     className="border-[#4D5365]! placeholder-[#4D5365]!"
                     labelText="과제 제목"
-                    required={true}
                     input={[
                         { 
                             placeholder: "제목을 입력해주세요", 
@@ -38,7 +41,6 @@ export const Assignment = (props: BoardProps) => {
                 <CommonTextarea
                     placeholder="내용을 입력해주세요"
                     labelText="과제 내용"
-                    required={true}
                     value={controller.content}
                     setValue={controller.setContent}
                 />
@@ -144,11 +146,19 @@ export const Assignment = (props: BoardProps) => {
             </BoardWrapper>
 
             <CommonButton
-                loading={false}
+                loading={controller.isLoading}
                 disabled={!controller.dataCheck()}
                 text="과제 추가하기"
                 bgColor="var(--primary)"
-                onClick={() => {}}
+                onClick={() => controller.onGenerate(Number(props.studyCode))}
+            />
+
+            <CommonModal
+                open={controller.successOpen}
+                setOpen={controller.setSuccessOpen}
+                title="과제가 생성되었습니다!"
+                btnTitle="과제로 이동"
+                onClick={() => navigate(`/${LinkEnum.STUDY}/${controller.successData.studyCode}/${LinkEnum.ASGMT}/${controller.successData.code}`)}
             />
         </BoardContainer>
     )

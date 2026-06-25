@@ -40,7 +40,7 @@ export const InfoAndImageTitleWrapper = styled.div`
 `;
 
 export const InfoAndImageTitle = styled.p`
-    font-family: 'Pretendard-Bold' !important;
+    font-family: "Pretendard-Bold" !important;
     font-size: 2.5rem;
     line-height: 2.75rem;
     color: white;

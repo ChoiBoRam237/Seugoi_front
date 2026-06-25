@@ -9,9 +9,7 @@ export const loginGetApi = {
     getKakaoCallback: async (code: string) =>
         await (
             await publicBase.get(`/v3/api/kakao/callback`, {
-                params: {
-                    code
-                }
+                params: { code }
             })
         ).data.data,
 };

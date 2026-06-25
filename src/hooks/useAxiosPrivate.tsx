@@ -1,10 +1,10 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
-import { useEffect } from 'react';
-import { LinkEnum } from '@/meta/link';
-import { privateBase } from '@/util/api';
-import { commonApi } from '@/util/_api';
-import { cookie } from '@/util/cookies';
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { AxiosError } from "axios";
+import { useEffect } from "react";
+import { LinkEnum } from "@/meta/link";
+import { privateBase } from "@/util/api";
+import { commonApi } from "@/util/_api";
+import { cookie } from "@/util/cookies";
 
 /**
  * @brief 토큰 처리 hook
@@ -32,7 +32,7 @@ export const AxiosComponent = () => {
                     window.location.href = `/${LinkEnum.LOGIN}`;
                 }
             } else {
-                console.error('Network or other error:', error);
+                console.error("Network or other error:", error);
             }
         },
     });
@@ -41,8 +41,8 @@ export const AxiosComponent = () => {
     useEffect(() => {
         const requestIntercept = privateBase.interceptors.request.use(
             (config) => {
-                if (!config.headers['Authorization']) {
-                    config.headers['Authorization'] = `Bearer ${token.accessToken}`;
+                if (!config.headers["Authorization"]) {
+                    config.headers["Authorization"] = `Bearer ${token.accessToken}`;
                 }
                 return config;
             },
@@ -61,7 +61,7 @@ export const AxiosComponent = () => {
                             prevRequest._retry = true;
                         try {
                             const result = await tokenMutation.mutateAsync();
-                            prevRequest.headers['Authorization'] = `Bearer ${result.accessToken}`;
+                            prevRequest.headers["Authorization"] = `Bearer ${result.accessToken}`;
 
                             cookie.setCookie("token", {
                                 ...token,
@@ -71,7 +71,7 @@ export const AxiosComponent = () => {
                             return privateBase(prevRequest);
 
                         } catch (tokenError) {
-                            console.error('Token refresh error:', tokenError);
+                            console.error("Token refresh error:", tokenError);
                             cookie.clearCookie();
                             queryClient.clear();
                             window.location.href = `/${LinkEnum.LOGIN}`;
@@ -79,7 +79,7 @@ export const AxiosComponent = () => {
                     }
                 } else {
                     // error.response가 정의되지 않은 경우 처리
-                    console.error('Network or other error:', error);
+                    console.error("Network or other error:", error);
                 }
 
                 return Promise.reject(error);

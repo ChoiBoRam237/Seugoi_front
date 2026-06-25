@@ -10,6 +10,7 @@ export const StudyContainer = styled.div`
     height: 7.0625rem;
     border-radius: 0.9375rem;
     overflow: hidden;
+    cursor: pointer;
 `;
 
 export const StudyImg = styled.div<{ $src: string }>`
@@ -44,13 +45,13 @@ export const StudyContent = styled.div`
 `;
 
 export const StudyTitle = styled.p`
-    font-family: 'Pretendard-SemiBold' !important;
+    font-family: "Pretendard-SemiBold" !important;
     font-size: 1rem;
     color: white;
 `;
 
 export const StudyText = styled.p`
-    font-family: 'Pretendard-Light' !important;
+    font-family: "Pretendard-Light" !important;
     font-size: 0.6875rem;
     color: rgba(255, 255, 255, 0.75);
 `;
@@ -59,4 +60,5 @@ export const StudyBookmark = styled.button`
     position: absolute;
     top: 0.5rem;
     right: 0.5rem;
+    z-index: 2;
 `;

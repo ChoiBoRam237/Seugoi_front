@@ -1,22 +1,46 @@
 import { useState } from "react";
-import { BoardProps } from "../..";
+import { useMutation } from "@tanstack/react-query";
+import { postGenerateBoardApi } from "../../_api/POST";
+import { AxiosError } from "axios";
 
 /**
  * @brief 공지 추가 컨트롤
  */
 
-export const useControlNotice = (props: BoardProps) => {
+export const useControlNotice = () => {
     const [title, setTitle] = useState<string>(""); // 제목
     const [content, setContent] = useState<string>(""); // 내용
+    const [successOpen, setSuccessOpen] = useState<boolean>(false); // 공지 생성 성공
 
     // 필수 작성 데이터 모두 입력했으면 true, 아니면 false
     const dataCheck = () => {
         return title !== "" && content !== "";
     }
 
+    // 공지 생성 api
+    const postGenerateNotice = useMutation({
+        mutationFn: (studyCode: number) => {
+            return postGenerateBoardApi.postGenerateNotice(studyCode, title, content)
+        },
+        onSuccess: () => {
+            setSuccessOpen(true);
+        },
+        onError: (error: AxiosError) => {
+            console.error("공지 생성 에러 : ", error);
+        }
+    });
+
+    const onGenerate = (studyCode: number) => {
+        postGenerateNotice.mutate(studyCode);
+    }
+
     return {
         title, setTitle,
         content, setContent,
         dataCheck,
+
+        isLoading: postGenerateNotice.isPending,
+        successOpen, setSuccessOpen,
+        onGenerate,
     }
 }

@@ -8,7 +8,7 @@ export const postStudyItemApi = {
     // 스터디 북마크 토글 api
     postBookmarkStudy: async (studyCode: number) =>
         await (
-            await privateBase.post(`/v3/api/study/bookmark`, {
+            await privateBase.post(`/v3/api/study/bookmark`, null, {
                 params: {
                     studyCode
                 }

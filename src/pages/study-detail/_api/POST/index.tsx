@@ -9,9 +9,7 @@ export const postStudyDetailApi = {
     postStudyJoin: async (studyCode: number) =>
         await (
             await privateBase.post(`/v3/api/study/join`, {
-                params: {
-                    studyCode
-                }
+                params: { studyCode }
             })
         ).data.data,
 }

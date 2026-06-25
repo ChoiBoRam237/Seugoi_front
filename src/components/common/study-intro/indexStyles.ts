@@ -17,7 +17,7 @@ export const IntroStudyTitle = styled.textarea`
     height: 2.25rem;
     overflow: hidden;
 
-    font-family: 'Pretendard-Bold' !important;
+    font-family: "Pretendard-Bold" !important;
     font-size: 1.5rem;
     color: white;
 
@@ -29,7 +29,7 @@ export const IntroStudyTitle = styled.textarea`
 export const IntroStudyTitlePre = styled.pre`
     width: 100%;
     height: auto;
-    font-family: 'Pretendard-Bold' !important;
+    font-family: "Pretendard-Bold" !important;
     font-size: 1.5rem;
     color: white;
 `;
@@ -65,7 +65,7 @@ export const IntroProfileImg = styled.div<{ $src: string }>`
 `;
 
 export const IntroProfileText = styled.p`
-    font-family: 'Pretendard-SemiBold' !important;
+    font-family: "Pretendard-SemiBold" !important;
     font-size: 1rem;
     color: white;
 `;
@@ -102,7 +102,7 @@ export const IntroContentInnerWrapper = styled.div`
 `;
 
 export const IntroContentSubTitle = styled.p`
-    font-family: 'Pretendard-SemiBold' !important;
+    font-family: "Pretendard-SemiBold" !important;
     font-size: 1rem;
     color: white;
 `;

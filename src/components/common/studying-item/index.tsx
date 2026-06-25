@@ -10,13 +10,22 @@ import { LinkEnum } from "@/meta/link";
 
 interface StudyingItemProps {
     item: IStudy;
+    prevUrl: string;
 }
 
 export const CommonStudyingItem = (props: StudyingItemProps) => {
     const navigate = useNavigate();
 
     return (
-        <StudyingContainer onClick={() => navigate(`/${LinkEnum.STUDY}/${props.item.code}`)}>
+        <StudyingContainer
+            onClick={() => {
+                navigate(`/${LinkEnum.STUDY}/${props.item.code}`, {
+                    state: {
+                        prevUrl: props.prevUrl
+                    }
+                });
+            }}
+        >
             <StudyingBgImage $src={`${BASE_URL}${props.item.bgImageUrl}`} />
             <StudyingGradient />
 

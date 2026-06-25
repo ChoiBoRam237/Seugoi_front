@@ -31,7 +31,7 @@ export const DetailSelectWrapper = styled.div`
     padding: 0 1.5625rem;
 `;
 
-export const DetailSelection = styled.div`
+export const DetailSelection = styled.button`
     width: auto;
     height: auto;
     display: flex;
@@ -41,7 +41,7 @@ export const DetailSelection = styled.div`
     border-radius: 0.625rem;
     padding: 0.625rem 0.875rem;
 
-    font-family: 'Pretendard-Medium' !important;
+    font-family: "Pretendard-Medium" !important;
     font-size: 1rem;
     color: white;
 

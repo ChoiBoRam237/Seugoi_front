@@ -67,7 +67,7 @@ export const CommonStudyIntro = (props: IntroProps) => {
                 <div className="flex items-center">
                     <IntroPeopleCountText>모집인원 : {props?.joinCount} /&nbsp;</IntroPeopleCountText>
                     
-                    {props?.peopleCount === '-' ? (
+                    {props?.peopleCount === "-" ? (
                         <PiInfinityBold size={16} color="var(--white-50)" />
                     ) : (
                         <IntroPeopleCountText>{props?.peopleCount}</IntroPeopleCountText>

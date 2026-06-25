@@ -139,9 +139,9 @@ export const Info = (props: InfoProps) => {
 
                             <InfoPeopleCheckboxWrapper>
                                 <InfoPeopleCheckbox
-                                    checked={props.peopleCount === '-'}
+                                    checked={props.peopleCount === "-"}
                                     onChange={(data) => {
-                                        if (data.target.checked) props.setPeopleCount('-');
+                                        if (data.target.checked) props.setPeopleCount("-");
                                         else props.setPeopleCount("");
                                     }}
                                 >

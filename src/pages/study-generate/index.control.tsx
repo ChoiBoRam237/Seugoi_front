@@ -29,8 +29,8 @@ export const useControlStudyGenerate = () => {
     const [generateOpen, setGenerateOpen] = useState<boolean>(false); // 스터디 생성 모달 오픈
 
     const handleCategoryChange = (value: string, index: number) => {
-        const formatted = (value.length === 0 || value === '#') // 값이 없거나, #만 있을 경우
-            ? ''
+        const formatted = (value.length === 0 || value === "#") // 값이 없거나, #만 있을 경우
+            ? ""
             : value.startsWith("#")
                 ? value
                 : `# ${value}`;
@@ -40,7 +40,7 @@ export const useControlStudyGenerate = () => {
 
     // 필수로 작성해야하는 데이터 모두 작성했으면 true, 아니면 false
     const isDataCheck = () => {
-        return bgFile && studyName !== '' && peopleCount !== '';
+        return bgFile && studyName !== "" && peopleCount !== "";
     }
 
     // 스터디 생성 api
@@ -48,14 +48,14 @@ export const useControlStudyGenerate = () => {
         mutationFn: async () => {
             const formData = new FormData();
             formData.append("studyName", studyName); // 스터디 이름
-            categories.filter(item => item !== '').forEach(category => formData.append("categories", category.replace(/^#\s+/, "#"))); // 카테고리
+            categories.filter(item => item !== "").forEach(category => formData.append("categories", category.replace(/^#\s+/, "#"))); // 카테고리
             formData.append("peopleCount", peopleCount); // 모집 인원
             endPeriod !== "" && formData.append("endPeriod", endPeriod); // 스터디 종료 기간
             studyTitle !== "" && formData.append("studyTitle", studyTitle); // 스터디 제목
             summary !== "" && formData.append("summary", summary); // 간단 요약
-            introduction.filter(item => item !== '').forEach(intro => formData.append("introduction", intro)); // 소개글
+            introduction.filter(item => item !== "").forEach(intro => formData.append("introduction", intro)); // 소개글
             description !== "" && formData.append("description", description); // 설명글
-            recommend.filter(item => item !== '').forEach(recom => formData.append("recommend", recom)); // 추천글
+            recommend.filter(item => item !== "").forEach(recom => formData.append("recommend", recom)); // 추천글
             formData.append("bgImageUrl", bgFile); // 배경 이미지
             dDay !== null && formData.append("dday", dDay.toString()); // 디데이
             return await postStudyGenerateApi.postStudyGenerate(formData);

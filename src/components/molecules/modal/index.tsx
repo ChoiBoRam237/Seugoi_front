@@ -12,21 +12,21 @@ interface ModalProps {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
     title: string;
     btnTitle: string;
-    children: React.ReactNode;
+    children?: React.ReactNode;
     onClick: () => void;
 }
 
 export const CommonModal = (props: ModalProps) => {
     useEffect(() => {
         if (props.open) {
-            document.body.style.overflow = 'hidden';
-            document.body.style.width = '100%';
+            document.body.style.overflow = "hidden";
+            document.body.style.width = "100%";
         } else {
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = "auto";
         }
     
         return () => {
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = "auto";
         };
     }, [props.open]);
 

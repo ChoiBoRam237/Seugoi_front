@@ -64,7 +64,7 @@ export const PeriodCalendar = styled(DayPicker)`
             align-items: center !important;
 
             .rdp-day_button {
-                font-family: 'Pretendard-Light' !important;
+                font-family: "Pretendard-Light" !important;
                 font-size: 1rem !important;
                 color: white !important;
             }
@@ -77,7 +77,7 @@ export const PeriodCalendar = styled(DayPicker)`
         }
 
         .rdp-today:not(.rdp-outside) .rdp-day_button {
-            font-family: 'Pretendard-Bold' !important;
+            font-family: "Pretendard-Bold" !important;
         }
         
         .rdp-selected .rdp-day_button {
@@ -115,13 +115,13 @@ export const PeriodCalendarDate = styled.div`
 `;
 
 export const PeriodCalendarMonth = styled.p`
-    font-family: 'YeogiOttaeJalnan' !important;
+    font-family: "YeogiOttaeJalnan" !important;
     font-size: 1.5rem;
     color: white;
 `;
 
 export const PeriodCalendarYear = styled.p`
-    font-family: 'Pretendard-Light' !important;
+    font-family: "Pretendard-Light" !important;
     font-size: 1rem;
     color: white;
     margin-bottom: -0.375rem;

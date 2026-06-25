@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { LinkEnum } from "@/meta/link";
 import { SplashContainer, SplashLogo } from "./indexStyles";
-import logo from '@/assets/text-logo.svg';
+import logo from "@/assets/text-logo.svg";
 
 /**
  * @brief 스플레시

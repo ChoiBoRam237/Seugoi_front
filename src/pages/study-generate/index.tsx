@@ -17,7 +17,7 @@ export const StudyGenerate = () => {
     const controller = useControlStudyGenerate();
 
     const isNumberActive = (status: string) => {
-        return controller.status === status ? 'active' : '';
+        return controller.status === status ? "active" : "";
     }
 
     const onClickNumber = (status: string) => {
@@ -35,13 +35,13 @@ export const StudyGenerate = () => {
 
                     <GenerateHeaderNumber
                         disabled={!controller.isDataCheck()}
-                        className={`${isNumberActive("period")} ${controller.isDataCheck() ? '' : 'disabled'}`}
+                        className={`${isNumberActive("period")} ${controller.isDataCheck() ? "" : "disabled"}`}
                         onClick={() => controller.isDataCheck() && onClickNumber("period")}
                     >2</GenerateHeaderNumber>
 
                     <GenerateHeaderNumber
                         disabled={!controller.isDataCheck()}
-                        className={`${isNumberActive("content")} ${controller.isDataCheck() ? '' : 'disabled'}`}
+                        className={`${isNumberActive("content")} ${controller.isDataCheck() ? "" : "disabled"}`}
                         onClick={() => controller.isDataCheck() && onClickNumber("content")}
                     >3</GenerateHeaderNumber>
                 </GenerateHeaderNumberWrapper>
@@ -51,7 +51,7 @@ export const StudyGenerate = () => {
                 </button>
             </GenerateHeader>
 
-            {controller.status === 'info' ? (
+            {controller.status === "info" ? (
                 <Info
                     bgFile={controller.bgFile}
                     setBgFile={controller.setBgFile}
@@ -66,7 +66,7 @@ export const StudyGenerate = () => {
                     isDataCheck={!controller.isDataCheck()}
                     onNext={() => controller.setStatus("period")}
                 />
-            ) : controller.status === 'period' ? (
+            ) : controller.status === "period" ? (
                 <Period
                     endPeriod={controller.endPeriod}
                     setEndPeriod={controller.setEndPeriod}
@@ -100,13 +100,11 @@ export const StudyGenerate = () => {
                 />
             )}
 
-            {(controller.generateOpen && controller.studyCode !== null) && (
-                <GenerateModal
-                    open={controller.generateOpen}
-                    setOpen={controller.setGenerateOpen}
-                    onClick={() => navigate(`/${LinkEnum.STUDY}/${controller.studyCode}`)}
-                />
-            )}
+            <GenerateModal
+                open={controller.generateOpen && controller.studyCode !== null}
+                setOpen={controller.setGenerateOpen}
+                onClick={() => navigate(`/${LinkEnum.STUDY}/${controller.studyCode}`)}
+            />
         </GenerateContainer>
     )
 }

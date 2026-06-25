@@ -1,13 +1,13 @@
-import { SwiperSlide } from 'swiper/react';
-import 'swiper/css';
+import { SwiperSlide } from "swiper/react";
+import "swiper/css";
 import { BiSolidBarChartAlt2 } from "react-icons/bi";
 import { cookie } from "@/util/cookies";
-import { LayoutInnerWrapper } from '@/components/layout';
+import { LayoutInnerWrapper } from "@/components/layout";
 import { MenuBar } from "@/components/menu";
 import { CommonSearchHeader } from "@/components/common/header/search";
-import { CommonStudyingItem } from '@/components/common/studying-item';
-import { CommonStudyItem } from '@/components/common/study-item';
-import { CommonSort } from '@/components/common/sort';
+import { CommonStudyingItem } from "@/components/common/studying-item";
+import { CommonStudyItem } from "@/components/common/study-item";
+import { CommonSort } from "@/components/common/sort";
 import { HomeContainer, HomeLogo, HomePopularContainer, HomePopularList, HomePopularTitle, HomePopularTitleWrapper, HomePopularWrapper, HomeStudyingInnerWrapper, HomeStudyingItem, HomeStudyingSwiper, HomeStudyingTitle, HomeStudyingWrapper, HomeTodayPhrase, HomeTodayPhraseContent, HomeTodayPhraseLine, HomeTodayPhraseTitle } from "./indexStyles";
 import { useControlHome } from "./index.control";
 import logoImg from "@/assets/text-logo.svg";
@@ -64,7 +64,7 @@ export const Home = () => {
                     <HomePopularContainer>
                         <HomePopularWrapper>
                             <HomePopularTitleWrapper>
-                                <BiSolidBarChartAlt2 size={20} color='white' />
+                                <BiSolidBarChartAlt2 size={20} color="white" />
                                 <HomePopularTitle>요즘 뜨고있는</HomePopularTitle>
                             </HomePopularTitleWrapper>
 

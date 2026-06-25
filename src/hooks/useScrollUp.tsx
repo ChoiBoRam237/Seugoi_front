@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 /**
  * @brief 페이지 상단으로 올리는 hook
@@ -12,7 +12,7 @@ export const useScrollup = ({ item }: useScrollupProps) => {
     useEffect(() => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth',
+            behavior: "smooth",
         });
     }, [item]);
 
