@@ -1,27 +1,19 @@
 import styled from "styled-components";
 
 /**
- * @brief 검색 헤더 컴포넌트 스타일
+ * @brief 커스텀 헤더 컴포넌트 스타일
  */
 
-export const SearchHeaderContainer = styled.div`
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+export const CustomHeaderContainer = styled.div`
     width: 100%;
-    max-width: 47.9375rem;
-    height: 4.6875rem;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     column-gap: 0.9375rem;
-    padding: 1.5rem;
-    background-color: var(--background);
-    z-index: 10;
 `;
 
-export const SearchHeaderInputWrapper = styled.div`
+export const CustomHeaderInputWrapper = styled.div`
     width: 100%;
     height: 3.125rem;
     display: flex;
@@ -32,7 +24,7 @@ export const SearchHeaderInputWrapper = styled.div`
     padding: 0.6875rem 0.875rem;
 `;
 
-export const SearchHeaderInput = styled.input`
+export const CustomHeaderInput = styled.input`
     width: 100%;
     height: 100%;
 

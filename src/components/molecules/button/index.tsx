@@ -6,7 +6,7 @@ import { Button } from "./indexStyles";
  * @brief button 컴포넌트
  */
 
-interface ButtonProps {
+interface Props {
     loading?: boolean;
     disabled?: boolean;
     bgColor: string;
@@ -15,7 +15,7 @@ interface ButtonProps {
     onClick: () => void;
 }
 
-export const CommonButton = (props: ButtonProps) => {
+export const CommonButton = (props: Props) => {
     return (
         <Button
             disabled={props.disabled || props.loading}

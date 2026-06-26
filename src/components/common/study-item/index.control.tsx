@@ -6,11 +6,11 @@ import { AxiosError } from "axios";
  * @brief 스터디 아이템 컴포넌트 컨트롤
  */
 
-interface StudyItemProps {
+interface Props {
     onFetch: () => void;
 }
 
-export const useControlStudyItem = (props: StudyItemProps) => {
+export const useControlStudyItem = (props: Props) => {
     // 스터디 북마크 토글 api
     const postBookmarkStudy = useMutation({
         mutationFn: (studyCode: number) => postStudyItemApi.postBookmarkStudy(studyCode),

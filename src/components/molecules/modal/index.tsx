@@ -7,7 +7,7 @@ import { GlobalStyledModal, ModalContainer, ModalTitle, ModalWrapper } from "./i
  * @brief 모달 컴포넌트
  */
 
-interface ModalProps {
+interface Props {
     open: boolean;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
     title: string;
@@ -16,7 +16,7 @@ interface ModalProps {
     onClick: () => void;
 }
 
-export const CommonModal = (props: ModalProps) => {
+export const CommonModal = (props: Props) => {
     useEffect(() => {
         if (props.open) {
             document.body.style.overflow = "hidden";

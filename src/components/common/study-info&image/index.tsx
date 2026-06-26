@@ -4,14 +4,14 @@ import { InfoAndImageBg, InfoAndImageBgWrapper, InfoAndImageCategory, InfoAndIma
  * @brief 스터디 이미지 컴포넌트
  */
 
-interface InfoAndImageProps {
+interface Props {
     bgImage: string; // 이미지
     studyName: string; // 스터디 이름
     categories: string[]; // 카테고리
     dDay: number | null; // 디데이
 }
 
-export const CommonStudyInfoAndImage = (props: InfoAndImageProps) => {
+export const CommonStudyInfoAndImage = (props: Props) => {
     return (
         <InfoAndImageBgWrapper>
             <InfoAndImageBg $src={props?.bgImage} />

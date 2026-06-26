@@ -5,14 +5,14 @@ import { Textarea, TextareaLabel, TextareaWrapper } from "./indexStyles";
  * @brief textarea 컴포넌트
  */
 
-interface TextareaProps {
+interface Props {
     placeholder: string;
     value: string;
     setValue: React.Dispatch<React.SetStateAction<string>>;
     labelText: string;
 }
 
-export const CommonTextarea = (props: TextareaProps) => {
+export const CommonTextarea = (props: Props) => {
     return (
         <TextareaWrapper>
             {props.labelText && (

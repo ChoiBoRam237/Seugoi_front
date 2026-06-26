@@ -9,12 +9,12 @@ import { SelectType } from "@/components/types/select";
  * @brief 정렬 컴포넌트
  */
 
-interface SortProps {
+interface Props {
     selected: SelectType;
     setSelected: React.Dispatch<React.SetStateAction<SelectType>>;
 }
 
-export const CommonSort = (props: SortProps) => {
+export const CommonSort = (props: Props) => {
     return (
         <>
             <Select

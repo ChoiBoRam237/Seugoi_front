@@ -10,11 +10,11 @@ import { useControlStudy } from "./index.control";
  * @brief 스터디
  */
 
-interface StudyProps {
+interface Props {
     userName: string;
 }
 
-export const Study = (props: StudyProps) => {
+export const Study = (props: Props) => {
     const controller = useControlStudy();
 
     return (

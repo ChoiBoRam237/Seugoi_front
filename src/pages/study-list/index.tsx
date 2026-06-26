@@ -1,5 +1,5 @@
 import { MdFormatListBulleted } from "react-icons/md";
-import { MenuBar } from "@/components/menu";
+import { CommonMenuBar } from "@/components/menu";
 import { CommonSort } from "@/components/common/sort";
 import { CommonStudyItem } from "@/components/common/study-item";
 import { CommonLoading } from "@/components/loading";
@@ -87,7 +87,7 @@ export const StudyList = () => {
             </ListContainer>
 
             {/* 메뉴바 컴포넌트 */}
-            <MenuBar />
+            <CommonMenuBar />
         </>
     )
 }

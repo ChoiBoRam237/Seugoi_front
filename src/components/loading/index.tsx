@@ -6,11 +6,11 @@ import styled from "styled-components";
  * @brief 로딩 화면
  */
 
-interface LoadingProps {
+interface Props {
     text?: string;
 }
 
-export const CommonLoading = (props: LoadingProps) => {
+export const CommonLoading = (props: Props) => {
     return (
         <LoadingContainer>
             <Spin indicator={<LoadingOutlined spin style={{ color: "white", fontSize: "2rem" }} />} />

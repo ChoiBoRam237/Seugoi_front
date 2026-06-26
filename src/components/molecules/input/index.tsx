@@ -5,7 +5,7 @@ import { Input, InputInnerWrapper, InputLabel, InputLabelWrapper, InputWrapper }
  * @brief input 컴포넌트
  */
 
-interface InputProps {
+interface Props {
     className?: string;
     labelText?: string;
     required?: boolean;
@@ -18,7 +18,7 @@ interface InputProps {
     }[];
 }
 
-export const CommonInput = (props: InputProps) => {
+export const CommonInput = (props: Props) => {
     return (
         <InputWrapper>
             {(props.labelText || props.Icon) && (

@@ -12,16 +12,6 @@ export const HomeContainer = styled.div`
     padding-bottom: calc(4.125rem + 1.5rem);
 `;
 
-export const HomeLogo = styled.div<{ $src: string }>`
-    width: 6.9375rem;
-    height: 2.3125rem;
-
-    background-image: ${({ $src }) => `url("${$src}")`};
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-`;
-
 export const StudyList = styled.div`
     width: 100%;
     display: flex;

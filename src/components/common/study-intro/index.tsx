@@ -9,7 +9,7 @@ import { IntroContainer, IntroContentBox, IntroContentBoxInput, IntroContentBoxI
  * @brief 스터디 정보 입력 및 읽기전용 컴포넌트
  */
 
-interface IntroProps {
+interface Props {
     readOnly?: boolean; // 읽기 전용
     studyTitle: string; // 스터디 제목
     setStudyTitle?: React.Dispatch<React.SetStateAction<string>>;
@@ -28,7 +28,7 @@ interface IntroProps {
     userName: string; // 관리자 이름
 }
 
-export const CommonStudyIntro = (props: IntroProps) => {
+export const CommonStudyIntro = (props: Props) => {
     // textarea onChange
     const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>, setState: React.Dispatch<React.SetStateAction<string>>) => {
         const textarea = e.target;

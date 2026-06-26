@@ -101,7 +101,8 @@ export const LoginButton = styled.button`
     font-size: 1rem;
     color: black;
 
-    &:hover {
+    &:hover,
+    &:active {
         background-color: var(--yellow-hover);
     }
 `;

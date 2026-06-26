@@ -12,13 +12,13 @@ import React from "react";
  * @brief 스터디 아이템 컴포넌트
  */
 
-interface StudyItemProps {
+interface Props {
     item: IStudy;
     prevUrl: string;
     onFetch: () => void;
 }
 
-export const CommonStudyItem = (props: StudyItemProps) => {
+export const CommonStudyItem = (props: Props) => {
     const navigate = useNavigate();
     const controller = useControlStudyItem(props);
 

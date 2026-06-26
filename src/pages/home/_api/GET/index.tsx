@@ -11,12 +11,6 @@ export const getHomeApi = {
             await privateBase.get(`/v3/api/search-keyword`)
         ).data.data,
 
-    // 최근 조회한 스터디 조회
-    getStudyView: async () =>
-        await (
-            await privateBase.get(`/v3/api/study/view`)
-        ).data.data,
-
     // 스터디 검색
     getStudySearch: async (keyword: string) =>
         await (

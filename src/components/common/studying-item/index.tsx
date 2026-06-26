@@ -8,12 +8,12 @@ import { LinkEnum } from "@/meta/link";
  * @brief 현재 진행중인 스터디 컴포넌트
  */
 
-interface StudyingItemProps {
+interface Props {
     item: IStudy;
     prevUrl: string;
 }
 
-export const CommonStudyingItem = (props: StudyingItemProps) => {
+export const CommonStudyingItem = (props: Props) => {
     const navigate = useNavigate();
 
     return (

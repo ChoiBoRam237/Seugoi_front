@@ -1,21 +1,22 @@
-import { IoIosArrowBack } from "react-icons/io";
-import { ArrowHeaderContainer, ArrowHeaderText, ArrowHeaderWrapper } from "./indexStyles";
 import { useNavigate } from "react-router-dom";
+import { IoIosArrowBack } from "react-icons/io";
+import { HeaderContainer } from "../indexStyles";
+import { ArrowHeaderText, ArrowHeaderWrapper } from "./indexStyles";
 
 /**
  * @brief 화살표 헤더 컴포넌트
  */
 
-interface ArrowHeaderProps {
+interface Props {
     moveUrl: string;
     text?: string;
 }
 
-export const CommonArrowHeader = (props: ArrowHeaderProps) => {
+export const CommonArrowHeader = (props: Props) => {
     const navigate = useNavigate();
 
     return (
-        <ArrowHeaderContainer>
+        <HeaderContainer>
             <ArrowHeaderWrapper>
                 <button onClick={() => navigate(props.moveUrl, { replace: true })}>
                     <IoIosArrowBack size={25} color="white" />
@@ -25,6 +26,6 @@ export const CommonArrowHeader = (props: ArrowHeaderProps) => {
                     <ArrowHeaderText>{props.text}</ArrowHeaderText>
                 )}
             </ArrowHeaderWrapper>
-        </ArrowHeaderContainer>
+        </HeaderContainer>
     )
 }

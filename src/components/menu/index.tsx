@@ -11,7 +11,7 @@ import { LinkEnum } from "@/meta/link";
  * @brief 메뉴바 컴포넌트
  */
 
-export const MenuBar = () => {
+export const CommonMenuBar = () => {
     const controller = useControlMenu();
 
     return (

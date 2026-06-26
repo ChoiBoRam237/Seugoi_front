@@ -12,7 +12,7 @@ import { InfoCategory, InfoImageUpload, InfoImageUploadText, InfoInnerContainer,
  * @brief 스터디 생성 -> 기본 정보 컴포넌트
  */
 
-interface InfoProps {
+interface Props {
     bgFile: File; // 대표 이미지
     setBgFile: React.Dispatch<React.SetStateAction<File>>;
     previewBgFile: string; // 이미지 미리보기
@@ -27,7 +27,7 @@ interface InfoProps {
     onNext: () => void; // 다음 버튼 클릭 시
 }
 
-export const Info = (props: InfoProps) => {
+export const Info = (props: Props) => {
     return (
         <CommonGenerateContainer>
             <InfoInnerContainer>

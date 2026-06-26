@@ -13,6 +13,7 @@ import { StudyGenerate } from "./pages/study-generate";
 import { StudyDetail } from "./pages/study-detail";
 import { StudyList } from "./pages/study-list";
 import { GenerateBoard } from "./pages/generate-board";
+import { Mypage } from "./pages/mypage";
 
 const router = createBrowserRouter([
     {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
                             }
                         ]
                     },
+                    { // 마이페이지
+                        path: `/${LinkEnum.MYPAGE}`,
+                        element: <Mypage />
+                    }
                 ]
             },
         ]

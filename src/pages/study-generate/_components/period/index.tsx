@@ -11,7 +11,7 @@ import image from "@/assets/logo.svg";
  * @brief 스터디 종료 기간
  */
 
-interface PeriodProps {
+interface Props {
     endPeriod: string; // 종료기간
     setEndPeriod: React.Dispatch<React.SetStateAction<string>>;
     dDay: number | null;
@@ -20,7 +20,7 @@ interface PeriodProps {
     onNext: () => void; // 다음 버튼 클릭 시
 }
 
-export const Period = (props: PeriodProps) => {
+export const Period = (props: Props) => {
     return (
         <CommonGenerateContainer>
             <PeriodContainer>

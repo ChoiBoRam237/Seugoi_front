@@ -8,14 +8,14 @@ import { useControlStudy } from "./index.control";
  * @brief 스터디 소개
  */
 
-interface StudyProps {
+interface Props {
     studyCode: number;
     adminData: IUser;
     studyData: IStudyDetail;
     isAdmin: boolean;
 }
 
-export const Study = (props: StudyProps) => {
+export const Study = (props: Props) => {
     const controller = useControlStudy({ studyCode: props.studyCode });
 
     return (

@@ -1,12 +1,13 @@
-import { cookie } from "@/util/cookies";
+import { useUserInfo } from "@/hooks/useUserInfo";
 import { LayoutInnerWrapper } from "@/components/layout";
-import { MenuBar } from "@/components/menu";
-import { CommonSearchHeader } from "@/components/common/header/search";
-import { HomeContainer, HomeLogo } from "./indexStyles";
-import { useControlHome } from "./index.control";
+import { CommonMenuBar } from "@/components/menu";
+import { CommonCustomHeader } from "@/components/common/header/custom";
+import { HeaderLogo } from "@/components/common/header/indexStyles";
 import logoImg from "@/assets/text-logo.svg";
 import { Study } from "./_components/study";
 import { Search } from "./_components/search";
+import { HomeContainer } from "./indexStyles";
+import { useControlHome } from "./index.control";
 
 /**
  * @brief 메인화면
@@ -14,13 +15,14 @@ import { Search } from "./_components/search";
 
 export const Home = () => {
     const controller = useControlHome();
-    const userName = cookie.getCookie("user").name;
+    const { userName } = useUserInfo();
     
     return (
         <>
-            {/* 검색 헤더 컴포넌트 */}
-            <CommonSearchHeader
-                logo={<HomeLogo $src={logoImg} />}
+            {/* 헤더 컴포넌트 */}
+            <CommonCustomHeader
+                logo={<HeaderLogo $src={logoImg} />}
+                isSearch={true}
                 searchIng={controller.searchIng}
                 setSearchIng={controller.setSearchIng}
                 searchValue={controller.searchValue}
@@ -42,7 +44,7 @@ export const Home = () => {
             </LayoutInnerWrapper>
 
             {/* 메뉴바 컴포넌트 */}
-            <MenuBar />
+            <CommonMenuBar />
         </>
     )
 }

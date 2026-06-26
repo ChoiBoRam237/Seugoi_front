@@ -10,7 +10,7 @@ import { useUserInfo } from "@/hooks/useUserInfo";
  * @brief 스터디 생성 -> 내용 컴포넌트
  */
 
-interface ContentProps {
+interface Props {
     bgImage: string; // 배경 이미지
     studyName: string; // 스터디 이름
     categories: string[]; // 카테고리
@@ -33,7 +33,7 @@ interface ContentProps {
     onStudyGenerate: () => void; // 스터디 생성 api 호출
 }
 
-export const Content = (props: ContentProps) => {
+export const Content = (props: Props) => {
     const userInfo = useUserInfo();
 
     return (
