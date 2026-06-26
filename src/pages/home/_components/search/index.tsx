@@ -1,0 +1,96 @@
+import React from "react";
+import { CommonStudyItem } from "@/components/common/study-item";
+import { LinkEnum } from "@/meta/link";
+import { StudyList } from "../../indexStyles";
+import { useControlSearch } from "./index.control";
+import { LatestSearch, LatestStudy, NoData, SearchContainer, SearchLatestLabel, SearchLatestList, SearchWrapper, StudyTitle } from "./indexStyles";
+import { CommonLoading } from "@/components/loading";
+
+/**
+ * @brief 스터디 검색
+ */
+
+export interface SearchProps {
+    userName: string;
+    keyword: string; // 검색 키워드
+    setKeyword: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const Search = (props: SearchProps) => {
+    const controller = useControlSearch(props);
+
+    return (
+        <SearchContainer
+            className={props.keyword !== "" ? "isKeyword" : ""}
+        >
+            {props.keyword === "" ? (
+                <>
+                    {!controller.isLoading ? (
+                        <>
+                            {controller.latestStudyList.length > 0 ? (
+                                <>
+                                    <SearchWrapper>
+                                        <SearchLatestLabel>최근 검색어</SearchLatestLabel>
+
+                                        <SearchLatestList className="keyword">
+                                            <LatestSearch>자바</LatestSearch>
+                                        </SearchLatestList>
+                                    </SearchWrapper>
+
+                                    {controller.latestStudyList.length > 0 && (
+                                        <SearchWrapper>
+                                            <SearchLatestLabel>최근 조회한 스터디</SearchLatestLabel>
+
+                                            <SearchLatestList className="study">
+                                                {controller.latestStudyList.map((study, index) => (
+                                                    <LatestStudy key={index}>
+                                                        <CommonStudyItem
+                                                            item={study}
+                                                            prevUrl={`/${LinkEnum.HOME}`}
+                                                            onFetch={controller.onFetchLatestStudy}
+                                                        />
+                                                    </LatestStudy>
+                                                ))}
+                                            </SearchLatestList>
+                                        </SearchWrapper>
+                                    )}
+                                </>
+                            ) : (
+                                <NoData>검색어를 입력해<br />원하는 스터디를 찾아보세요.</NoData>
+                            )}
+                        </>
+                    ) : (
+                        <CommonLoading />
+                    )}
+                </>
+            ) : (
+                <>
+                    {!controller.isSearchLoading ? (
+                        <>
+                            {controller.searchStudyList.length > 0 ? (
+                                <>
+                                    <StudyTitle>{props.userName}님이 검색하신<br />스터디 {controller.searchStudyList.length}개를 찾아왔어요!</StudyTitle>
+
+                                    <StudyList>
+                                        {controller.searchStudyList.map((study, index) => (
+                                            <CommonStudyItem
+                                                key={index}
+                                                item={study}
+                                                prevUrl={`/${LinkEnum.HOME}`}
+                                                onFetch={controller.onFetchSearchStudy}
+                                            />
+                                        ))}
+                                    </StudyList>
+                                </>
+                            ) : (
+                                <NoData>검색어에 일치하는<br />스터디가 존재하지 않습니다.</NoData>
+                            )}
+                        </>
+                    ) : (
+                        <CommonLoading text="검색 중..." />
+                    )}
+                </>
+            )}
+        </SearchContainer>
+    )
+}

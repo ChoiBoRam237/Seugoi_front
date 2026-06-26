@@ -1,6 +1,5 @@
+import useDebounce from "@/hooks/useDebounce";
 import { useState } from "react";
-import { SelectType } from "@/components/types/select";
-import { sortData } from "@/components/common/sort/index.constants";
 
 /**
  * @brief 메인화면 컨트롤
@@ -9,11 +8,10 @@ import { sortData } from "@/components/common/sort/index.constants";
 export const useControlHome = () => {
     const [searchIng, setSearchIng] = useState<boolean>(false); // 검색중인지 아닌지
     const [searchValue, setSearchValue] = useState<string>(""); // 검색어
-    const [selectedSort, setSelectedSort] = useState<SelectType>(sortData[0]);
+    const debouncedKeyword = useDebounce(searchValue, 500);
 
     return {
         searchIng, setSearchIng,
-        searchValue, setSearchValue,
-        selectedSort, setSelectedSort,
+        debouncedKeyword, searchValue, setSearchValue,
     }
 }

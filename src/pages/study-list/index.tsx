@@ -2,7 +2,7 @@ import { MdFormatListBulleted } from "react-icons/md";
 import { MenuBar } from "@/components/menu";
 import { CommonSort } from "@/components/common/sort";
 import { CommonStudyItem } from "@/components/common/study-item";
-import { Loading } from "@/components/loading";
+import { CommonLoading } from "@/components/loading";
 import { CommonStudyingItem } from "@/components/common/studying-item";
 import { ListContainer, ListFilter, ListFilterContainer, ListFilterWrapper, ListFlex, ListFlexItem, ListNoData, ListSortContainer, ListTitle, ListTitleWrapper, ListWrap, ListWrapper } from "./indexStyles";
 import { useControlStudyList } from "./index.control";
@@ -82,7 +82,7 @@ export const StudyList = () => {
                         )}
                     </>
                 ) : (
-                    <Loading />
+                    <CommonLoading />
                 )}
             </ListContainer>
 

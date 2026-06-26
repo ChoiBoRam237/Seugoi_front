@@ -1,0 +1,107 @@
+import styled from "styled-components";
+import { Swiper } from "swiper/react";
+
+/**
+ * @brief 스터디 스타일
+ */
+
+export const StudyContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5625rem;
+`;
+
+// 현재 진행중인 스터디
+export const StudyingWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+`;
+
+export const StudyingTitle = styled.p`
+    font-family: "Pretendard-Bold" !important;
+    font-size: 1.5rem;
+    color: white;
+`;
+
+export const StudyingInnerWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.375rem;
+`;
+
+export const StudyingSwiper = styled(Swiper)`
+    width: 100%;
+
+    .swiper-slide {
+        opacity: 0.7;
+        transition: 0.3s;
+    }
+
+    .swiper-slide-active {
+        opacity: 1;
+    }
+`;
+
+export const StudyingItem = styled.div`
+    width: 100%;
+    min-width: 18.3125rem;
+    height: 9.5625rem;
+`;
+
+export const StudyTodayPhrase = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+    border-radius: 0.3125rem;
+    padding: 0.5625rem;
+    background-color: var(--second-primary);
+`;
+
+export const StudyTodayPhraseTitle = styled.p`
+    font-size: 0.875rem;
+    color: var(--primary);
+`;
+
+export const StudyTodayPhraseContent = styled.p`
+    font-size: 0.875rem;
+    color: white;
+`;
+
+export const StudyTodayPhraseLine = styled.div`
+    width: 1.5px;
+    height: 0.6875rem;
+    background-color: var(--primary);
+`;
+
+// 요즘 뜨고있는
+export const StudyPopularContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.25rem;
+`;
+
+export const StudyPopularWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`;
+
+export const StudyPopularTitleWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    column-gap: 0.3125rem;
+`;
+
+export const StudyPopularTitle = styled.p`
+    font-family: "Pretendard-SemiBold" !important;
+    font-size: 1rem;
+    color: white;
+`;

@@ -1,16 +1,12 @@
-import { SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { BiSolidBarChartAlt2 } from "react-icons/bi";
 import { cookie } from "@/util/cookies";
 import { LayoutInnerWrapper } from "@/components/layout";
 import { MenuBar } from "@/components/menu";
 import { CommonSearchHeader } from "@/components/common/header/search";
-import { CommonStudyingItem } from "@/components/common/studying-item";
-import { CommonStudyItem } from "@/components/common/study-item";
-import { CommonSort } from "@/components/common/sort";
-import { HomeContainer, HomeLogo, HomePopularContainer, HomePopularList, HomePopularTitle, HomePopularTitleWrapper, HomePopularWrapper, HomeStudyingInnerWrapper, HomeStudyingItem, HomeStudyingSwiper, HomeStudyingTitle, HomeStudyingWrapper, HomeTodayPhrase, HomeTodayPhraseContent, HomeTodayPhraseLine, HomeTodayPhraseTitle } from "./indexStyles";
+import { HomeContainer, HomeLogo } from "./indexStyles";
 import { useControlHome } from "./index.control";
 import logoImg from "@/assets/text-logo.svg";
+import { Study } from "./_components/study";
+import { Search } from "./_components/search";
 
 /**
  * @brief 메인화면
@@ -33,56 +29,15 @@ export const Home = () => {
 
             <LayoutInnerWrapper>
                 <HomeContainer>
-                    {/* 현재 진행중인 스터디 */}
-                    <HomeStudyingWrapper>
-                        <HomeStudyingTitle>{userName}님이<br />현재 진행중인 스터디</HomeStudyingTitle>
-
-                        <HomeStudyingInnerWrapper>
-                            <HomeStudyingSwiper
-                                slidesPerView={1.15} // 다음 카드가 살짝 보임
-                                spaceBetween={16}
-                                centeredSlides={false}
-                            >
-                                {Array.from({ length: 3 }).map((_, index) => (
-                                    <SwiperSlide key={index}>
-                                        <HomeStudyingItem>
-                                            {/* <CommonStudyingItem /> */}
-                                        </HomeStudyingItem>
-                                    </SwiperSlide>
-                                ))}
-                            </HomeStudyingSwiper>
-
-                            <HomeTodayPhrase>
-                                <HomeTodayPhraseTitle>오늘의 명언</HomeTodayPhraseTitle>
-                                <HomeTodayPhraseLine />
-                                <HomeTodayPhraseContent>내용</HomeTodayPhraseContent>
-                            </HomeTodayPhrase>
-                        </HomeStudyingInnerWrapper>
-                    </HomeStudyingWrapper>
-
-                    {/* 요즘 뜨고있는 스터디 */}
-                    <HomePopularContainer>
-                        <HomePopularWrapper>
-                            <HomePopularTitleWrapper>
-                                <BiSolidBarChartAlt2 size={20} color="white" />
-                                <HomePopularTitle>요즘 뜨고있는</HomePopularTitle>
-                            </HomePopularTitleWrapper>
-
-                            <CommonSort
-                                selected={controller.selectedSort}
-                                setSelected={controller.setSelectedSort}
-                            />    
-                        </HomePopularWrapper>
-
-                        <HomePopularList>
-                            {/* {Array.from({ length: 4 }).map((_, index) => (
-                                <CommonStudyItem
-                                    key={index}
-                                    item={}
-                                />
-                            ))} */}
-                        </HomePopularList>
-                    </HomePopularContainer>
+                    {controller.searchIng ? (
+                        <Search
+                            userName={userName}
+                            keyword={controller.debouncedKeyword}
+                            setKeyword={controller.setSearchValue}
+                        />
+                    ) : (
+                        <Study userName={userName} />
+                    )}
                 </HomeContainer>
             </LayoutInnerWrapper>
 

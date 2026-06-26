@@ -1,16 +1,20 @@
-import { LoadingOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 
 /**
  * @brief 로딩 화면
  */
 
-export const Loading = () => {
+interface LoadingProps {
+    text?: string;
+}
+
+export const CommonLoading = (props: LoadingProps) => {
     return (
         <LoadingContainer>
             <Spin indicator={<LoadingOutlined spin style={{ color: "white", fontSize: "2rem" }} />} />
-            <LoadingText>로딩 중...</LoadingText>
+            <LoadingText>{props.text || "로딩 중..."}</LoadingText>
         </LoadingContainer>
     )
 }

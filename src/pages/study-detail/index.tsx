@@ -3,7 +3,7 @@ import { CommonArrowHeader } from "@/components/common/header/arrow";
 import { DetailContainer, DetailSelection, DetailSelectWrapper, DetailWrapper } from "./indexStyles";
 import { CommonStudyInfoAndImage } from "@/components/common/study-info&image";
 import { useControlStudyDetail } from "./index.control";
-import { Loading } from "@/components/loading";
+import { CommonLoading } from "@/components/loading";
 import { BASE_URL } from "@/util/api";
 import { LayoutInnerWrapper } from "@/components/layout";
 import { useLocation } from "react-router-dom";
@@ -65,7 +65,7 @@ export const StudyDetail = () => {
                         </DetailWrapper>
                     </>
                 ) : (
-                    <Loading />
+                    <CommonLoading />
                 )}
             </DetailContainer>
         </LayoutInnerWrapper>
