@@ -79,7 +79,7 @@ input, textarea {
     border: none;
     padding: 0;
     outline: none;
-    background-color: transparent;
+    background-color: transparent !important;
     resize: none;
 
     &::placeholder {

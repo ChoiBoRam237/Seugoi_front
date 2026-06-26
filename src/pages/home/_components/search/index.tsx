@@ -1,10 +1,11 @@
 import React from "react";
-import { CommonStudyItem } from "@/components/common/study-item";
+import { BsX } from "react-icons/bs";
 import { LinkEnum } from "@/meta/link";
+import { CommonStudyItem } from "@/components/common/study-item";
+import { CommonLoading } from "@/components/loading";
 import { StudyList } from "../../indexStyles";
 import { useControlSearch } from "./index.control";
-import { LatestSearch, LatestStudy, NoData, SearchContainer, SearchLatestLabel, SearchLatestList, SearchWrapper, StudyTitle } from "./indexStyles";
-import { CommonLoading } from "@/components/loading";
+import { LatestSearch, LatestStudy, NoData, SearchContainer, SearchLatestLabel, SearchLatestLabelWrapper, SearchLatestList, SearchLatestTitle, SearchWrapper, StudyTitle } from "./indexStyles";
 
 /**
  * @brief 스터디 검색
@@ -27,19 +28,38 @@ export const Search = (props: SearchProps) => {
                 <>
                     {!controller.isLoading ? (
                         <>
-                            {controller.latestStudyList.length > 0 ? (
+                            {(controller.latestStudyList.length > 0 || controller.searchKeywordList.length > 0) ? (
                                 <>
-                                    <SearchWrapper>
-                                        <SearchLatestLabel>최근 검색어</SearchLatestLabel>
+                                    {controller.searchKeywordList.length > 0 && (
+                                        <SearchWrapper>
+                                            <SearchLatestLabelWrapper>
+                                                <SearchLatestTitle>최근 검색어</SearchLatestTitle>
+                                                <SearchLatestLabel onClick={controller.onDeleteKeywordAll}>전체 삭제</SearchLatestLabel>
+                                            </SearchLatestLabelWrapper>
 
-                                        <SearchLatestList className="keyword">
-                                            <LatestSearch>자바</LatestSearch>
-                                        </SearchLatestList>
-                                    </SearchWrapper>
+                                            <SearchLatestList className="keyword">
+                                                {controller.searchKeywordList.map((search, index) => (
+                                                    <LatestSearch key={index}>
+                                                        {search.keyword}
+                                                        
+                                                        <button
+                                                            onClick={(e) => {
+                                                                e.preventDefault();
+                                                                e.stopPropagation();
+                                                                controller.onDeleteKeyword(search.code);
+                                                            }}
+                                                        >
+                                                            <BsX size={20} color="white" />
+                                                        </button>
+                                                    </LatestSearch>
+                                                ))}
+                                            </SearchLatestList>
+                                        </SearchWrapper>
+                                    )}
 
                                     {controller.latestStudyList.length > 0 && (
                                         <SearchWrapper>
-                                            <SearchLatestLabel>최근 조회한 스터디</SearchLatestLabel>
+                                            <SearchLatestTitle>최근 조회한 스터디</SearchLatestTitle>
 
                                             <SearchLatestList className="study">
                                                 {controller.latestStudyList.map((study, index) => (

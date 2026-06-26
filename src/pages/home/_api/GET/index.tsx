@@ -5,7 +5,13 @@ import { privateBase } from "@/util/api";
  */
 
 export const getHomeApi = {
-    // 최근 조회한 스터디
+    // 최근 검색어 조회
+    getSearchKeyword: async () =>
+        await (
+            await privateBase.get(`/v3/api/search-keyword`)
+        ).data.data,
+
+    // 최근 조회한 스터디 조회
     getStudyView: async () =>
         await (
             await privateBase.get(`/v3/api/study/view`)

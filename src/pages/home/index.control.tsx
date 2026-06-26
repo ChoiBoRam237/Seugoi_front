@@ -8,7 +8,7 @@ import { useState } from "react";
 export const useControlHome = () => {
     const [searchIng, setSearchIng] = useState<boolean>(false); // 검색중인지 아닌지
     const [searchValue, setSearchValue] = useState<string>(""); // 검색어
-    const debouncedKeyword = useDebounce(searchValue, 500);
+    const debouncedKeyword = useDebounce(searchValue, 800);
 
     return {
         searchIng, setSearchIng,

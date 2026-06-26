@@ -24,9 +24,21 @@ export const SearchWrapper = styled.div`
     row-gap: 0.75rem;
 `;
 
-export const SearchLatestLabel = styled.p`
+export const SearchLatestLabelWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`;
+
+export const SearchLatestTitle = styled.p`
     font-size: 1rem;
     color: white;
+`;
+
+export const SearchLatestLabel = styled.button`
+    font-size: 0.75rem;
+    color: var(--white-50);
 `;
 
 export const SearchLatestList = styled.div`
@@ -51,9 +63,11 @@ export const LatestSearch = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+    column-gap: 0.25rem;
     border: 1px solid white;
     border-radius: 3.125rem;
-    padding: 0.625rem;
+    padding: 0.625rem 0.75rem;
+    padding-right: 0.5rem;
 
     font-size: 0.875rem;
     line-height: 0.5625rem;
