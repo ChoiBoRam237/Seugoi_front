@@ -1,5 +1,6 @@
+import { useLocation } from "react-router-dom";
 import { MdFormatListBulleted } from "react-icons/md";
-import { CommonMenuBar } from "@/components/menu";
+import { CommonMenuBar } from "@/components/menuBar";
 import { CommonSort } from "@/components/common/sort";
 import { CommonStudyItem } from "@/components/common/study-item";
 import { CommonLoading } from "@/components/loading";
@@ -7,13 +8,13 @@ import { CommonStudyingItem } from "@/components/common/studying-item";
 import { ListContainer, ListFilter, ListFilterContainer, ListFilterWrapper, ListFlex, ListFlexItem, ListNoData, ListSortContainer, ListTitle, ListTitleWrapper, ListWrap, ListWrapper } from "./indexStyles";
 import { useControlStudyList } from "./index.control";
 import { studyFilter } from "./index.constants";
-import { LinkEnum } from "@/meta/link";
 
 /**
  * @brief 스터디 목록
  */
 
 export const StudyList = () => {
+    const location = useLocation();
     const controller = useControlStudyList();
 
     return (
@@ -59,7 +60,7 @@ export const StudyList = () => {
                                                 <CommonStudyingItem
                                                     key={index}
                                                     item={item}
-                                                    prevUrl={`/${LinkEnum.STUDY}/${LinkEnum.LIST}`}
+                                                    prevUrl={location.pathname}
                                                 />
                                             </ListFlexItem>
                                         ))}
@@ -70,7 +71,7 @@ export const StudyList = () => {
                                             <CommonStudyItem
                                                 key={index}
                                                 item={item}
-                                                prevUrl={`/${LinkEnum.STUDY}/${LinkEnum.LIST}`}
+                                                prevUrl={location.pathname}
                                                 onFetch={controller.onFetch}
                                             />
                                         ))}

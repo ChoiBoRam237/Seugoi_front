@@ -1,6 +1,6 @@
 import { useUserInfo } from "@/hooks/useUserInfo";
 import { LayoutInnerWrapper } from "@/components/layout";
-import { CommonMenuBar } from "@/components/menu";
+import { CommonMenuBar } from "@/components/menuBar";
 import { CommonCustomHeader } from "@/components/common/header/custom";
 import { HeaderLogo } from "@/components/common/header/indexStyles";
 import logoImg from "@/assets/text-logo.svg";
@@ -29,7 +29,7 @@ export const Home = () => {
                 setSearchValue={controller.setSearchValue}
             />
 
-            <LayoutInnerWrapper>
+            <LayoutInnerWrapper className="custom">
                 <HomeContainer>
                     {controller.searchIng ? (
                         <Search

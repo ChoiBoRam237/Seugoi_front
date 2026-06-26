@@ -61,11 +61,11 @@ export const AxiosComponent = () => {
                             prevRequest._retry = true;
                         try {
                             const result = await tokenMutation.mutateAsync();
-                            prevRequest.headers["Authorization"] = `Bearer ${result.accessToken}`;
+                            prevRequest.headers["Authorization"] = `Bearer ${result}`;
 
                             cookie.setCookie("token", {
                                 ...token,
-                                accessToken: result.accessToken,
+                                accessToken: result,
                             });
 
                             return privateBase(prevRequest);

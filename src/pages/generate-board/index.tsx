@@ -32,18 +32,16 @@ export const GenerateBoard = () => {
     ];
 
     return (
-        <>
+        <LayoutInnerWrapper className="arrow">
             <CommonArrowHeader
                 moveUrl={`/${LinkEnum.STUDY}/${controller.studyCode}`}
                 text="과제/공지 추가"
             />
-
-            <LayoutInnerWrapper>
-                <BoardTabs
-                    items={items}
-                    defaultActiveKey="asgmt"
-                />
-            </LayoutInnerWrapper>
-        </>
+            
+            <BoardTabs
+                items={items}
+                defaultActiveKey="asgmt"
+            />
+        </LayoutInnerWrapper>
     )
 }

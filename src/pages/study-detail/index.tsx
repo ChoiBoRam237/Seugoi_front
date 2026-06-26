@@ -18,7 +18,7 @@ export const StudyDetail = () => {
     const controller = useControlStudyDetail();
 
     return (
-        <LayoutInnerWrapper>
+        <LayoutInnerWrapper className="arrow">
             <DetailContainer>
                 {!controller.isLoading 
                 && controller.studyData !== null 

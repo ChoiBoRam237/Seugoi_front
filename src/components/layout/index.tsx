@@ -50,5 +50,7 @@ export const LayoutInnerWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-top: 4.6875rem;
+    
+    &.custom { padding-top: 6.0625rem; }
+    &.arrow { padding-top: 4.6875rem; }
 `;

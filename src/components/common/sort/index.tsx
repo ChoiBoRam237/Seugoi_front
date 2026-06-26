@@ -21,7 +21,7 @@ export const CommonSort = (props: Props) => {
                 value={props.selected}
                 options={sortData}
                 suffixIcon={<BiFilterAlt size={16} color="white" />}
-                onChange={(value) => props.setSelected(value)}
+                onChange={(value, option) => props.setSelected(option as SelectType)}
             />
             <SortCreateStyle />
         </>

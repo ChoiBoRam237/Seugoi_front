@@ -3,9 +3,9 @@ import { RiBook2Fill } from "react-icons/ri";
 import { FiPlus } from "react-icons/fi";
 import { TbMessageCircleFilled } from "react-icons/tb";
 import { IoPerson } from "react-icons/io5";
+import { LinkEnum } from "@/meta/link";
 import { MenuContainer, MenuInnerWrapper, MenuPlusButton, MenuWrapper } from "./indexStyles";
 import { useControlMenu } from "./index.control";
-import { LinkEnum } from "@/meta/link";
 
 /**
  * @brief 메뉴바 컴포넌트

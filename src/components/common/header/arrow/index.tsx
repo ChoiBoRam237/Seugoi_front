@@ -16,7 +16,7 @@ export const CommonArrowHeader = (props: Props) => {
     const navigate = useNavigate();
 
     return (
-        <HeaderContainer>
+        <HeaderContainer className="arrow">
             <ArrowHeaderWrapper>
                 <button onClick={() => navigate(props.moveUrl, { replace: true })}>
                     <IoIosArrowBack size={25} color="white" />

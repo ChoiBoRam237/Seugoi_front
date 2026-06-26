@@ -8,7 +8,7 @@ export const deleteHomeApi = {
     // 검색어 전체 삭제
     deleteAllSearchKeyword: async () =>
         await (
-            await privateBase.delete(`/v3/api/search-keyword`)
+            await privateBase.delete(`/v3/api/search-keyword/all`)
         ).data.data,
         
     // 검색어 삭제

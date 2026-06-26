@@ -84,20 +84,20 @@ export const MypageLatestStudyItem = styled.div`
 `;
 
 // 찜한 스터디
-export const MypageBookmarkStudy = styled.button`
+export const MypageBookmarkStudy = styled.div`
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`;
+
+export const MypageBookmarkStudyTextWrapper = styled.div`
     width: 100%;
     height: auto;
     display: flex;
     align-items: center;
     column-gap: 0.5rem;
-    border-radius: 0.5rem;
-    padding: 1rem 0.75rem;
-    background-color: var(--background);
-
-    &:hover,
-    &:active {
-        background-color: var(--third-primary);
-    }
 `;
 
 export const MypageBookmarkStudyText = styled.p`

@@ -23,7 +23,7 @@ export const CommonCustomHeader = (props: Props) => {
     const navigate = useNavigate();
 
     return (
-        <HeaderContainer>
+        <HeaderContainer className="custom">
             <CustomHeaderContainer>
                 {props.isSearch ? (
                     <>

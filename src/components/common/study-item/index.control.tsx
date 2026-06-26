@@ -12,8 +12,8 @@ interface Props {
 
 export const useControlStudyItem = (props: Props) => {
     // 스터디 북마크 토글 api
-    const postBookmarkStudy = useMutation({
-        mutationFn: (studyCode: number) => postStudyItemApi.postBookmarkStudy(studyCode),
+    const postBookmark = useMutation({
+        mutationFn: (studyCode: number) => postStudyItemApi.postBookmark(studyCode),
         onSuccess: () => {
             props.onFetch();
         },
@@ -23,7 +23,7 @@ export const useControlStudyItem = (props: Props) => {
     });
 
     const onBookmark = (studyCode: number) => {
-        postBookmarkStudy.mutate(studyCode);
+        postBookmark.mutate(studyCode);
     }
 
     return {

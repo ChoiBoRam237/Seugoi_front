@@ -14,6 +14,7 @@ import { StudyDetail } from "./pages/study-detail";
 import { StudyList } from "./pages/study-list";
 import { GenerateBoard } from "./pages/generate-board";
 import { Mypage } from "./pages/mypage";
+import { MypageBookmarkStudy } from "./pages/mypage/_page/bookmark";
 
 const router = createBrowserRouter([
     {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
                     { // 마이페이지
                         path: `/${LinkEnum.MYPAGE}`,
                         element: <Mypage />
+                    },
+                    { // 찜한 스터디
+                        path: `/${LinkEnum.MYPAGE}/${LinkEnum.BOOKMARK}`,
+                        element: <MypageBookmarkStudy />
                     }
                 ]
             },

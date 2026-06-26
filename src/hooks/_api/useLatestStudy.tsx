@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { queryClient } from "@/queryClient";
-import { commonStudyApi } from "@/api/study";
 import { useEffect, useState } from "react";
 import { IStudy } from "@/components/types/study";
+import { commonApi } from "@/util/_api";
 
 /**
  * @brief 최근 조회한 스터디 API 훅
@@ -17,7 +17,7 @@ export const useLatestStudy = (props: Props) => {
 
     const { data, isLoading, isFetching } = useQuery({
         queryKey: ["studyView"],
-        queryFn: () => commonStudyApi.getStudyView(),
+        queryFn: () => commonApi.getStudyView(),
         enabled: props.enabled,
     });
 

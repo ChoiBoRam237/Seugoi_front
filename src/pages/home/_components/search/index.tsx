@@ -1,6 +1,6 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import { BsX } from "react-icons/bs";
-import { LinkEnum } from "@/meta/link";
 import { CommonStudyItem } from "@/components/common/study-item";
 import { CommonLoading } from "@/components/loading";
 import { StudyList } from "../../indexStyles";
@@ -18,6 +18,7 @@ export interface SearchProps {
 }
 
 export const Search = (props: SearchProps) => {
+    const location = useLocation();
     const controller = useControlSearch(props);
 
     return (
@@ -39,7 +40,10 @@ export const Search = (props: SearchProps) => {
 
                                             <SearchLatestList className="keyword">
                                                 {controller.searchKeywordList.map((search, index) => (
-                                                    <LatestSearch key={index}>
+                                                    <LatestSearch
+                                                        key={index}
+                                                        onClick={() => console.log("ddddd")}
+                                                    >
                                                         {search.keyword}
                                                         
                                                         <button
@@ -66,7 +70,7 @@ export const Search = (props: SearchProps) => {
                                                     <LatestStudy key={index}>
                                                         <CommonStudyItem
                                                             item={study}
-                                                            prevUrl={`/${LinkEnum.HOME}`}
+                                                            prevUrl={location.pathname}
                                                             onFetch={controller.onFetchLatestStudy}
                                                         />
                                                     </LatestStudy>
@@ -96,7 +100,7 @@ export const Search = (props: SearchProps) => {
                                             <CommonStudyItem
                                                 key={index}
                                                 item={study}
-                                                prevUrl={`/${LinkEnum.HOME}`}
+                                                prevUrl={location.pathname}
                                                 onFetch={controller.onFetchSearchStudy}
                                             />
                                         ))}

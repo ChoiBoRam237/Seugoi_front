@@ -11,7 +11,7 @@ export const useControlMenu = () => {
 
     const getBgColor = (link: string) => {
         let color = "white";
-        if (pathname === link) color = "var(--green-light)";
+        if (pathname.includes(link)) color = "var(--green-light)";
         else color = "white";
         return color;
     }
