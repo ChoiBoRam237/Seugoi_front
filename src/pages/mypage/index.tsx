@@ -12,8 +12,8 @@ import { HeaderLogo } from "@/components/common/header/indexStyles";
 import { CommonButton } from "@/components/molecules/button";
 import { CommonStudyItem } from "@/components/common/study-item";
 import { MypageBookmarkStudy, MypageBookmarkStudyText, MypageBookmarkStudyTextWrapper, MypageContainer, MypageInnerWrapper, MypageLatestList, MypageLatestStudy, MypageLatestStudyItem, MypageLatestStudyText, MypageProfile, MypageProfileImg, MypageProfileText, MypageWrapper } from "./indexStyles";
-import { CommonLoading } from "@/components/loading";
-import { CommonMenuBar } from "@/components/menuBar";
+import { CommonLoading } from "@/components/common/loading";
+import { CommonMenuBar } from "@/components/common/menuBar";
 
 /**
  * @brief 마이페이지

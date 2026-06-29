@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { BsX } from "react-icons/bs";
 import { CommonStudyItem } from "@/components/common/study-item";
-import { CommonLoading } from "@/components/loading";
+import { CommonLoading } from "@/components/common/loading";
 import { StudyList } from "../../indexStyles";
 import { useControlSearch } from "./index.control";
 import { LatestSearch, LatestStudy, NoData, SearchContainer, SearchLatestLabel, SearchLatestLabelWrapper, SearchLatestList, SearchLatestTitle, SearchWrapper, StudyTitle } from "./indexStyles";

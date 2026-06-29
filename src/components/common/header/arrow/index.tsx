@@ -2,6 +2,9 @@ import { useNavigate } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import { HeaderContainer } from "../indexStyles";
 import { ArrowHeaderText, ArrowHeaderWrapper } from "./indexStyles";
+import { HiOutlineDotsHorizontal } from "react-icons/hi";
+import { useState } from "react";
+import { CommonOverflowMenu } from "../../overflow-menu";
 
 /**
  * @brief 화살표 헤더 컴포넌트
@@ -10,10 +13,16 @@ import { ArrowHeaderText, ArrowHeaderWrapper } from "./indexStyles";
 interface Props {
     moveUrl: string;
     text?: string;
+    options?: {
+        text: string;
+        textColor: string;
+        onClick: () => void;
+    }[];
 }
 
 export const CommonArrowHeader = (props: Props) => {
     const navigate = useNavigate();
+    const [menuOpen, setMenuOpen] = useState<boolean>(false);
 
     return (
         <HeaderContainer className="arrow">
@@ -24,6 +33,20 @@ export const CommonArrowHeader = (props: Props) => {
 
                 {props.text && (
                     <ArrowHeaderText>{props.text}</ArrowHeaderText>
+                )}
+
+                {props.options.length > 0 && (
+                    <button className="relative" onClick={() => setMenuOpen(prev => !prev)}>
+                        <HiOutlineDotsHorizontal size={25} color="white" />
+
+                        {menuOpen && (
+                            <CommonOverflowMenu
+                                open={menuOpen}
+                                setOpen={setMenuOpen}
+                                options={props.options}
+                            />
+                        )}
+                    </button>
                 )}
             </ArrowHeaderWrapper>
         </HeaderContainer>

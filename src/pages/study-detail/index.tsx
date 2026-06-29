@@ -3,7 +3,7 @@ import { CommonArrowHeader } from "@/components/common/header/arrow";
 import { DetailContainer, DetailSelection, DetailSelectWrapper, DetailWrapper } from "./indexStyles";
 import { CommonStudyInfoAndImage } from "@/components/common/study-info&image";
 import { useControlStudyDetail } from "./index.control";
-import { CommonLoading } from "@/components/loading";
+import { CommonLoading } from "@/components/common/loading";
 import { BASE_URL } from "@/util/api";
 import { LayoutInnerWrapper } from "@/components/layout";
 import { useLocation } from "react-router-dom";
@@ -17,14 +17,26 @@ export const StudyDetail = () => {
     const location = useLocation();
     const controller = useControlStudyDetail();
 
+    const adminOptions = [ // 관리자 옵션
+        { text: "수정하기", textColor: "white", onClick: () => {} },
+        { text: "삭제하기", textColor: "#DD5252", onClick: () => {} },
+    ];
+
+    const userOptions = [ // 사용자 옵션
+        { text: "탈퇴하기", textColor: "#DD5252", onClick: () => {} },
+    ];
+
     return (
-        <LayoutInnerWrapper className="arrow">
-            <DetailContainer>
-                {!controller.isLoading 
-                && controller.studyData !== null 
-                && controller.adminData !== null ? (
-                    <>
-                        <CommonArrowHeader moveUrl={location?.state?.prevUrl ?? `/${LinkEnum.HOME}`} />
+        <>
+            {!controller.isLoading 
+            && controller.studyData !== null 
+            && controller.adminData !== null ? (
+                <LayoutInnerWrapper className="arrow">
+                    <DetailContainer>
+                        <CommonArrowHeader
+                            moveUrl={location?.state?.prevUrl ?? location.pathname}
+                            options={controller.isAdmin ? adminOptions : controller.studyData.isJoined ? userOptions : []}
+                        />
 
                         <CommonStudyInfoAndImage
                             bgImage={`${BASE_URL}${controller.studyData.bgImageUrl}`}
@@ -63,11 +75,11 @@ export const StudyDetail = () => {
                                 <></>
                             )}
                         </DetailWrapper>
-                    </>
-                ) : (
-                    <CommonLoading />
-                )}
-            </DetailContainer>
-        </LayoutInnerWrapper>
+                    </DetailContainer>
+                </LayoutInnerWrapper>
+            ) : (
+                <CommonLoading />
+            )}
+        </>
     )
 }

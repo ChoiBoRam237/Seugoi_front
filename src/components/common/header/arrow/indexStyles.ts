@@ -10,6 +10,7 @@ export const ArrowHeaderWrapper = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 `;
 
 export const ArrowHeaderText = styled.p`

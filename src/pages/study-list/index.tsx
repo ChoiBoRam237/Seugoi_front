@@ -1,9 +1,9 @@
 import { useLocation } from "react-router-dom";
 import { MdFormatListBulleted } from "react-icons/md";
-import { CommonMenuBar } from "@/components/menuBar";
+import { CommonMenuBar } from "@/components/common/menuBar";
 import { CommonSort } from "@/components/common/sort";
 import { CommonStudyItem } from "@/components/common/study-item";
-import { CommonLoading } from "@/components/loading";
+import { CommonLoading } from "@/components/common/loading";
 import { CommonStudyingItem } from "@/components/common/studying-item";
 import { ListContainer, ListFilter, ListFilterContainer, ListFilterWrapper, ListFlex, ListFlexItem, ListNoData, ListSortContainer, ListTitle, ListTitleWrapper, ListWrap, ListWrapper } from "./indexStyles";
 import { useControlStudyList } from "./index.control";

@@ -22,6 +22,7 @@
 - daypicker/react
 - ant-design
 - Swiper.js
+- motion
 
 #### Util Library
 - date-fns

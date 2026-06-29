@@ -1,6 +1,6 @@
 import { useUserInfo } from "@/hooks/useUserInfo";
 import { LayoutInnerWrapper } from "@/components/layout";
-import { CommonMenuBar } from "@/components/menuBar";
+import { CommonMenuBar } from "@/components/common/menuBar";
 import { CommonCustomHeader } from "@/components/common/header/custom";
 import { HeaderLogo } from "@/components/common/header/indexStyles";
 import logoImg from "@/assets/text-logo.svg";
