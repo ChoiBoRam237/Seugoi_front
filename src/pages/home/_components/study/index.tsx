@@ -1,9 +1,11 @@
+import { useLocation } from "react-router-dom";
 import { SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { motion } from "motion/react";
 import { BiSolidBarChartAlt2 } from "react-icons/bi";
-import { CommonSort } from "@/components/common/sort";
+import { CommonStudyItem } from "@/components/common/study-item";
 import { StudyList } from "../../indexStyles";
-import { StudyPopularContainer, StudyPopularTitle, StudyPopularTitleWrapper, StudyPopularWrapper, StudyingInnerWrapper, StudyingItem, StudyingSwiper, StudyingTitle, StudyingWrapper, StudyTodayPhrase, StudyTodayPhraseContent, StudyTodayPhraseLine, StudyTodayPhraseTitle, StudyContainer } from "./indexStyles";
+import { StudyPopularContainer, StudyPopularTitle, StudyPopularTitleWrapper, StudyingInnerWrapper, StudyingItem, StudyingSwiper, StudyingTitle, StudyingWrapper, StudyTodayPhrase, StudyTodayPhraseContent, StudyTodayPhraseLine, StudyTodayPhraseTitle, StudyContainer } from "./indexStyles";
 import { useControlStudy } from "./index.control";
 
 /**
@@ -15,6 +17,7 @@ interface Props {
 }
 
 export const Study = (props: Props) => {
+    const location = useLocation();
     const controller = useControlStudy();
 
     return (
@@ -38,35 +41,59 @@ export const Study = (props: Props) => {
                         ))}
                     </StudyingSwiper>
 
-                    <StudyTodayPhrase>
-                        <StudyTodayPhraseTitle>오늘의 명언</StudyTodayPhraseTitle>
-                        <StudyTodayPhraseLine />
-                        <StudyTodayPhraseContent>내용</StudyTodayPhraseContent>
-                    </StudyTodayPhrase>
+                    {controller.todayQuote && (
+                        <StudyTodayPhrase>
+                            <StudyTodayPhraseTitle>오늘의 명언</StudyTodayPhraseTitle>
+                            <StudyTodayPhraseLine />
+
+                            <div className="overflow-hidden">
+                                <motion.div
+                                    animate={{ x: ["0%", "-50%"] }}
+                                    transition={{
+                                        duration: 12,
+                                        repeat: Infinity,
+                                        repeatType: "loop",
+                                        ease: "linear",
+                                    }}
+                                    style={{
+                                        display: "flex",
+                                        width: "max-content",
+                                        whiteSpace: "nowrap"
+                                    }}
+                                >
+                                    {[...Array(2)].map((_, index) => (
+                                        <div
+                                            key={index}
+                                            className="flex items-center pr-20"
+                                        >
+                                            <StudyTodayPhraseContent>
+                                                {controller.todayQuote.quote}
+                                            </StudyTodayPhraseContent>
+                                        </div>
+                                    ))}
+                                </motion.div>
+                            </div>
+                        </StudyTodayPhrase>
+                    )}
                 </StudyingInnerWrapper>
             </StudyingWrapper>
 
             {/* 요즘 뜨고있는 스터디 */}
             <StudyPopularContainer>
-                <StudyPopularWrapper>
-                    <StudyPopularTitleWrapper>
-                        <BiSolidBarChartAlt2 size={20} color="white" />
-                        <StudyPopularTitle>요즘 뜨고있는</StudyPopularTitle>
-                    </StudyPopularTitleWrapper>
-
-                    <CommonSort
-                        selected={controller.selectedSort}
-                        setSelected={controller.setSelectedSort}
-                    />    
-                </StudyPopularWrapper>
+                <StudyPopularTitleWrapper>
+                    <BiSolidBarChartAlt2 size={20} color="white" />
+                    <StudyPopularTitle>요즘 뜨고있는</StudyPopularTitle>
+                </StudyPopularTitleWrapper>
 
                 <StudyList>
-                    {/* {Array.from({ length: 4 }).map((_, index) => (
+                    {controller.trendStudyList.map((item, index) => (
                         <CommonStudyItem
                             key={index}
-                            item={}
+                            item={item}
+                            prevUrl={location.pathname}
+                            onFetch={controller.onTrendStudyFetch}
                         />
-                    ))} */}
+                    ))}
                 </StudyList>
             </StudyPopularContainer>
         </StudyContainer>

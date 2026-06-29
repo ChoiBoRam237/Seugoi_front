@@ -61,6 +61,7 @@ export const StudyTodayPhrase = styled.div`
     border-radius: 0.3125rem;
     padding: 0.5625rem;
     background-color: var(--second-primary);
+    white-space: nowrap;
 `;
 
 export const StudyTodayPhraseTitle = styled.p`
@@ -74,7 +75,7 @@ export const StudyTodayPhraseContent = styled.p`
 `;
 
 export const StudyTodayPhraseLine = styled.div`
-    width: 1.5px;
+    width: 2px;
     height: 0.6875rem;
     background-color: var(--primary);
 `;
@@ -85,13 +86,6 @@ export const StudyPopularContainer = styled.div`
     display: flex;
     flex-direction: column;
     row-gap: 1.25rem;
-`;
-
-export const StudyPopularWrapper = styled.div`
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 `;
 
 export const StudyPopularTitleWrapper = styled.div`
