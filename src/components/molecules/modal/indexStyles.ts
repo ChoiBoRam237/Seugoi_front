@@ -14,9 +14,16 @@ export const GlobalStyledModal = createGlobalStyle`
         max-width: 21.25rem !important;
 
         .ant-modal-container {
-            padding: 1.5rem !important;
             background-color: var(--third-primary) !important;
         }
+    }
+
+    .modal .ant-modal-container {
+        padding: 1.5rem !important;
+    }
+
+    .confirm-modal .ant-modal-container {
+        padding: 1rem !important;
     }
 
     .ant-modal-mask {
@@ -24,6 +31,7 @@ export const GlobalStyledModal = createGlobalStyle`
     }
 `;
 
+// modal
 export const ModalContainer = styled.div`
     width: 100%;
     display: flex;

@@ -8,7 +8,7 @@ export const postStudyDetailApi = {
     // 스터디 가입
     postStudyJoin: async (studyCode: number) =>
         await (
-            await privateBase.post(`/v3/api/study/join`, {
+            await privateBase.post(`/v3/api/study/join`, null, {
                 params: { studyCode }
             })
         ).data.data,

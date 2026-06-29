@@ -36,7 +36,7 @@ export const CommonArrowHeader = (props: Props) => {
                 )}
 
                 {props.options.length > 0 && (
-                    <button className="relative" onClick={() => setMenuOpen(prev => !prev)}>
+                    <div className="relative cursor-pointer" onClick={() => setMenuOpen(prev => !prev)}>
                         <HiOutlineDotsHorizontal size={25} color="white" />
 
                         {menuOpen && (
@@ -46,7 +46,7 @@ export const CommonArrowHeader = (props: Props) => {
                                 options={props.options}
                             />
                         )}
-                    </button>
+                    </div>
                 )}
             </ArrowHeaderWrapper>
         </HeaderContainer>

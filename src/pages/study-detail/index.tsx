@@ -8,6 +8,7 @@ import { BASE_URL } from "@/util/api";
 import { LayoutInnerWrapper } from "@/components/layout";
 import { useLocation } from "react-router-dom";
 import { Study } from "./_components/study";
+import { CommonConfirmModal } from "@/components/molecules/modal/confirm";
 
 /**
  * @brief 스터디 상세페이지
@@ -19,11 +20,11 @@ export const StudyDetail = () => {
 
     const adminOptions = [ // 관리자 옵션
         { text: "수정하기", textColor: "white", onClick: () => {} },
-        { text: "삭제하기", textColor: "#DD5252", onClick: () => {} },
+        { text: "삭제하기", textColor: "#DD5252", onClick: () => controller.setDeleteStudyOpen(true) },
     ];
 
     const userOptions = [ // 사용자 옵션
-        { text: "탈퇴하기", textColor: "#DD5252", onClick: () => {} },
+        { text: "탈퇴하기", textColor: "#DD5252", onClick: () => controller.setExitStudyOpen(true) },
     ];
 
     return (
@@ -79,6 +80,28 @@ export const StudyDetail = () => {
                 </LayoutInnerWrapper>
             ) : (
                 <CommonLoading />
+            )}
+
+            {controller.deleteStudyOpen && (
+                <CommonConfirmModal
+                    open={controller.deleteStudyOpen}
+                    setOpen={controller.setDeleteStudyOpen}
+                    title="과제를 삭제하시겠습니까?"
+                    content="삭제된 과제와 관련된 모든 정보는 복구할 수 없습니다."
+                    onCancel={() => controller.setDeleteStudyOpen(false)}
+                    onOk={controller.onDeleteStudy}
+                />
+            )}
+
+            {controller.exitStudyOpen && (
+                <CommonConfirmModal
+                    open={controller.exitStudyOpen}
+                    setOpen={controller.setExitStudyOpen}
+                    title="이 스터디를 탈퇴하시겠습니까?"
+                    content="업로드한 과제 댓글 포함 모든 정보는 복구할 수 없습니다."
+                    onCancel={() => controller.setExitStudyOpen(false)}
+                    onOk={() => {}}
+                />
             )}
         </>
     )

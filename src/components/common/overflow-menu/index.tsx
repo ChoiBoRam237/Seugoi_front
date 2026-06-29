@@ -38,7 +38,11 @@ export const CommonOverflowMenu = (props: Props) => {
                 <MenuItem
                     key={index}
                     $color={option.textColor}
-                    onClick={option.onClick}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        option.onClick();
+                    }}
                 >
                     {option.text}
                 </MenuItem>

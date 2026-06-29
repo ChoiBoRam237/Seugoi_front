@@ -21,12 +21,13 @@ export const useControlStudy = ({ studyCode }: { studyCode: number }) => {
         }
     });
 
-    const handleStudyJoin = () => {
+    // 스터디 가입
+    const onStudyJoin = () => {
         postStudyJoin.mutate();
     }
 
     return {
         isJoinLoading: postStudyJoin.isPending,
-        handleStudyJoin,
+        onStudyJoin
     }
 }

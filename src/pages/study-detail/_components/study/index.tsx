@@ -39,7 +39,7 @@ export const Study = (props: Props) => {
                     loading={controller.isJoinLoading}
                     bgColor="var(--primary)"
                     text="스터디 가입하기"
-                    onClick={controller.handleStudyJoin}
+                    onClick={controller.onStudyJoin}
                 />
             )}
         </>
