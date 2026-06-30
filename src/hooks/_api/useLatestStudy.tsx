@@ -15,6 +15,7 @@ interface Props {
 export const useLatestStudy = (props: Props) => {
     const [latestStudyList, setLatestStudyList] = useState<IStudy[]>([]);
 
+    // 최근 조회한 스터디 조회 api
     const { data, isLoading, isFetching } = useQuery({
         queryKey: ["studyView"],
         queryFn: () => commonApi.getStudyView(),

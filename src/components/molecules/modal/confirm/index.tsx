@@ -12,7 +12,6 @@ interface Props {
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
     title: string;
     content: string;
-    onCancel: () => void;
     onOk: () => void;
 }
 
@@ -45,7 +44,7 @@ export const CommonConfirmModal = (props: Props) => {
                 </ConfirmModalTitleWrapper>
 
                 <ConfirmModalButtonWrapper>
-                    <ConfirmModalCancelButton onClick={props.onCancel}>취소</ConfirmModalCancelButton>
+                    <ConfirmModalCancelButton onClick={() => props.setOpen(false)}>취소</ConfirmModalCancelButton>
                     <ConfirmModalOkButton onClick={props.onOk}>확인</ConfirmModalOkButton>
                 </ConfirmModalButtonWrapper>
             </ConfirmModalContainer>

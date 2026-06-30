@@ -68,7 +68,7 @@ export const AsgmtInfoPre = styled.pre`
     color: white;
 `;
 
-export const AsgmtLinkWrapper = styled.div`
+export const AsgmtLinkWrapper = styled.button`
     display: flex;
     align-items: center;
     column-gap: 0.25rem;

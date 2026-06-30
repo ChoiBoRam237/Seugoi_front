@@ -18,7 +18,7 @@ export const AxiosComponent = () => {
         mutationFn: async () => (
             await commonApi.getRefreshApi({
                 headers: {
-                    Authorization: `Bearer ${token.refreshToken}`,
+                    Authorization: `Bearer ${token?.refreshToken}`,
                 },
             })
         ),
@@ -41,9 +41,12 @@ export const AxiosComponent = () => {
     useEffect(() => {
         const requestIntercept = privateBase.interceptors.request.use(
             (config) => {
-                if (!config.headers["Authorization"]) {
-                    config.headers["Authorization"] = `Bearer ${token.accessToken}`;
+                const token = cookie.getCookie("token");
+
+                if (token?.accessToken) {
+                    config.headers.Authorization = `Bearer ${token.accessToken}`;
                 }
+
                 return config;
             },
             (error) => Promise.reject(error),
@@ -62,7 +65,6 @@ export const AxiosComponent = () => {
 
                             try {
                                 const result = await tokenMutation.mutateAsync();
-                                console.log(result);
                                 prevRequest.headers["Authorization"] = `Bearer ${result}`;
 
                                 cookie.setCookie("token", {

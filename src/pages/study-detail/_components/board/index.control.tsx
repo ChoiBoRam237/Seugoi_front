@@ -10,6 +10,7 @@ import { IStudyBoard } from "@/components/types/study";
 export const useControlBoard = ({ studyCode }: { studyCode: number }) => {
     const [boardList, setBoardList] = useState<IStudyBoard[]>([]);
 
+    // 스터디 과제/공지 목록 조회 api
     const {
         data,
         isLoading,

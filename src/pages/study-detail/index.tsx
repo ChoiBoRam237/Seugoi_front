@@ -92,7 +92,6 @@ export const StudyDetail = () => {
                     setOpen={controller.setDeleteStudyOpen}
                     title="과제를 삭제하시겠습니까?"
                     content="삭제된 과제와 관련된 모든 정보는 복구할 수 없습니다."
-                    onCancel={() => controller.setDeleteStudyOpen(false)}
                     onOk={controller.onDeleteStudy}
                 />
             )}
@@ -103,7 +102,6 @@ export const StudyDetail = () => {
                     setOpen={controller.setExitStudyOpen}
                     title="이 스터디를 탈퇴하시겠습니까?"
                     content="업로드한 과제 댓글 포함 모든 정보는 복구할 수 없습니다."
-                    onCancel={() => controller.setExitStudyOpen(false)}
                     onOk={() => {}}
                 />
             )}

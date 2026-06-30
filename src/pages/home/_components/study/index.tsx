@@ -7,6 +7,7 @@ import { CommonStudyItem } from "@/components/common/study-item";
 import { StudyList } from "../../indexStyles";
 import { StudyPopularContainer, StudyPopularTitle, StudyPopularTitleWrapper, StudyingInnerWrapper, StudyingItem, StudyingSwiper, StudyingTitle, StudyingWrapper, StudyTodayPhrase, StudyTodayPhraseContent, StudyTodayPhraseLine, StudyTodayPhraseTitle, StudyContainer } from "./indexStyles";
 import { useControlStudy } from "./index.control";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 /**
  * @brief 스터디
@@ -18,6 +19,7 @@ interface Props {
 
 export const Study = (props: Props) => {
     const location = useLocation();
+    const windowSize = useWindowSize();
     const controller = useControlStudy();
 
     return (
@@ -48,20 +50,28 @@ export const Study = (props: Props) => {
 
                             <div className="overflow-hidden">
                                 <motion.div
-                                    animate={{ x: ["0%", "-50%"] }}
-                                    transition={{
-                                        duration: 12,
-                                        repeat: Infinity,
-                                        repeatType: "loop",
-                                        ease: "linear",
-                                    }}
+                                    animate={
+                                        windowSize.width > 376
+                                            ? { x: "0%" }
+                                            : { x: ["0%", "-50%"] }
+                                    }
+                                    transition={
+                                        windowSize.width > 376
+                                            ? undefined
+                                            : {
+                                                duration: 12,
+                                                repeat: Infinity,
+                                                repeatType: "loop",
+                                                ease: "linear",
+                                              }
+                                    }
                                     style={{
                                         display: "flex",
                                         width: "max-content",
                                         whiteSpace: "nowrap"
                                     }}
                                 >
-                                    {[...Array(2)].map((_, index) => (
+                                    {[...Array(windowSize.width > 376 ? 1 : 2)].map((_, index) => (
                                         <div
                                             key={index}
                                             className="flex items-center pr-20"

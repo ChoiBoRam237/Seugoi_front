@@ -20,18 +20,18 @@ export const Callback = () => {
         },
         onSuccess: (data) => {
             // 브라우저 쿠키에 유저 정보 저장
-            cookie.setCookie("user", JSON.stringify({
+            cookie.setCookie("user", {
                 userCode: data.userCode,
                 name: data.nickName,
                 email: data.email,
                 profileImageUrl: data.profileImageUrl
-            }));
+            });
 
             // 브라우저 쿠키에 token 저장
-            cookie.setCookie("token", JSON.stringify({
+            cookie.setCookie("token", {
                 accessToken: data.accessToken,
                 refreshToken: data.refreshToken
-            }));
+            });
 
             // 저장 후 메인화면으로 이동동
             navigate(`/${LinkEnum.HOME}`);

@@ -4,7 +4,7 @@ const COOKIE_EXPIRES_DAYS = 3; // 72시간
 
 export const cookie = {
     setCookie: (name: string, value: any) => {
-        Cookies.set(name, value, {
+        Cookies.set(name, JSON.stringify(value), {
             expires: COOKIE_EXPIRES_DAYS,
             path: "/",
             sameSite: "strict",
