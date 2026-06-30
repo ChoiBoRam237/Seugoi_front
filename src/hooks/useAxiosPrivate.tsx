@@ -59,31 +59,33 @@ export const AxiosComponent = () => {
                         // 토큰이 만료된 경우
                         if (error.response.status === 401 && !prevRequest?._retry) {
                             prevRequest._retry = true;
-                        try {
-                            const result = await tokenMutation.mutateAsync();
-                            prevRequest.headers["Authorization"] = `Bearer ${result}`;
 
-                            cookie.setCookie("token", {
-                                ...token,
-                                accessToken: result,
-                            });
+                            try {
+                                const result = await tokenMutation.mutateAsync();
+                                console.log(result);
+                                prevRequest.headers["Authorization"] = `Bearer ${result}`;
 
-                            return privateBase(prevRequest);
+                                cookie.setCookie("token", {
+                                    ...token,
+                                    accessToken: result,
+                                });
 
-                        } catch (tokenError) {
-                            console.error("Token refresh error:", tokenError);
-                            cookie.clearCookie();
-                            queryClient.clear();
-                            window.location.href = `/${LinkEnum.LOGIN}`;
+                                return privateBase(prevRequest);
+
+                            } catch (tokenError) {
+                                console.error("Token refresh error:", tokenError);
+                                cookie.clearCookie();
+                                queryClient.clear();
+                                window.location.href = `/${LinkEnum.LOGIN}`;
+                            }
                         }
+                    } else {
+                        // error.response가 정의되지 않은 경우 처리
+                        console.error("Network or other error:", error);
                     }
-                } else {
-                    // error.response가 정의되지 않은 경우 처리
-                    console.error("Network or other error:", error);
-                }
 
-                return Promise.reject(error);
-            },
+                    return Promise.reject(error);
+                },
         );
 
         return () => {

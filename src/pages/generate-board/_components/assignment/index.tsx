@@ -1,19 +1,19 @@
+import { useNavigate } from "react-router-dom";
+import { Upload } from "antd";
+import { UploadChangeParam, UploadFile } from "antd/es/upload";
 import { HiOutlineLink } from "react-icons/hi";
 import { IoMdImage } from "react-icons/io";
 import { FiPlus } from "react-icons/fi";
 import { GoXCircle } from "react-icons/go";
-import { Upload } from "antd";
+import { LinkEnum } from "@/meta/link";
 import { CommonButton } from "@/components/molecules/button";
 import { CommonInput } from "@/components/molecules/input";
 import { CommonTextarea } from "@/components/molecules/textarea";
+import { CommonModal } from "@/components/molecules/modal";
 import { BoardContainer, BoardWrapper } from "../../indexStyles";
 import { BoardProps } from "../..";
 import { AsgmtImageItem, AsgmtImageItemX, AsgmtImageLabel, AsgmtImageLabelWrapper, AsgmtImageList, AsgmtImageUplaod, AsgmtImageWrapper } from "./indexStyles";
-import { UploadChangeParam, UploadFile } from "antd/es/upload";
 import { useControlAssignment } from "./index.control";
-import { CommonModal } from "@/components/molecules/modal";
-import { LinkEnum } from "@/meta/link";
-import { useNavigate } from "react-router-dom";
 
 /**
  * @brief 과제 추가

@@ -7,7 +7,7 @@ import "./index.css";
 // 1280px : 데스크탑 크기
 // 1024px : 노트북 크기
 // 767px : 태블릿 크기
-// 375px : 모바일 크기
+// 376px : 모바일 크기
 
 const rootNode = document.getElementById("root") as HTMLElement;
 ReactDOM.createRoot(rootNode).render(

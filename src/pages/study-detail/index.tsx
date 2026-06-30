@@ -9,6 +9,7 @@ import { LayoutInnerWrapper } from "@/components/layout";
 import { useLocation } from "react-router-dom";
 import { Study } from "./_components/study";
 import { CommonConfirmModal } from "@/components/molecules/modal/confirm";
+import { Board } from "./_components/board";
 
 /**
  * @brief 스터디 상세페이지
@@ -67,13 +68,16 @@ export const StudyDetail = () => {
                         <DetailWrapper>
                             {controller.status === "introduction" ? (
                                 <Study
-                                    studyCode={controller.studyData.code}
+                                    studyCode={controller.studyCode}
                                     studyData={controller.studyData}
                                     adminData={controller.adminData}
                                     isAdmin={controller.isAdmin}
                                 />
                             ) : (
-                                <></>
+                                <Board
+                                    studyCode={controller.studyCode}
+                                    isAdmin={controller.isAdmin}
+                                />
                             )}
                         </DetailWrapper>
                     </DetailContainer>

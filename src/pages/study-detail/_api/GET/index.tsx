@@ -10,4 +10,12 @@ export const getStudyDetailApi = {
         await (
             await privateBase.get(`/v3/api/study/${studyCode}`)
         ).data.data,
+
+    // 스터디 과제/공지 목록 조회
+    getStudyBoard: async (studyCode: number) =>
+        await (
+            await privateBase.get(`/v3/api/study/board`, {
+                params: { studyCode }
+            })
+        ).data.data,
 }

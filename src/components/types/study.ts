@@ -35,3 +35,15 @@ export interface ICommonStudyResponse {
     userCode: number;
     studyCode: number;
 }
+
+export interface IStudyBoard {
+    code: number;
+    target: string; // notice or asgmt
+    title: string; // 제목
+    content: string; // 내용
+    linkName?: string; // 링크제목
+    linkUrl?: string; // 링크 url
+    imageList?: string[]; // 이미지 리스트
+    isAdmin: boolean; // 관리자 여부
+    createdAt: Date; // 생성 날짜
+}

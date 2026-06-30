@@ -54,6 +54,7 @@ export const useControlStudyDetail = () => {
         status, setStatus,
         isLoading: isLoading || isFetching,
         studyData, adminData,
+        studyCode: Number(params.studyCode),
         isAdmin: data?.isAdmin ?? false,
         
         deleteStudyOpen, setDeleteStudyOpen,
