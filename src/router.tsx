@@ -15,6 +15,7 @@ import { StudyList } from "./pages/study-list";
 import { GenerateBoard } from "./pages/generate-board";
 import { Mypage } from "./pages/mypage";
 import { MypageBookmarkStudy } from "./pages/mypage/_page/bookmark";
+import { StudyAsgmtDetail } from "./pages/study-asgmt-detail";
 
 const router = createBrowserRouter([
     {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
                             { // 과제/공지 생성
                                 path: `:studyCode/${LinkEnum.GENERATE}`,
                                 element: <GenerateBoard />
+                            },
+                            {
+                                path: `:studyCode/${LinkEnum.ASGMT}/:asgmtCode`,
+                                element: <StudyAsgmtDetail />
                             }
                         ]
                     },

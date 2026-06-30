@@ -52,11 +52,18 @@ export const BoardAsgmtItem = styled.div`
     height: auto;
     display: flex;
     flex-direction: column;
-    row-gap: 0.5rem;
+    row-gap: 0.875rem;
     border-radius: 0.625rem;
     padding: 1rem;
     background-color: var(--second-primary);
     cursor: pointer;
+`;
+
+export const BoardAsgmtInfoContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
 `;
 
 export const BoardAsgmtInfoWrapper = styled.div`

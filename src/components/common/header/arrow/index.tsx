@@ -35,7 +35,7 @@ export const CommonArrowHeader = (props: Props) => {
                     <ArrowHeaderText>{props.text}</ArrowHeaderText>
                 )}
 
-                {props.options.length > 0 && (
+                {props.options?.length > 0 && (
                     <div className="relative cursor-pointer" onClick={() => setMenuOpen(prev => !prev)}>
                         <HiOutlineDotsHorizontal size={25} color="white" />
 
