@@ -3,11 +3,14 @@ import { TiPin } from "react-icons/ti";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaRegCircleXmark } from "react-icons/fa6";
 import { HiOutlineLink } from "react-icons/hi";
-import { BoardNoticeLine, BoardList, BoardNoticeItem, BoardPre, BoardNoticeTitle, BoardNoticeTitleWrapper, BoardAsgmtItem, BoardAsgmtInfoWrapper, BoardAsgmtInfoText, BoardAsgmtInfoTextWrapper, BoardAsgmtImageList, BoardAsgmtImage, BoardAsgmtImageWrapper, BoardAsgmtImageCount, BoardAsgmtTitle, BoardAsgmtLinkWrapper, BoardAsgmtLinkText, BoardAsgmtInfoContainer } from "./indexStyles";
+import { HiOutlineDotsVertical } from "react-icons/hi";
+import { BoardNoticeLine, BoardList, BoardNoticeItem, BoardPre, BoardNoticeTitle, BoardNoticeTitleWrapper, BoardAsgmtItem, BoardAsgmtInfoWrapper, BoardAsgmtInfoText, BoardAsgmtInfoTextWrapper, BoardAsgmtImageList, BoardAsgmtImage, BoardAsgmtImageWrapper, BoardAsgmtImageCount, BoardAsgmtTitle, BoardAsgmtLinkWrapper, BoardAsgmtLinkText, BoardAsgmtInfoContainer, BoardNoticeTitleContainer } from "./indexStyles";
 import { useControlBoard } from "./index.control";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { LinkEnum } from "@/meta/link";
+import { CommonOverflowMenu } from "@/components/common/overflow-menu";
+import { CommonConfirmModal } from "@/components/molecules/modal/confirm";
 
 /**
  * @brief 과제 보기
@@ -28,10 +31,28 @@ export const Board = (props: Props) => {
                 <React.Fragment key={index}>
                     {item.target === "notice" ? (
                         <BoardNoticeItem>
-                            <BoardNoticeTitleWrapper>
-                                <TiPin size={20} color="#D51F1F" />
-                                <BoardNoticeTitle>{item.title}</BoardNoticeTitle>
-                            </BoardNoticeTitleWrapper>
+                            <BoardNoticeTitleContainer>
+                                <BoardNoticeTitleWrapper>
+                                    <TiPin size={20} color="#D51F1F" />
+                                    <BoardNoticeTitle>{item.title}</BoardNoticeTitle>
+                                </BoardNoticeTitleWrapper>
+
+                                <div className="relative cursor-pointer" onClick={() => controller.setOverflowMenuOpen(true)}>
+                                    <HiOutlineDotsVertical size={18} color="white" />
+
+                                    {controller.overflowMenuOpen && (
+                                        <CommonOverflowMenu
+                                            open={controller.overflowMenuOpen}
+                                            setOpen={controller.setOverflowMenuOpen}
+                                            options={[
+                                                { text: "수정하기", textColor: "white", onClick: () => {} },
+                                                { text: "삭제하기", textColor: "var(--red)", onClick: () => controller.setDeleteNoticeOpen(true) }
+                                            ]}
+                                            className="small"
+                                        />
+                                    )}
+                                </div>
+                            </BoardNoticeTitleContainer>
             
                             <BoardNoticeLine />
             
@@ -79,6 +100,14 @@ export const Board = (props: Props) => {
                     )}
                 </React.Fragment>
             ))}
+
+            <CommonConfirmModal
+                open={controller.deleteNoticeOpen}
+                setOpen={controller.setDeleteNoticeOpen}
+                title="공지를 삭제하시겠습니까?"
+                content="삭제할 공지와 관련된 정보는 복구할 수 없습니다."
+                onOk={controller.onDeleteNotice}
+            />
         </BoardList>
     )
 }

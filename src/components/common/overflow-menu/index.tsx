@@ -13,6 +13,7 @@ interface Props {
         textColor: string;
         onClick: () => void;
     }[];
+    className?: string;
 }
 
 export const CommonOverflowMenu = (props: Props) => {
@@ -33,11 +34,12 @@ export const CommonOverflowMenu = (props: Props) => {
     if (!props.open) return null;
 
     return (
-        <MenuContainer ref={menuRef}>
+        <MenuContainer ref={menuRef} className={props.className}>
             {props.options.map((option, index) => (
                 <MenuItem
                     key={index}
                     $color={option.textColor}
+                    className={props.className}
                     onClick={(e) => {
                         e.stopPropagation();
                         e.preventDefault();

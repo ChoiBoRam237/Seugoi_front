@@ -54,7 +54,7 @@ export const AsgmtInfoText = styled.p`
     color: var(--primary);
 
     &.link { color: #0075FF; }
-    &.error { color: #DD5252; }
+    &.error { color: var(--red); }
 `;
 
 export const AsgmtInfoTitle = styled.p`
@@ -96,9 +96,10 @@ export const AsgmtCommentNoData = styled.div`
     align-items: center;
     justify-content: center;
     row-gap: 1.5rem;
-
+    
     font-size: 0.875rem;
     color: #767F9A;
+    text-align: center;
 `;
 
 export const AsgmtCommentNoDataImg = styled.div<{ $src: string }>`

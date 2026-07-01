@@ -30,8 +30,8 @@ export const Study = (props: Props) => {
                 description={props.studyData.description ?? " "}
                 recommend={props.studyData.recommend}
 
-                profileImgUrl={props.adminData.profileImageUrl}
-                userName={props.adminData.nickname}
+                profileImgUrl={props.adminData.profileImgUrl}
+                userName={props.adminData.name}
             />
             
             {(!props.isAdmin && !props.studyData.isJoined) && (

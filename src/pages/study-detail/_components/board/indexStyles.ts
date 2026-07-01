@@ -28,6 +28,13 @@ export const BoardNoticeItem = styled.div`
     background-color: var(--second-primary);
 `;
 
+export const BoardNoticeTitleContainer = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`;
+
 export const BoardNoticeTitleWrapper = styled.div`
     display: flex;
     align-items: center;
@@ -84,7 +91,7 @@ export const BoardAsgmtInfoText = styled.p`
     color: var(--primary);
 
     &.error {
-        color: #DD5252;
+        color: var(--red);
     }
 `;
 

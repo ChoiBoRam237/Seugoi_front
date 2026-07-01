@@ -1,22 +1,23 @@
+import { format } from "date-fns";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaRegCircleXmark } from "react-icons/fa6";
 import { HiOutlineLink } from "react-icons/hi";
 import { LinkEnum } from "@/meta/link";
+import { CommonLoading } from "@/components/common/loading";
+import { CommonConfirmModal } from "@/components/molecules/modal/confirm";
+import { Comment } from "./_components/comment";
 import { CommonArrowHeader } from "@/components/common/header/arrow";
 import { LayoutInnerWrapper } from "@/components/layout";
 import { CommonChatInput } from "@/components/common/chat-input";
 import logoSad from "./_assets/logo-sad.svg";
-import { AsgmtCommentNoData, AsgmtCommentNoDataImg, AsgmtContainer, AsgmtInfo, AsgmtInfoContainer, AsgmtInfoContent, AsgmtInfoPre, AsgmtInfoText, AsgmtInfoTextWrapper, AsgmtInfoTitle, AsgmtInfoWrapper, AsgmtLine, AsgmtLinkWrapper } from "./indexStyles";
+import { AsgmtCommentList, AsgmtCommentNoData, AsgmtCommentNoDataImg, AsgmtContainer, AsgmtInfo, AsgmtInfoContainer, AsgmtInfoContent, AsgmtInfoPre, AsgmtInfoText, AsgmtInfoTextWrapper, AsgmtInfoTitle, AsgmtInfoWrapper, AsgmtLine, AsgmtLinkWrapper } from "./indexStyles";
 import { useControlAsgmtDetail } from "./index.control";
-import { format } from "date-fns";
-import { CommonLoading } from "@/components/common/loading";
-import { CommonConfirmModal } from "@/components/molecules/modal/confirm";
 
 /**
  * @brief 과제 상세
  */
 
-export const StudyAsgmtDetail = () => {
+export const AsgmtDetail = () => {
     const controller = useControlAsgmtDetail();
 
     return (
@@ -29,7 +30,7 @@ export const StudyAsgmtDetail = () => {
                             controller.asgmtInfoData.isAdmin 
                                 ? [
                                     { text: "수정하기", textColor: "white", onClick: () => {} },
-                                    { text: "삭제하기", textColor: "#DD5252", onClick: () => {} }
+                                    { text: "삭제하기", textColor: "var(--red)", onClick: () => controller.setDeleteAsgmtOpen(true) }
                                   ]
                                 : []
                         }
@@ -63,35 +64,43 @@ export const StudyAsgmtDetail = () => {
                         </AsgmtInfoContainer>
 
                         {/* 댓글 */}
-                        <AsgmtCommentNoData>
-                            <AsgmtCommentNoDataImg $src={logoSad} />
-                            {"과제를 제출하기 전까진 댓글을 볼 수 없습니다 ;("}
-                        </AsgmtCommentNoData>
+                        {(controller.asgmtComment.submitted && controller.asgmtComment.comments?.length > 0) ? (
+                            <AsgmtCommentList>
+                                {controller.asgmtComment.comments?.map((comment, index) => (
+                                    <Comment key={index} data={comment} />
+                                ))}
+                            </AsgmtCommentList>
+                        ) : (
+                            <AsgmtCommentNoData>
+                                <AsgmtCommentNoDataImg $src={logoSad} />
+                                {"과제를 제출하기 전까진 댓글을 볼 수 없습니다 ;("}
+                            </AsgmtCommentNoData>
+                        )}
                     </AsgmtContainer>
-
-                    <CommonChatInput
-                        placeholder="과제를 제출해주세요! (이미지 최대 3장)"
-                        value={controller.comment}
-                        setValue={controller.setComment}
-                        previewImgList={controller.previewImgList}
-                        setPreviewImgList={controller.setPreviewImgList}
-                        setImageList={controller.setImageList}
-                        onSend={() => {}}
-                    />
-
-                    {controller.deleteAsgmtOpen && (
-                        <CommonConfirmModal
-                            open={controller.deleteAsgmtOpen}
-                            setOpen={controller.setDeleteAsgmtOpen}
-                            title="과제를 삭제하시겠습니까?"
-                            content="삭제된 과제와 관련된 모든 정보는 복구할 수 없습니다."
-                            onOk={() => {}}
-                        />
-                    )}
                 </LayoutInnerWrapper>
             ) : (
                 <CommonLoading />
             )}
+
+            <CommonChatInput
+                isLoading={controller.isGenerateLoading}
+                loadingText="과제 제출 중..."
+                placeholder="과제를 제출해주세요! (이미지 최대 3장)"
+                value={controller.comment}
+                setValue={controller.setComment}
+                previewImgList={controller.previewImgList}
+                setPreviewImgList={controller.setPreviewImgList}
+                setImageList={controller.setImageList}
+                onSend={controller.onGenerateAsgmtComment}
+            />
+
+            <CommonConfirmModal
+                open={controller.deleteAsgmtOpen}
+                setOpen={controller.setDeleteAsgmtOpen}
+                title="과제를 삭제하시겠습니까?"
+                content="삭제할 과제와 관련된 모든 정보는 복구할 수 없습니다."
+                onOk={controller.onDeleteAsgmt}
+            />
         </>
     )
 }

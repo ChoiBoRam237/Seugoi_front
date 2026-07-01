@@ -15,7 +15,7 @@ import { StudyList } from "./pages/study-list";
 import { GenerateBoard } from "./pages/generate-board";
 import { Mypage } from "./pages/mypage";
 import { MypageBookmarkStudy } from "./pages/mypage/_page/bookmark";
-import { StudyAsgmtDetail } from "./pages/study-asgmt-detail";
+import { AsgmtDetail } from "./pages/asgmt-detail";
 
 const router = createBrowserRouter([
     {
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
                             },
                             {
                                 path: `:studyCode/${LinkEnum.ASGMT}/:asgmtCode`,
-                                element: <StudyAsgmtDetail />
+                                element: <AsgmtDetail />
                             }
                         ]
                     },

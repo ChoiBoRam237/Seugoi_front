@@ -14,7 +14,7 @@ export const useUserInfo = () => {
     const userCode = userInfo.userCode ?? 0;
     const userName = userInfo.name ?? "";
     const userEmail = userInfo.email ?? "";
-    const userProfileUrl = userInfo.profileImageUrl ?? "";
+    const userProfileUrl = userInfo.profileImgUrl ?? "";
 
     return {
         userCode,

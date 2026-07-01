@@ -22,9 +22,9 @@ export const Callback = () => {
             // 브라우저 쿠키에 유저 정보 저장
             cookie.setCookie("user", {
                 userCode: data.userCode,
-                name: data.nickName,
+                name: data.name,
                 email: data.email,
-                profileImageUrl: data.profileImageUrl
+                profileImgUrl: data.profileImgUrl
             });
 
             // 브라우저 쿠키에 token 저장

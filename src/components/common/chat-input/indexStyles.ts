@@ -97,3 +97,15 @@ export const ChatInputImage = styled.div<{ $src: string }>`
     background-repeat: no-repeat;
     background-position: center;
 `;
+
+// 로딩
+export const ChatInputLoading = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 0.875rem;
+    color: var(--white-80);
+`;

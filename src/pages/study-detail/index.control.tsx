@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { IStudyDetail } from "@/components/types/study";
 import { IUser } from "@/components/types/user";
@@ -14,10 +14,11 @@ import { LinkEnum } from "@/meta/link";
 
 export const useControlStudyDetail = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const params = useParams();
     const [studyData, setStudyData] = useState<IStudyDetail | null>(null); // 스터디 데이터
     const [adminData, setAdminData] = useState<IUser | null>(null); // 관리자 정보
-    const [status, setStatus] = useState<"assignment" | "introduction">("introduction"); // 과제하기 or 스터디 소개
+    const [status, setStatus] = useState<"assignment" | "introduction">(location.state ?? "introduction"); // 과제하기 or 스터디 소개
 
     const [deleteStudyOpen, setDeleteStudyOpen] = useState<boolean>(false); // 스터디 삭제 확인 팝업
     const [exitStudyOpen, setExitStudyOpen] = useState<boolean>(false); // 스터디 탈퇴 확인 팝업

@@ -17,6 +17,8 @@ export const MenuContainer = styled.div`
     border-radius: 0.625rem;
     background-color: #1B1D24;
     box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.75);
+
+    &.small { width: 8.0625rem; }
 `;
 
 export const MenuItem = styled.button<{ $color: string }>`
@@ -32,4 +34,9 @@ export const MenuItem = styled.button<{ $color: string }>`
     font-family: "Pretendard-Medium";
     font-size: 1rem;
     color: ${({ $color }) => $color};
+
+    &.small {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+    }
 `;
