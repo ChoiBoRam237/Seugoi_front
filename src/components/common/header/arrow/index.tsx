@@ -12,6 +12,7 @@ import { CommonOverflowMenu } from "../../overflow-menu";
 
 interface Props {
     moveUrl: string;
+    urlState?: Record<string, any>;
     text?: string;
     options?: {
         text: string;
@@ -27,7 +28,7 @@ export const CommonArrowHeader = (props: Props) => {
     return (
         <HeaderContainer className="arrow">
             <ArrowHeaderWrapper>
-                <button onClick={() => navigate(props.moveUrl, { replace: true })}>
+                <button onClick={() => navigate(props.moveUrl, { replace: true, state: props.urlState })}>
                     <IoIosArrowBack size={25} color="white" />
                 </button>
 

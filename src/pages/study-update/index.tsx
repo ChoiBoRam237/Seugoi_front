@@ -44,7 +44,7 @@ export const StudyUpdate = () => {
                     recommend={controller.recommend}
                     setRecommend={controller.setRecommend}
 
-                    btnText="스터디 수정하기"
+                    btnText="수정하기"
                     isLoading={controller.updateLoading}
                     onClick={controller.onStudyUpdate}
                 />

@@ -17,6 +17,7 @@ import { Mypage } from "./pages/mypage";
 import { MypageBookmarkStudy } from "./pages/mypage/_page/bookmark";
 import { AsgmtDetail } from "./pages/asgmt-detail";
 import { StudyUpdate } from "./pages/study-update";
+import { NoticeUpdate } from "./pages/notice-update";
 
 const router = createBrowserRouter([
     {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
                                 element: <AsgmtDetail />
                             }
                         ]
+                    },
+                    {
+                        path: `/${LinkEnum.NOTICE}/:noticeCode/${LinkEnum.UPDATE}`,
+                        element: <NoticeUpdate />
                     },
                     { // 마이페이지
                         path: `/${LinkEnum.MYPAGE}`,

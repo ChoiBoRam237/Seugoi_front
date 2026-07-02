@@ -36,35 +36,21 @@ export const useControlStudyUpdate = () => {
         onFetchStudyDetail,
     } = useStudyDetail({ studyCode: params.studyCode });
 
-    const compareData = (key: string, value: any) => {
-        return studyData[key] !== value;
-    };
-
-    const compareListData = (key: string, value: any) => {
-        const filterList = value.filter((item: string) => item !== "");
-        const studyFilterList = studyData[key].filter((item: string) => item !== "");
-        console.log(filterList, studyFilterList);
-        return studyFilterList !== filterList;
-    }
-
     // 스터디 수정 api
     const patchStudyUpdate = useMutation({
         mutationFn: () => {
             const formData = new FormData();
             formData.append("studyName", studyName); // 스터디 이름
-            compareListData("categories", categories) &&
-                categories.filter(item => item !== "").forEach(category => formData.append("categories", category.replace(/^#\s+/, "#"))); // 카테고리
+            categories.filter(item => item !== "").forEach(category => formData.append("categories", category.replace(/^#\s+/, "#"))); // 카테고리
             formData.append("peopleCount", peopleCount); // 모집 인원
-            compareData("endPeriod", endPeriod) && formData.append("endPeriod", endPeriod); // 스터디 종료 기간
-            compareData("studyTitle", studyTitle) && formData.append("studyTitle", studyTitle); // 스터디 제목
-            compareData("summary", summary) && formData.append("summary", summary); // 간단 요약
-            compareListData("introduction", introduction) &&
-                introduction.filter(item => item !== "").forEach(intro => formData.append("introduction", intro)); // 소개글
-            compareData("description", description) && formData.append("description", description); // 설명글
-            compareListData("recommend", recommend) &&
-                recommend.filter(item => item !== "").forEach(recom => formData.append("recommend", recom)); // 추천글
+            formData.append("endPeriod", endPeriod); // 스터디 종료 기간
+            formData.append("studyTitle", studyTitle); // 스터디 제목
+            formData.append("summary", summary); // 간단 요약
+            introduction.filter(item => item !== "").forEach(intro => formData.append("introduction", intro)); // 소개글
+            formData.append("description", description); // 설명글
+            recommend.filter(item => item !== "").forEach(recom => formData.append("recommend", recom)); // 추천글
             formData.append("bgImageUrl", bgFile); // 배경 이미지
-            compareData("dDay", dDay) && formData.append("dday", dDay.toString()); // 디데이
+            formData.append("dday", dDay.toString()); // 디데이
             return patchStudyUpdateApi.patchStudyUpdate(Number(params.studyCode!), formData);
         },
         onSuccess: () => {

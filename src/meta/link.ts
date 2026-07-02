@@ -15,4 +15,5 @@ export enum LinkEnum {
     MYPAGE = "mypage",
     BOOKMARK = "bookmark",
     UPDATE = "update",
+    NOTICE = "notice",
 }

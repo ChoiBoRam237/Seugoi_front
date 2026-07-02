@@ -45,7 +45,7 @@ export const Board = (props: Props) => {
                                             open={controller.overflowMenuOpen}
                                             setOpen={controller.setOverflowMenuOpen}
                                             options={[
-                                                { text: "수정하기", textColor: "white", onClick: () => {} },
+                                                { text: "수정하기", textColor: "white", onClick: () => navigate(`/${LinkEnum.NOTICE}/${item.code}/${LinkEnum.UPDATE}`) },
                                                 { text: "삭제하기", textColor: "var(--red)", onClick: () => controller.setDeleteNoticeOpen(true) }
                                             ]}
                                             className="small"
