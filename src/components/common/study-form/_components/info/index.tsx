@@ -5,7 +5,7 @@ import { BiImageAdd } from "react-icons/bi";
 import { IoPerson } from "react-icons/io5";
 import { CommonInput } from "@/components/molecules/input";
 import { CommonButton } from "@/components/molecules/button";
-import { CommonGenerateContainer, CommonGenerateTitle } from "../../indexStyles";
+import { CommonFormContainer, CommonFormTitle } from "../../indexStyles";
 import { InfoCategory, InfoImageUpload, InfoImageUploadText, InfoInnerContainer, InfoInputRequired, InfoInputTitle, InfoInputTitleWrapper, InfoInputWrapper, InfoPeopleCheckbox, InfoPeopleCheckboxWrapper, InfoPeopleCountInnerWrapper, InfoPeopleCountInput, InfoPeopleCountWrapper, InfoShowImage, InfoUpload, InfoWrapper } from "./indexStyles";
 
 /**
@@ -29,9 +29,9 @@ interface Props {
 
 export const Info = (props: Props) => {
     return (
-        <CommonGenerateContainer>
+        <CommonFormContainer>
             <InfoInnerContainer>
-                <CommonGenerateTitle>스터디의 기본 정보를<br />입력해주세요!</CommonGenerateTitle>
+                <CommonFormTitle>스터디의 기본 정보를<br />입력해주세요!</CommonFormTitle>
 
                 <InfoWrapper>
                     <InfoInputWrapper>
@@ -159,6 +159,6 @@ export const Info = (props: Props) => {
                 text="다음"
                 onClick={props.onNext}
             />
-        </CommonGenerateContainer>
+        </CommonFormContainer>
     )
 }

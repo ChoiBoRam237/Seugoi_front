@@ -1,7 +1,7 @@
 import { CommonModal } from "@/components/molecules/modal";
 import type { IModal } from "@/components/types/modal";
-import { GenerateModalCircle, GenerateModalContainer, GenerateModalImg, GenerateModalRectangle } from "./indexStyles";
 import personImg from "@/assets/person.svg";
+import { GenerateModalCircle, GenerateModalContainer, GenerateModalImg, GenerateModalRectangle } from "./indexStyles";
 
 /**
  * @brief 스터디 생성 모달 컴포넌트

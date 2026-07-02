@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 /**
- * @brief 스터디 생성 스타일
+ * @brief 스터디 폼 컴포넌트 스타일
  */
 
-export const GenerateContainer = styled.div`
+export const FormContainer = styled.div`
     width: 100%;
     height: 100%;
     min-height: 100dvh;
@@ -13,7 +13,7 @@ export const GenerateContainer = styled.div`
     padding-bottom: 1.5rem;
 `;
 
-export const GenerateHeader = styled.div`
+export const FormHeader = styled.div`
     width: 100%;
     height: 5.4375rem;
     display: flex;
@@ -22,13 +22,13 @@ export const GenerateHeader = styled.div`
     padding: 1.875rem 1.5rem;
 `;
 
-export const GenerateHeaderNumberWrapper = styled.div`
+export const FormHeaderNumberWrapper = styled.div`
     display: flex;
     align-items: center;
     column-gap: 0.5rem;
 `;
 
-export const GenerateHeaderNumber = styled.button`
+export const FormHeaderNumber = styled.button`
     width: 2.0625rem;
     height: 2.0625rem;
     display: flex;
@@ -52,7 +52,7 @@ export const GenerateHeaderNumber = styled.button`
 
 
 // 공통 스타일
-export const CommonGenerateContainer = styled.div`
+export const CommonFormContainer = styled.div`
     flex: 1;
     width: 100%;
     height: 100%;
@@ -63,7 +63,7 @@ export const CommonGenerateContainer = styled.div`
     padding: 0 1.5rem;
 `;
 
-export const CommonGenerateTitle = styled.p`
+export const CommonFormTitle = styled.p`
     font-family: "Pretendard-Bold" !important;
     font-size: 1.5rem;
     color: white;

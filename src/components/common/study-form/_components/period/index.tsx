@@ -3,9 +3,9 @@ import { differenceInDays, format } from "date-fns";
 import { GoChevronLeft } from "react-icons/go";
 import { GoChevronRight } from "react-icons/go";
 import { CommonButton } from "@/components/molecules/button";
-import { CommonGenerateContainer, CommonGenerateTitle } from "../../indexStyles";
-import { PeriodCalendar, PeriodCalendarDate, PeriodCalendarMonth, PeriodCalendarWrapper, PeriodCalendarYear, PeriodContainer, PeriodImage } from "./indexStyles";
 import image from "@/assets/logo.svg";
+import { CommonFormContainer, CommonFormTitle } from "../../indexStyles";
+import { PeriodCalendar, PeriodCalendarDate, PeriodCalendarMonth, PeriodCalendarWrapper, PeriodCalendarYear, PeriodContainer, PeriodImage } from "./indexStyles";
 
 /**
  * @brief 스터디 종료 기간
@@ -22,9 +22,9 @@ interface Props {
 
 export const Period = (props: Props) => {
     return (
-        <CommonGenerateContainer>
+        <CommonFormContainer>
             <PeriodContainer>
-                <CommonGenerateTitle>스터디 종료기간을 설정해주세요!</CommonGenerateTitle>
+                <CommonFormTitle>스터디 종료기간을 설정해주세요!</CommonFormTitle>
 
                 <PeriodImage $src={image} />
             </PeriodContainer>
@@ -84,6 +84,6 @@ export const Period = (props: Props) => {
                 bgColor="var(--primary)"
                 onClick={props.onNext}
             />
-        </CommonGenerateContainer>
+        </CommonFormContainer>
     )
 }

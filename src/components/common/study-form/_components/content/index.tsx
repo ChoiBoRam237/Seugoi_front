@@ -2,7 +2,7 @@ import React from "react";
 import { CommonButton } from "@/components/molecules/button";
 import { CommonStudyIntro } from "@/components/common/study-intro";
 import { CommonStudyInfoAndImage } from "@/components/common/study-info&image";
-import { CommonGenerateContainer } from "../../../study-generate/indexStyles";
+import { CommonFormContainer } from "../../indexStyles";
 import { ContentContainer } from "./indexStyles";
 import { useUserInfo } from "@/hooks/useUserInfo";
 
@@ -28,6 +28,7 @@ interface Props {
     recommend: string[]; // 추천글
     setRecommend: React.Dispatch<React.SetStateAction<string[]>>;
     
+    btnText: string; // 버튼 내용
     isDataCheck: boolean; // 필수 작성 데이터 체크
     isLoading: boolean; // 스터디 생성 로딩
     onStudyGenerate: () => void; // 스터디 생성 api 호출
@@ -45,7 +46,7 @@ export const Content = (props: Props) => {
                 dDay={props.dDay}
             />
 
-            <CommonGenerateContainer>
+            <CommonFormContainer>
                 <CommonStudyIntro
                     studyTitle={props.studyTitle}
                     setStudyTitle={props.setStudyTitle}
@@ -71,7 +72,7 @@ export const Content = (props: Props) => {
                     text="스터디 만들기"
                     onClick={props.onStudyGenerate}
                 />
-            </CommonGenerateContainer>
+            </CommonFormContainer>
         </ContentContainer>
     )
 }
