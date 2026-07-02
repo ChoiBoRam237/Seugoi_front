@@ -12,6 +12,12 @@ export const commonApi = {
             await publicBase.get(`/v3/api/token/refresh`, config)
         ).data.data,
 
+    // 특정 스터디 상세 조회
+    getStudyDetail: async (studyCode: number) =>
+        await (
+            await privateBase.get(`/v3/api/study/${studyCode}`)
+        ).data.data,
+
     // 최근 조회한 스터디 조회
     getStudyView: async () =>
         await (

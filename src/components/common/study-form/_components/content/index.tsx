@@ -69,7 +69,7 @@ export const Content = (props: Props) => {
                     loading={props.isLoading}
                     disabled={props.isDataCheck}
                     bgColor="var(--primary)"
-                    text="스터디 만들기"
+                    text={props.btnText}
                     onClick={props.onStudyGenerate}
                 />
             </CommonFormContainer>

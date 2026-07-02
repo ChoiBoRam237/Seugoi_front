@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { IoPerson } from "react-icons/io5";
 import { PiInfinityBold } from "react-icons/pi";
 import { FaExclamation } from "react-icons/fa";
@@ -29,6 +29,10 @@ interface Props {
 }
 
 export const CommonStudyIntro = (props: Props) => {
+    const titleRef = useRef<HTMLTextAreaElement>(null);
+    const summaryRef = useRef<HTMLTextAreaElement>(null);
+    const descriptionRef = useRef<HTMLTextAreaElement>(null);
+
     // textarea onChange
     const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>, setState: React.Dispatch<React.SetStateAction<string>>) => {
         const textarea = e.target;
@@ -46,6 +50,27 @@ export const CommonStudyIntro = (props: Props) => {
         props.setRecommend(prev => prev.map((item, i) => (i === index ? value : item)));
     }
 
+    useEffect(() => {
+        if (!titleRef.current) return;
+
+        titleRef.current.style.height = "36px";
+        titleRef.current.style.height = `${titleRef.current.scrollHeight}px`;
+    }, [props.studyTitle]);
+
+    useEffect(() => {
+        if (!summaryRef.current) return;
+    
+        summaryRef.current.style.height = "21px";
+        summaryRef.current.style.height = `${summaryRef.current.scrollHeight}px`;
+    }, [props.summary]);
+
+    useEffect(() => {
+        if (!descriptionRef.current) return;
+    
+        descriptionRef.current.style.height = "21px";
+        descriptionRef.current.style.height = `${descriptionRef.current.scrollHeight}px`;
+    }, [props.description]);
+
     return (
         <IntroContainer>
             {/* 스터디 제목 */}
@@ -54,6 +79,7 @@ export const CommonStudyIntro = (props: Props) => {
             ) : (
                 <IntroStudyTitle
                     id="study-title"
+                    ref={titleRef}
                     placeholder="스터디 제목을 입력해주세요"
                     value={props?.studyTitle}
                     onChange={(e) => onChange(e, props.setStudyTitle)}
@@ -88,6 +114,7 @@ export const CommonStudyIntro = (props: Props) => {
                 ) : (
                     <IntroContentTextarea
                         id="study-summary"
+                        ref={summaryRef}
                         placeholder="스터디를 간단 요약해 적어주세요"
                         value={props?.summary}
                         onChange={(e) => onChange(e, props.setSummary)}
@@ -119,6 +146,7 @@ export const CommonStudyIntro = (props: Props) => {
                 ) : (
                     <IntroContentTextarea
                         id="study-description"
+                        ref={descriptionRef}
                         placeholder="스터디 설명을 적어주세요"
                         value={props?.description}
                         onChange={(e) => onChange(e, props.setDescription)}

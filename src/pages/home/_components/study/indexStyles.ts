@@ -53,7 +53,7 @@ export const StudyingItem = styled.div`
     height: 9.5625rem;
 `;
 
-export const StudyTodayPhrase = styled.div`
+export const StudyTodayPhraseContainer = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
@@ -62,6 +62,22 @@ export const StudyTodayPhrase = styled.div`
     padding: 0.5625rem;
     background-color: var(--second-primary);
     white-space: nowrap;
+`;
+
+export const StudyTodayPhraseWrapper = styled.div`
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    @media (max-width: 376px) {
+        overflow: hidden;
+
+        div.quote:last-child {
+            padding-left: 5rem;
+        }
+    }
 `;
 
 export const StudyTodayPhraseTitle = styled.p`

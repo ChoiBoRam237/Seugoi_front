@@ -23,6 +23,7 @@ export interface IStudyDetail {
     description: string; // 설명글
     recommend: string[]; // 추천글
     progress: number; // 과제 진행상황
+    endPeriod: string; // 종료기간
     dDay: number; // 디데이
     peopleCount: string; // 모집 인원
     joinCount: number; // 가입한 인원수

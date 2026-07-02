@@ -34,6 +34,7 @@ export const Period = (props: Props) => {
                     animate
                     mode="single"
                     selected={new Date(props.endPeriod)}
+                    defaultMonth={props.endPeriod ? new Date(props.endPeriod) : new Date()}
                     onSelect={(value) => {
                         if (!value) {
                             props.setEndPeriod("");

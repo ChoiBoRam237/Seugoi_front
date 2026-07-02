@@ -20,9 +20,7 @@ export const CommonStudyingItem = (props: Props) => {
         <StudyingContainer
             onClick={() => {
                 navigate(`/${LinkEnum.STUDY}/${props.item.code}`, {
-                    state: {
-                        prevUrl: props.prevUrl
-                    }
+                    state: { prevUrl: props.prevUrl }
                 });
             }}
         >

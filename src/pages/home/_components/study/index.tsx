@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import { BiSolidBarChartAlt2 } from "react-icons/bi";
 import { CommonStudyItem } from "@/components/common/study-item";
 import { StudyList } from "../../indexStyles";
-import { StudyPopularContainer, StudyPopularTitle, StudyPopularTitleWrapper, StudyingInnerWrapper, StudyingItem, StudyingSwiper, StudyingTitle, StudyingWrapper, StudyTodayPhrase, StudyTodayPhraseContent, StudyTodayPhraseLine, StudyTodayPhraseTitle, StudyContainer } from "./indexStyles";
+import { StudyPopularContainer, StudyPopularTitle, StudyPopularTitleWrapper, StudyingInnerWrapper, StudyingItem, StudyingSwiper, StudyingTitle, StudyingWrapper, StudyTodayPhraseContent, StudyTodayPhraseLine, StudyTodayPhraseTitle, StudyContainer, StudyTodayPhraseContainer, StudyTodayPhraseWrapper } from "./indexStyles";
 import { useControlStudy } from "./index.control";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { CommonLoading } from "@/components/common/loading";
@@ -47,11 +47,11 @@ export const Study = (props: Props) => {
                             </StudyingSwiper>
         
                             {controller.todayQuote && (
-                                <StudyTodayPhrase>
+                                <StudyTodayPhraseContainer>
                                     <StudyTodayPhraseTitle>오늘의 명언</StudyTodayPhraseTitle>
                                     <StudyTodayPhraseLine />
         
-                                    <div className="overflow-hidden">
+                                    <StudyTodayPhraseWrapper>
                                         <motion.div
                                             animate={
                                                 windowSize.width > 376
@@ -77,7 +77,7 @@ export const Study = (props: Props) => {
                                             {[...Array(windowSize.width > 376 ? 1 : 2)].map((_, index) => (
                                                 <div
                                                     key={index}
-                                                    className="flex items-center pr-20"
+                                                    className="flex items-center quote"
                                                 >
                                                     <StudyTodayPhraseContent>
                                                         {controller.todayQuote.quote}
@@ -85,8 +85,8 @@ export const Study = (props: Props) => {
                                                 </div>
                                             ))}
                                         </motion.div>
-                                    </div>
-                                </StudyTodayPhrase>
+                                    </StudyTodayPhraseWrapper>
+                                </StudyTodayPhraseContainer>
                             )}
                         </StudyingInnerWrapper>
                     </StudyingWrapper>

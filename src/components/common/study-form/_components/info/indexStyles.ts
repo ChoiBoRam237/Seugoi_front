@@ -20,6 +20,17 @@ export const InfoWrapper = styled.div`
     row-gap: 1.25rem;
 `;
 
+export const InfoInnerWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    column-gap: 1rem;
+
+    @media (max-width: 767px) {
+        flex-direction: column;
+        row-gap: 1.25rem;
+    }
+`;
+
 export const InfoInputWrapper = styled.div`
     width: 100%;
     display: flex;
@@ -49,7 +60,11 @@ export const InfoUpload = styled(Upload)`
     cursor: pointer !important;
     
     .ant-upload {
-        width: 100% !important;
+        width: 21.25rem !important;
+
+        @media (max-width: 376px) {
+            width: 100% !important;
+        }
     }
 `;
 

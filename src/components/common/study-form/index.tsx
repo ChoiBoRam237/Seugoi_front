@@ -61,7 +61,7 @@ export const CommonStudyForm = (props: Props) => {
 
     // 필수로 작성해야하는 데이터 모두 작성했으면 true, 아니면 false
     const isDataCheck = () => {
-        return props.bgFile && props.studyName !== "" && props.peopleCount !== "";
+        return (props.bgFile || props.previewBgFile) && props.studyName !== "" && props.peopleCount !== "";
     }
 
     const isNumberActive = (status: string) => {

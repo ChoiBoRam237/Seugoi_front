@@ -14,4 +14,5 @@ export enum LinkEnum {
     CHAT = "chat",
     MYPAGE = "mypage",
     BOOKMARK = "bookmark",
+    UPDATE = "update",
 }

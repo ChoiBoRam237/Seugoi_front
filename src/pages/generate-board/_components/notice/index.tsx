@@ -52,7 +52,11 @@ export const Notice = (props: BoardProps) => {
                 setOpen={controller.setSuccessOpen}
                 title="공지가 생성되었습니다!"
                 btnTitle="스터디로 이동"
-                onClick={() => navigate(`/${LinkEnum.STUDY}/${props.studyCode}`)}
+                onClick={() => {
+                    navigate(`/${LinkEnum.STUDY}/${props.studyCode}`, {
+                        state: { status: "assignment" }
+                    });
+                }}
             />
         </BoardContainer>
     )

@@ -1,26 +1,27 @@
-import { LinkEnum } from "@/meta/link";
-import { CommonArrowHeader } from "@/components/common/header/arrow";
-import { DetailContainer, DetailSelection, DetailSelectWrapper, DetailWrapper } from "./indexStyles";
-import { CommonStudyInfoAndImage } from "@/components/common/study-info&image";
-import { useControlStudyDetail } from "./index.control";
-import { CommonLoading } from "@/components/common/loading";
+import { useLocation, useNavigate } from "react-router-dom";
 import { BASE_URL } from "@/util/api";
+import { CommonArrowHeader } from "@/components/common/header/arrow";
+import { CommonStudyInfoAndImage } from "@/components/common/study-info&image";
+import { CommonLoading } from "@/components/common/loading";
 import { LayoutInnerWrapper } from "@/components/layout";
-import { useLocation } from "react-router-dom";
-import { Study } from "./_components/study";
 import { CommonConfirmModal } from "@/components/molecules/modal/confirm";
+import { Study } from "./_components/study";
 import { Board } from "./_components/board";
+import { useControlStudyDetail } from "./index.control";
+import { DetailContainer, DetailSelection, DetailSelectWrapper, DetailWrapper } from "./indexStyles";
+import { LinkEnum } from "@/meta/link";
 
 /**
  * @brief 스터디 상세페이지
  */
 
 export const StudyDetail = () => {
+    const navigate = useNavigate();
     const location = useLocation();
     const controller = useControlStudyDetail();
 
     const adminOptions = [ // 관리자 옵션
-        { text: "수정하기", textColor: "white", onClick: () => {} },
+        { text: "수정하기", textColor: "white", onClick: () => navigate(`${LinkEnum.UPDATE}`) },
         { text: "삭제하기", textColor: "var(--red)", onClick: () => controller.setDeleteStudyOpen(true) },
     ];
 
@@ -36,7 +37,7 @@ export const StudyDetail = () => {
                 <LayoutInnerWrapper className="arrow">
                     <DetailContainer>
                         <CommonArrowHeader
-                            moveUrl={location?.state?.prevUrl ?? location.pathname}
+                            moveUrl={location?.state?.prevUrl ?? `/${LinkEnum.HOME}`}
                             options={controller.isAdmin ? adminOptions : controller.studyData.isJoined ? userOptions : []}
                         />
 

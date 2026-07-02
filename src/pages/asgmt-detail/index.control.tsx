@@ -54,7 +54,9 @@ export const useControlAsgmtDetail = () => {
     const deleteAsgmt = useMutation({
         mutationFn: () => deleteAsgmtApi.deleteAsgmt(Number(params.asgmtCode)!),
         onSuccess: () => {
-            navigate(`/${LinkEnum.STUDY}/${params.studyCode}`, { state: "assignment" });
+            navigate(`/${LinkEnum.STUDY}/${params.studyCode}`, {
+                state: { status: "assignment" }
+            });
         },
         onError: (error: AxiosError) => {
             console.error("과제 삭제 에러 : ", error);
