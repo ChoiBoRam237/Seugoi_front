@@ -12,11 +12,6 @@ export const useControlNotice = () => {
     const [content, setContent] = useState<string>(""); // 내용
     const [successOpen, setSuccessOpen] = useState<boolean>(false); // 공지 생성 성공
 
-    // 필수 작성 데이터 모두 입력했으면 true, 아니면 false
-    const dataCheck = () => {
-        return title !== "" && content !== "";
-    }
-
     // 공지 생성 api
     const postGenerateNotice = useMutation({
         mutationFn: (studyCode: number) => {
@@ -37,7 +32,6 @@ export const useControlNotice = () => {
     return {
         title, setTitle,
         content, setContent,
-        dataCheck,
 
         isLoading: postGenerateNotice.isPending,
         successOpen, setSuccessOpen,
