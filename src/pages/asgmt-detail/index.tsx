@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaRegCircleXmark } from "react-icons/fa6";
@@ -18,18 +19,20 @@ import { useControlAsgmtDetail } from "./index.control";
  */
 
 export const AsgmtDetail = () => {
+    const navigate = useNavigate();
     const controller = useControlAsgmtDetail();
 
     return (
         <>
-            {(!controller.isLoading && controller.asgmtInfoData) ? (
+            {(!controller.isLoading && controller.asgmtData) ? (
                 <LayoutInnerWrapper className="arrow">
                     <CommonArrowHeader
                         moveUrl={`/${LinkEnum.STUDY}/${controller.studyCode}`}
+                        urlState={{ status: "assignment" }}
                         options={
-                            controller.asgmtInfoData.isAdmin 
+                            controller.asgmtData.isAdmin 
                                 ? [
-                                    { text: "수정하기", textColor: "white", onClick: () => {} },
+                                    { text: "수정하기", textColor: "white", onClick: () => navigate(`/${LinkEnum.ASGMT}/${controller.asgmtData.code}/${LinkEnum.UPDATE}`) },
                                     { text: "삭제하기", textColor: "var(--red)", onClick: () => controller.setDeleteAsgmtOpen(true) }
                                   ]
                                 : []
@@ -42,21 +45,21 @@ export const AsgmtDetail = () => {
                             <AsgmtInfoWrapper>
                                 <AsgmtInfoContent>
                                     <AsgmtInfo>
-                                        <AsgmtInfoText>{format(controller.asgmtInfoData.createdAt, "yyyy.MM.dd")}</AsgmtInfoText>
+                                        <AsgmtInfoText>{format(controller.asgmtData.createdAt, "yyyy.MM.dd")}</AsgmtInfoText>
                                         <AsgmtInfoTextWrapper>
                                             <FaRegCircleCheck size={17} color="var(--primary)" />
                                             <AsgmtInfoText>제출한 과제</AsgmtInfoText>
                                         </AsgmtInfoTextWrapper>
                                     </AsgmtInfo>
 
-                                    <AsgmtInfoTitle>{controller.asgmtInfoData.title}</AsgmtInfoTitle>
+                                    <AsgmtInfoTitle>{controller.asgmtData.title}</AsgmtInfoTitle>
 
-                                    <AsgmtInfoPre>{controller.asgmtInfoData.content}</AsgmtInfoPre>
+                                    <AsgmtInfoPre>{controller.asgmtData.content}</AsgmtInfoPre>
                                 </AsgmtInfoContent>
 
-                                <AsgmtLinkWrapper onClick={() => window.open(controller.asgmtInfoData.linkUrl, "_blank")}>
-                                    <HiOutlineLink size={16} color="#0075FF" />
-                                    <AsgmtInfoText className="link">{controller.asgmtInfoData.linkName}</AsgmtInfoText>
+                                <AsgmtLinkWrapper onClick={() => window.open(controller.asgmtData.linkUrl, "_blank")}>
+                                    <HiOutlineLink size={16} color="#0075FF" className="shrink-0 mt-1" />
+                                    <AsgmtInfoText className="link">{controller.asgmtData.linkName}</AsgmtInfoText>
                                 </AsgmtLinkWrapper>
                             </AsgmtInfoWrapper>
 

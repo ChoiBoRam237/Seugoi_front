@@ -29,7 +29,7 @@ export const useControlStudyUpdate = () => {
 
     const [updateOpen, setUpdateOpen] = useState<boolean>(false); // 스터디 수정 모달 오픈
 
-    // 특정 스터디 상세 조회 api 훅
+    // 특정 스터디 상세 조회 hook
     const {
         studyDetailLoading,
         studyData,

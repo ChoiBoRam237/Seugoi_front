@@ -5,9 +5,10 @@ import styled from "styled-components";
  */
 
 export const DetailContainer = styled.div`
+    flex: 1;
+    position: relative;
     width: 100%;
     height: 100%;
-    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     row-gap: 1.375rem;

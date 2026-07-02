@@ -19,7 +19,7 @@ export const useControlStudyDetail = () => {
     const [deleteStudyOpen, setDeleteStudyOpen] = useState<boolean>(false); // 스터디 삭제 확인 팝업
     const [exitStudyOpen, setExitStudyOpen] = useState<boolean>(false); // 스터디 탈퇴 확인 팝업
     
-    // 특정 스터디 상세 조회 api 훅
+    // 특정 스터디 상세 조회 hook
     const {
         studyDetailLoading,
         studyData,

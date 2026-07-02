@@ -52,6 +52,7 @@ export const AsgmtInfoTextWrapper = styled.div`
 export const AsgmtInfoText = styled.p`
     font-size: 0.875rem;
     color: var(--primary);
+    text-align: start;
 
     &.link { color: #0075FF; }
     &.error { color: var(--red); }
@@ -70,7 +71,7 @@ export const AsgmtInfoPre = styled.pre`
 
 export const AsgmtLinkWrapper = styled.button`
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     column-gap: 0.25rem;
 `;
 

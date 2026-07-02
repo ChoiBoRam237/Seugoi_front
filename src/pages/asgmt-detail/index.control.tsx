@@ -9,6 +9,7 @@ import { postAsgmtApi } from "./_api/POST";
 import { IAsgmtComment } from "./index.type";
 import { deleteAsgmtApi } from "./_api/DELETE";
 import { LinkEnum } from "@/meta/link";
+import { useAsgmtDetail } from "@/hooks/_api/useAsgmtDetail";
 
 /**
  * @brief 과제 상세 컨트롤
@@ -20,7 +21,6 @@ export const useControlAsgmtDetail = () => {
     const [comment, setComment] = useState<string>(""); // 댓글 내용
     const [imageList, setImageList] = useState<File[]>([]); // 이미지 파일
     const [previewImgList, setPreviewImgList] = useState<string[]>([]); // 미리보기 이미지 파일
-    const [asgmtInfoData, setAsgmtInfoData] = useState<IStudyBoard>();
     const [asgmtComment, setAsgmtComment] = useState<IAsgmtComment>({
         submitted: false,
         comments: [],
@@ -28,16 +28,11 @@ export const useControlAsgmtDetail = () => {
     
     const [deleteAsgmtOpen, setDeleteAsgmtOpen] = useState<boolean>(false); // 과제 삭제 확인 팝업
 
-    // 특정 과제 상세 조회 api
+    // 특정 과제 상세 조회 hook
     const {
-        data: asgmtData,
-        isLoading: asgmtLoading,
-        isFetching: asgmtFetching
-    } = useQuery({
-        queryKey: ["asgmtDetail"],
-        queryFn: () => getAsgmtApi.getAsgmtDetail(Number(params.asgmtCode)!),
-        enabled: !!params.asgmtCode,
-    });
+        asgmtLoading,
+        asgmtData
+    } = useAsgmtDetail({ asgmtCode: Number(params.asgmtCode) });
 
     // 과제 댓글 조회 api
     const {
@@ -93,11 +88,7 @@ export const useControlAsgmtDetail = () => {
     }
 
     useEffect(() => {
-        if(asgmtData) setAsgmtInfoData(asgmtData);
-    }, [asgmtData]);
-
-    useEffect(() => {
-        if(asgmtCommentData) setAsgmtComment(asgmtCommentData);
+        if (asgmtCommentData) setAsgmtComment(asgmtCommentData);
     }, [asgmtCommentData]);
 
     return {
@@ -106,8 +97,8 @@ export const useControlAsgmtDetail = () => {
         previewImgList, setPreviewImgList,
 
         studyCode: params.studyCode,
-        isLoading: (asgmtLoading || asgmtFetching) || (asgmtCommentLoading || asgmtCommentFetching),
-        asgmtInfoData,
+        isLoading: asgmtLoading || (asgmtCommentLoading || asgmtCommentFetching),
+        asgmtData,
         asgmtComment,
 
         deleteAsgmtOpen, setDeleteAsgmtOpen,

@@ -1,11 +1,11 @@
+import { TabsProps } from "antd";
 import { LinkEnum } from "@/meta/link";
 import { CommonArrowHeader } from "@/components/common/header/arrow";
-import { useControlGenerateBoard } from "./index.control";
-import { TabsProps } from "antd";
 import { LayoutInnerWrapper } from "@/components/layout";
-import { BoardTabs } from "./indexStyles";
 import { Notice } from "./_components/notice";
 import { Assignment } from "./_components/assignment";
+import { useControlGenerateBoard } from "./index.control";
+import { BoardTabs } from "./indexStyles";
 
 /**
  * @brief 과제/공지 생성
@@ -35,6 +35,7 @@ export const GenerateBoard = () => {
         <LayoutInnerWrapper className="arrow">
             <CommonArrowHeader
                 moveUrl={`/${LinkEnum.STUDY}/${controller.studyCode}`}
+                urlState={{ state: "assignment" }}
                 text="과제/공지 추가"
             />
             

@@ -16,7 +16,13 @@ import { SearchProps } from './index';
 export const useControlSearch = (props: SearchProps) => {
     const [searchKeywordList, setSearchKeywordList] = useState<ISearchKeyword[]>([]); // 최근 검색어 데이터
     const [searchStudyList, setSearchStudyList] = useState<IStudy[]>([]); // 검색된 스터디 데이터
-    const { latestLoading, latestStudyList, onFetchLatestStudy } = useLatestStudy({ enabled: props.keyword === "" });
+    
+    // 최근 조회한 스터디 조회 hook
+    const {
+        latestLoading,
+        latestStudyList,
+        onFetchLatestStudy
+    } = useLatestStudy({ enabled: props.keyword === "" });
 
     // 최근 검색어 조회 api
     const {
@@ -85,7 +91,7 @@ export const useControlSearch = (props: SearchProps) => {
 
     // 최근 검색어 useEffect
     useEffect(() => {
-        if(searchKeywordData) setSearchKeywordList(searchKeywordData);
+        if (searchKeywordData) setSearchKeywordList(searchKeywordData);
     }, [searchKeywordData]);
 
     // 스터디 검색 useEffect

@@ -8,7 +8,7 @@ export const postGenerateBoardApi = {
     // 과제 생성
     postGenerateAsgmt: async (studyCode: number, formData: FormData) =>
         await (
-            await privateBase.post(`/v3/api/study/asgmt/generate`, formData, {
+            await privateBase.post(`/v3/api/asgmt/generate`, formData, {
                 params: { studyCode },
                 headers: {
                     "Content-Type": "multipart/form-data",

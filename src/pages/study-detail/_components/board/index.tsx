@@ -4,13 +4,16 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaRegCircleXmark } from "react-icons/fa6";
 import { HiOutlineLink } from "react-icons/hi";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import { BoardNoticeLine, BoardList, BoardNoticeItem, BoardPre, BoardNoticeTitle, BoardNoticeTitleWrapper, BoardAsgmtItem, BoardAsgmtInfoWrapper, BoardAsgmtInfoText, BoardAsgmtInfoTextWrapper, BoardAsgmtImageList, BoardAsgmtImage, BoardAsgmtImageWrapper, BoardAsgmtImageCount, BoardAsgmtTitle, BoardAsgmtLinkWrapper, BoardAsgmtLinkText, BoardAsgmtInfoContainer, BoardNoticeTitleContainer } from "./indexStyles";
+import { FiPlus } from "react-icons/fi";
+import { BoardNoticeLine, BoardList, BoardNoticeItem, BoardPre, BoardNoticeTitle, BoardNoticeTitleWrapper, BoardAsgmtItem, BoardAsgmtInfoWrapper, BoardAsgmtInfoText, BoardAsgmtInfoTextWrapper, BoardAsgmtImageList, BoardAsgmtImage, BoardAsgmtImageWrapper, BoardAsgmtImageCount, BoardAsgmtTitle, BoardAsgmtLinkWrapper, BoardAsgmtLinkText, BoardAsgmtInfoContainer, BoardNoticeTitleContainer, BoardAddButton } from "./indexStyles";
 import { useControlBoard } from "./index.control";
 import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { LinkEnum } from "@/meta/link";
 import { CommonOverflowMenu } from "@/components/common/overflow-menu";
 import { CommonConfirmModal } from "@/components/molecules/modal/confirm";
+import { BASE_URL } from "@/util/api";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 /**
  * @brief 과제 보기
@@ -23,6 +26,7 @@ interface Props {
 
 export const Board = (props: Props) => {
     const navigate = useNavigate();
+    const windowSize = useWindowSize();
     const controller = useControlBoard({ studyCode: props.studyCode });
 
     return (
@@ -74,16 +78,22 @@ export const Board = (props: Props) => {
                 
                                 <BoardPre>{item.content}</BoardPre>
                 
-                                {item.imageList.length > 0 && (
-                                    <BoardAsgmtImageList>
-                                        {item.imageList.slice(2).map((image, index) => (
-                                            <BoardAsgmtImageWrapper key={index}>
-                                                <BoardAsgmtImage $src={image} />
-                                                {item.imageList.length > 3 && <BoardAsgmtImageCount>+ {(item.imageList.length - 3)}</BoardAsgmtImageCount>}
-                                            </BoardAsgmtImageWrapper>
-                                        ))}
-                                    </BoardAsgmtImageList>
-                                )}
+                                {item.imgList.length > 0 && (() => {
+                                    const count = windowSize.width > 767 ? 5
+                                        : windowSize.width > 376 ? 4
+                                        : 3
+
+                                    return (
+                                        <BoardAsgmtImageList>
+                                            {item.imgList.slice(0, count).map((image, index) => (
+                                                <BoardAsgmtImageWrapper key={index}>
+                                                    <BoardAsgmtImage $src={`${BASE_URL}${image.imgUrl}`} />
+                                                    {item.imgList.length > count && <BoardAsgmtImageCount className="count">+ {(item.imgList.length - count)}</BoardAsgmtImageCount>}
+                                                </BoardAsgmtImageWrapper>
+                                            ))}
+                                        </BoardAsgmtImageList>   
+                                    )
+                                })()}
                             </BoardAsgmtInfoContainer>
             
                             <BoardAsgmtLinkWrapper
@@ -100,6 +110,12 @@ export const Board = (props: Props) => {
                     )}
                 </React.Fragment>
             ))}
+
+            {props.isAdmin && (
+                <BoardAddButton onClick={() => navigate(`/${LinkEnum.STUDY}/${props.studyCode}/${LinkEnum.GENERATE}`)}>
+                    <FiPlus size={35} color="white" />
+                </BoardAddButton>
+            )}
 
             <CommonConfirmModal
                 open={controller.deleteNoticeOpen}

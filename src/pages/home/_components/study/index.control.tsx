@@ -41,11 +41,11 @@ export const useControlStudy = () => {
     }
 
     useEffect(() => {
-        if(trendStudyData) setTrendStudyList(trendStudyData);
+        if (trendStudyData) setTrendStudyList(trendStudyData);
     }, [trendStudyData]);
 
     useEffect(() => {
-        if(quoteData) setTodayQuote(quoteData);
+        if (quoteData) setTodayQuote(quoteData);
     }, [quoteData]);
 
     return {

@@ -18,6 +18,7 @@ import { MypageBookmarkStudy } from "./pages/mypage/_page/bookmark";
 import { AsgmtDetail } from "./pages/asgmt-detail";
 import { StudyUpdate } from "./pages/study-update";
 import { NoticeUpdate } from "./pages/notice-update";
+import { AsgmtUpdate } from "./pages/asgmt-update";
 
 const router = createBrowserRouter([
     {
@@ -70,7 +71,11 @@ const router = createBrowserRouter([
                             }
                         ]
                     },
-                    {
+                    { // 과제 수정
+                        path: `/${LinkEnum.ASGMT}/:asgmtCode/${LinkEnum.UPDATE}`,
+                        element: <AsgmtUpdate />
+                    },
+                    { // 공지 수정
                         path: `/${LinkEnum.NOTICE}/:noticeCode/${LinkEnum.UPDATE}`,
                         element: <NoticeUpdate />
                     },

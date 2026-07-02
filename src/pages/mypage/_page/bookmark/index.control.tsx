@@ -20,7 +20,7 @@ export const useControlMypageBookmarkStudy = () => {
     });
 
     useEffect(() => {
-        if(data) setBookmarkList(data);
+        if (data) setBookmarkList(data);
     }, [data]);
 
     return {

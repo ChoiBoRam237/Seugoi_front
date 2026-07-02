@@ -8,7 +8,7 @@ export interface IStudy {
     categories: string[]; // 카테고리
     progress: number; // 과제 진행상황
     dDay: number; // 디데이
-    bgImageUrl: string; // 배경 이미지
+    bgImageUrl: ICommonImgResponse; // 배경 이미지
     isAdmin: boolean; // 관리자인지 아닌지
     isBookmark: boolean; // 찜 여부
 }
@@ -28,7 +28,7 @@ export interface IStudyDetail {
     peopleCount: string; // 모집 인원
     joinCount: number; // 가입한 인원수
     isJoined: boolean; // 가입 여부
-    bgImageUrl: string; // 배경 이미지
+    bgImageUrl: ICommonImgResponse; // 배경 이미지
 }
 
 export interface ICommonStudyResponse {
@@ -39,12 +39,18 @@ export interface ICommonStudyResponse {
 
 export interface IStudyBoard {
     code: number;
+    studyCode: number;
     target: string; // notice or asgmt
     title: string; // 제목
     content: string; // 내용
     linkName?: string; // 링크제목
     linkUrl?: string; // 링크 url
-    imageList?: string[]; // 이미지 리스트
+    imgList?: ICommonImgResponse[]; // 이미지 리스트
     isAdmin: boolean; // 관리자 여부
     createdAt: Date; // 생성 날짜
+}
+
+export interface ICommonImgResponse {
+    code: number;
+    imgUrl: string;
 }

@@ -16,6 +16,11 @@ export const BoardTabs = styled(Tabs)`
         }
     }
 
+    .ant-tabs-body {
+        display: flex !important;
+        height: 100% !important;
+    }
+
     .ant-tabs-tab {
         width: 8.6875rem !important;
         height: 2.5625rem !important;
@@ -44,10 +49,14 @@ export const BoardTabs = styled(Tabs)`
 
     .ant-tabs-content-holder,
     .ant-tabs-content,
-    .ant-tabs-tabpane-active {
+    .ant-tabs-content-active {
         flex: 1 !important;
         display: flex !important;
         flex-direction: column !important;
+    }
+
+    .ant-tabs-content-hidden {
+        display: none !important;
     }
 `;
 

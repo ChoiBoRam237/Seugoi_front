@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { queryClient } from "@/queryClient";
-import { useEffect, useState } from "react";
 import { IStudy } from "@/components/types/study";
 import { commonApi } from "@/util/_api";
 
@@ -29,7 +29,7 @@ export const useLatestStudy = (props: Props) => {
     }
 
     useEffect(() => {
-        if(data) setLatestStudyList(data);
+        if (data) setLatestStudyList(data);
     }, [data]);
 
     return {

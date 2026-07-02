@@ -18,6 +18,12 @@ export const commonApi = {
             await privateBase.get(`/v3/api/study/${studyCode}`)
         ).data.data,
 
+    // 특정 과제 상세 조회
+    getAsgmtDetail: async (asgmtCode: number) =>
+        await (
+            await privateBase.get(`/v3/api/asgmt/${asgmtCode}`)
+        ).data.data,
+
     // 최근 조회한 스터디 조회
     getStudyView: async () =>
         await (

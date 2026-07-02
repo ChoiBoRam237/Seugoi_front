@@ -23,7 +23,13 @@ export const Mypage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { userName, userProfileUrl } = useUserInfo();
-    const { latestLoading, latestStudyList, onFetchLatestStudy } = useLatestStudy({});
+
+    // 최근 조회한 스터디 조회 hook
+    const {
+        latestLoading,
+        latestStudyList,
+        onFetchLatestStudy
+    } = useLatestStudy({});
 
     // 로그아웃
     const onLogout = () => {

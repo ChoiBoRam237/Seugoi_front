@@ -42,7 +42,7 @@ export const useControlBoard = ({ studyCode }: { studyCode: number }) => {
     }
 
     useEffect(() => {
-        if(data) setBoardList(data);
+        if (data) setBoardList(data);
     }, [data]);
 
     return {

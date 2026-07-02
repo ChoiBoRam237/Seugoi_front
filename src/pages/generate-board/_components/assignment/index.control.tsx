@@ -13,16 +13,11 @@ export const useControlAssignment = () => {
     const [content, setContent] = useState<string>(""); // 내용
     const [linkName, setLinkName] = useState<string>(""); // 링크 이름
     const [linkUrl, setLinkUrl] = useState<string>(""); // 링크 주소
-    const [imageList, setImageList] = useState<File[]>([]); // 이미지 리스트
-    const [previewImageList, setPreviewImageList] = useState<string[]>([]); // 이미지 미리보기 리스트
+    const [imgList, setImgList] = useState<File[]>([]); // 이미지 리스트
+    const [previewImgList, setPreviewImgList] = useState<string[]>([]); // 이미지 미리보기 리스트
 
     const [successData, setSuccessData] = useState<ICommonStudyResponse>(); // 과제 생성 후 응답 데이터
     const [successOpen, setSuccessOpen] = useState<boolean>(false); // 성공 팝업
-
-    // 필수 작성 데이터 모두 입력했으면 true, 아니면 false
-    const dataCheck = () => {
-        return title !== "" && content !== "";
-    }
 
     // 과제 생성 api
     const postGenerateAsgmt = useMutation({
@@ -32,7 +27,7 @@ export const useControlAssignment = () => {
             content !== "" && formData.append("content", content);
             linkName !== "" && formData.append("linkName", linkName);
             linkUrl !== "" && formData.append("linkUrl", linkUrl);
-            imageList.length > 0 && imageList.forEach(image => formData.append("imageList", image));
+            imgList.length > 0 && imgList.forEach(img => formData.append("imageList", img));
             return postGenerateBoardApi.postGenerateAsgmt(Number(studyCode), formData);
         },
         onSuccess: (data) => {
@@ -53,11 +48,10 @@ export const useControlAssignment = () => {
         content, setContent,
         linkName, setLinkName,
         linkUrl, setLinkUrl,
-        imageList, setImageList,
-        previewImageList, setPreviewImageList,
-        dataCheck,
+        imgList, setImgList,
+        previewImgList, setPreviewImgList,
 
-        isLoading: postGenerateAsgmt.isPaused,
+        isLoading: postGenerateAsgmt.isPending,
         successData,
         successOpen, setSuccessOpen,
         onGenerate,
