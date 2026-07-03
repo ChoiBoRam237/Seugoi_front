@@ -75,19 +75,19 @@ export const Board = (props: Props) => {
                                             ) : item.notSubmitCount === -1 ? (
                                                 <BoardAsgmtInfoText className="dark">가입자 없음</BoardAsgmtInfoText>
                                             ) : (
-                                                <BoardAsgmtInfoText>{item.notSubmitCount}명 미제출</BoardAsgmtInfoText>
+                                                <BoardAsgmtInfoText className="error">{item.notSubmitCount}명 미제출</BoardAsgmtInfoText>
                                             )}
                                         </>
                                     ) : (
                                         <>
                                             {item.submitted ? (
                                                 <BoardAsgmtInfoTextWrapper>
-                                                    <FaRegCircleXmark size={17} color="#DD5252" />
-                                                    <BoardAsgmtInfoText className="error">제출한 과제</BoardAsgmtInfoText>
+                                                    <FaRegCircleCheck size={17} color="var(--primary)" />
+                                                    <BoardAsgmtInfoText>제출한 과제</BoardAsgmtInfoText>
                                                 </BoardAsgmtInfoTextWrapper>
                                             ) : (
                                                 <BoardAsgmtInfoTextWrapper>
-                                                    <FaRegCircleXmark size={17} color="#DD5252" />
+                                                    <FaRegCircleXmark size={17} color="var(--red)" />
                                                     <BoardAsgmtInfoText className="error">미제출한 과제</BoardAsgmtInfoText>
                                                 </BoardAsgmtInfoTextWrapper>
                                             )}

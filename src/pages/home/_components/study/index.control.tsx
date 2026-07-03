@@ -12,6 +12,17 @@ import { IQuote } from "../../index.type";
 export const useControlStudy = () => {
     const [trendStudyList, setTrendStudyList] = useState<IStudy[]>([]);
     const [todayQuote, setTodayQuote] = useState<IQuote>();
+    const [studyingList, setStudyingList] = useState<IStudy[]>([]);
+
+    // 현재 진행 중인 스터디 조회 api
+    const {
+        data: studyingData,
+        isLoading: studyingLoading,
+        isFetching: studyingFetching
+    } = useQuery({
+        queryKey: ["studying"],
+        queryFn: () => getHomeApi.getStudying()
+    });
 
     // 요즘 뜨고있는 스터디 조회 api
     const {
@@ -41,6 +52,10 @@ export const useControlStudy = () => {
     }
 
     useEffect(() => {
+        if (studyingData) setStudyingList(studyingData);
+    }, [studyingData]);
+
+    useEffect(() => {
         if (trendStudyData) setTrendStudyList(trendStudyData);
     }, [trendStudyData]);
 
@@ -49,7 +64,8 @@ export const useControlStudy = () => {
     }, [quoteData]);
 
     return {
-        isLoading: (trendStudyLoading || trendStudyFetching) || (quoteLoading || quoteFetching),
+        isLoading: (studyingLoading || studyingFetching) || (trendStudyLoading || trendStudyFetching) || (quoteLoading || quoteFetching),
+        studyingList,
         trendStudyList, onTrendStudyFetch,
         todayQuote,
     }

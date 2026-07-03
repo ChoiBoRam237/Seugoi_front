@@ -1,20 +1,18 @@
 import { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
-import { queryClient } from "@/queryClient";
 import { postStudyDetailApi } from "../../_api/POST";
+import { StudyProps } from ".";
 
 /**
  * @brief 스터디 상세페이지 컨트롤
  */
 
-export const useControlStudy = ({ studyCode }: { studyCode: number }) => {
+export const useControlStudy = (props: StudyProps) => {
     // 스터디 가입 api
     const postStudyJoin = useMutation({
-        mutationFn: () => postStudyDetailApi.postStudyJoin(studyCode),
-        onSuccess: (data) => {
-            queryClient.invalidateQueries({
-                queryKey: ["studyDetail", String(data.studyCode)],
-            });
+        mutationFn: () => postStudyDetailApi.postStudyJoin(props.studyCode),
+        onSuccess: () => {
+            props.onFetch();
         },
         onError: (error: AxiosError) => {
             console.error("스터디 가입 에러 : ", error);

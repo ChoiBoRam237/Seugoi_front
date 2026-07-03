@@ -56,7 +56,7 @@ export const CommonChatInput = (props: Props) => {
                                             props.setPreviewImgList(prev => prev.filter((_, i) => i !== index));
                                         }}
                                     >
-                                        <HiMiniXMark size={24} color="white" />
+                                        <HiMiniXMark size={24} color="var(--red)" />
                                     </button>
 
                                     <ChatInputImage $src={image} />

@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { BASE_URL } from "@/util/api";
+import { LinkEnum } from "@/meta/link";
 import { CommonArrowHeader } from "@/components/common/header/arrow";
 import { CommonStudyInfoAndImage } from "@/components/common/study-info&image";
 import { CommonLoading } from "@/components/common/loading";
@@ -9,7 +10,6 @@ import { Study } from "./_components/study";
 import { Board } from "./_components/board";
 import { useControlStudyDetail } from "./index.control";
 import { DetailContainer, DetailSelection, DetailSelectWrapper, DetailWrapper } from "./indexStyles";
-import { LinkEnum } from "@/meta/link";
 
 /**
  * @brief 스터디 상세페이지
@@ -73,6 +73,7 @@ export const StudyDetail = () => {
                                     studyData={controller.studyData}
                                     adminData={controller.adminData}
                                     isAdmin={controller.isAdmin}
+                                    onFetch={controller.onFetchStudyDetail}
                                 />
                             ) : (
                                 <Board
@@ -100,7 +101,7 @@ export const StudyDetail = () => {
                 setOpen={controller.setExitStudyOpen}
                 title="이 스터디를 탈퇴하시겠습니까?"
                 content="업로드한 과제 댓글 포함 모든 정보는 복구할 수 없습니다."
-                onOk={() => {}}
+                onOk={controller.onExitStudy}
             />
         </>
     )

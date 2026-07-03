@@ -18,4 +18,12 @@ export const deleteStudyDetailApi = {
         await (
             await privateBase.delete(`/v3/api/notice/${noticeCode}`)
         ).data.data,
+
+    // 스터디 탈퇴
+    deleteExitStudy: async (studyCode: number) =>
+        await (
+            await privateBase.delete(`/v3/api/study/exit`, {
+                params: { studyCode }
+            })
+        ).data.data,
 }

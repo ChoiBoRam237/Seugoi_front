@@ -8,6 +8,7 @@ export const CommentContainer = styled.div`
     width: 100%;
     display: flex;
     column-gap: 1rem;
+    margin-bottom: 3.75rem;
 `;
 
 export const CommentProfile = styled.div<{ $src: string }>`
@@ -134,7 +135,7 @@ export const CommentImageList = styled.div`
 export const CommentImageWrapper = styled.div`
     position: relative;
     display: flex;
-    width: 17.5rem;
+    width: 16.5rem;
     height: 9.375rem;
     flex-shrink: 0;
 `;

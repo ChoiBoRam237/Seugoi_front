@@ -11,8 +11,9 @@ import { CommonArrowHeader } from "@/components/common/header/arrow";
 import { LayoutInnerWrapper } from "@/components/layout";
 import { CommonChatInput } from "@/components/common/chat-input";
 import logoSad from "./_assets/logo-sad.svg";
-import { AsgmtCommentList, AsgmtCommentNoData, AsgmtCommentNoDataImg, AsgmtContainer, AsgmtInfo, AsgmtInfoContainer, AsgmtInfoContent, AsgmtInfoPre, AsgmtInfoText, AsgmtInfoTextWrapper, AsgmtInfoTitle, AsgmtInfoWrapper, AsgmtLine, AsgmtLinkWrapper } from "./indexStyles";
+import { AsgmtCommentList, AsgmtCommentNoData, AsgmtCommentNoDataImg, AsgmtContainer, AsgmtImageItem, AsgmtImageList, AsgmtInfo, AsgmtInfoContainer, AsgmtInfoContent, AsgmtInfoInnerWrapper, AsgmtInfoPre, AsgmtInfoText, AsgmtInfoTextWrapper, AsgmtInfoTitle, AsgmtInfoWrapper, AsgmtLine, AsgmtLinkWrapper } from "./indexStyles";
 import { useControlAsgmtDetail } from "./index.control";
+import { BASE_URL } from "@/util/api";
 
 /**
  * @brief 과제 상세
@@ -79,10 +80,23 @@ export const AsgmtDetail = () => {
                                     <AsgmtInfoPre>{controller.asgmtData.content}</AsgmtInfoPre>
                                 </AsgmtInfoContent>
 
-                                <AsgmtLinkWrapper onClick={() => window.open(controller.asgmtData.linkUrl, "_blank")}>
-                                    <HiOutlineLink size={16} color="#0075FF" className="shrink-0 mt-1" />
-                                    <AsgmtInfoText className="link">{controller.asgmtData.linkName}</AsgmtInfoText>
-                                </AsgmtLinkWrapper>
+                                <AsgmtInfoInnerWrapper>
+                                    {controller.asgmtData.imgList.length > 0 && (
+                                        <AsgmtImageList>
+                                            {controller.asgmtData.imgList.map((img, index) => (
+                                                <AsgmtImageItem
+                                                    key={index}
+                                                    $src={`${BASE_URL}${img.folderName}${img.imgUrl}`}
+                                                />
+                                            ))}
+                                        </AsgmtImageList>
+                                    )}
+
+                                    <AsgmtLinkWrapper onClick={() => window.open(controller.asgmtData.linkUrl, "_blank")}>
+                                        <HiOutlineLink size={16} color="#0075FF" className="shrink-0 mt-1" />
+                                        <AsgmtInfoText className="link">{controller.asgmtData.linkName}</AsgmtInfoText>
+                                    </AsgmtLinkWrapper>
+                                </AsgmtInfoInnerWrapper>
                             </AsgmtInfoWrapper>
 
                             <AsgmtLine />
@@ -106,22 +120,26 @@ export const AsgmtDetail = () => {
                             </AsgmtCommentNoData>
                         )}
                     </AsgmtContainer>
+
+                    <CommonChatInput
+                        isLoading={controller.isGenerateLoading}
+                        loadingText="과제 제출 중..."
+                        placeholder={
+                            controller.asgmtData.isAdmin
+                            ? "내용을 입력해 주세요! (이미지 최대 3장)"
+                            : "과제를 제출해주세요! (이미지 최대 3장)"
+                        }
+                        value={controller.comment}
+                        setValue={controller.setComment}
+                        previewImgList={controller.previewImgList}
+                        setPreviewImgList={controller.setPreviewImgList}
+                        setImageList={controller.setImageList}
+                        onSend={controller.onGenerateAsgmtComment}
+                    />
                 </LayoutInnerWrapper>
             ) : (
                 <CommonLoading />
             )}
-
-            <CommonChatInput
-                isLoading={controller.isGenerateLoading}
-                loadingText="과제 제출 중..."
-                placeholder="과제를 제출해주세요! (이미지 최대 3장)"
-                value={controller.comment}
-                setValue={controller.setComment}
-                previewImgList={controller.previewImgList}
-                setPreviewImgList={controller.setPreviewImgList}
-                setImageList={controller.setImageList}
-                onSend={controller.onGenerateAsgmtComment}
-            />
 
             <CommonConfirmModal
                 open={controller.deleteAsgmtOpen}

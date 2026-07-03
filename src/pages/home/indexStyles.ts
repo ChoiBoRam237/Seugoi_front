@@ -10,6 +10,7 @@ export const HomeContainer = styled.div`
     display: flex;
     padding: 0 1.5rem;
     padding-bottom: calc(4.125rem + 1.5rem);
+    margin-bottom: 3rem;
 `;
 
 export const StudyList = styled.div`

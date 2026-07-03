@@ -19,6 +19,12 @@ export const getHomeApi = {
             })
         ).data.data,
 
+    // 현재 진행 중인 스터디 조회
+    getStudying: async () =>
+        await (
+            await privateBase.get(`/v3/api/study/ing`)
+        ).data.data,
+
     // 요즘 뜨고있는 스터디 조회
     getStudyTrend: async () =>
         await (

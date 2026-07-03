@@ -26,7 +26,15 @@ export const AsgmtInfoWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    row-gap: 0.875rem;
+    row-gap: 0.75rem;
+`;
+
+export const AsgmtInfoInnerWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    overflow: hidden;
 `;
 
 export const AsgmtInfoContent = styled.div`
@@ -68,6 +76,42 @@ export const AsgmtInfoTitle = styled.p`
 export const AsgmtInfoPre = styled.pre`
     font-size: 0.875rem;
     color: white;
+`;
+
+export const AsgmtImageList = styled.div`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: 0.75rem;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+        width: 1rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        height: 3rem;
+        background-color: #4F4F4F;
+        border-radius: 3.125rem;
+        background-clip: padding-box;
+        border: 0.375rem solid transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+`;
+
+export const AsgmtImageItem = styled.div<{ $src: string }>`
+    width: 7.5rem;
+    height: 7.5rem;
+    border-radius: 0.625rem;
+    flex-shrink: 0;
+
+    background-image: ${({ $src }) => `url("${$src}")`};
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 `;
 
 export const AsgmtLinkWrapper = styled.button`

@@ -24,7 +24,8 @@ export const useControlStudyDetail = () => {
         studyDetailLoading,
         studyData,
         adminData,
-        isAdmin
+        isAdmin,
+        onFetchStudyDetail,
     } = useStudyDetail({ studyCode: params.studyCode });
 
     // 스터디 삭제 api
@@ -38,8 +39,25 @@ export const useControlStudyDetail = () => {
         },
     });
 
+    // 스터디 탈퇴 api
+    const deleteExitStudy = useMutation({
+        mutationFn: () => deleteStudyDetailApi.deleteExitStudy(Number(params.studyCode!)),
+        onSuccess: () => {
+            navigate(location?.state?.prevUrl ?? `/${LinkEnum.HOME}`);
+        },
+        onError: (error: AxiosError) => {
+            console.error("스터디 탈퇴 에러 : ", error);
+        }
+    });
+
+    // 스터디 삭제
     const onDeleteStudy = () => {
         deleteStudy.mutate();
+    }
+
+    // 스터디 탈퇴
+    const onExitStudy = () => {
+        deleteExitStudy.mutate();
     }
 
     return {
@@ -53,5 +71,7 @@ export const useControlStudyDetail = () => {
         exitStudyOpen, setExitStudyOpen,
 
         onDeleteStudy,
+        onExitStudy,
+        onFetchStudyDetail,
     }
 }

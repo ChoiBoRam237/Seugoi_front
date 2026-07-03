@@ -53,6 +53,21 @@ export const StudyingItem = styled.div`
     height: 9.5625rem;
 `;
 
+export const StudyingNoData = styled.div`
+    width: 100%;
+    height: 9.5625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.9375rem;
+    background-color: rgba(37, 40, 49, 0.88);
+
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+`;
+
+// 오늘의 명언
 export const StudyTodayPhraseContainer = styled.div`
     width: 100%;
     display: flex;

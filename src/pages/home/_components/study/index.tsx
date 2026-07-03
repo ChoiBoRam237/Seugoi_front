@@ -5,10 +5,11 @@ import { motion } from "motion/react";
 import { BiSolidBarChartAlt2 } from "react-icons/bi";
 import { CommonStudyItem } from "@/components/common/study-item";
 import { StudyList } from "../../indexStyles";
-import { StudyPopularContainer, StudyPopularTitle, StudyPopularTitleWrapper, StudyingInnerWrapper, StudyingItem, StudyingSwiper, StudyingTitle, StudyingWrapper, StudyTodayPhraseContent, StudyTodayPhraseLine, StudyTodayPhraseTitle, StudyContainer, StudyTodayPhraseContainer, StudyTodayPhraseWrapper } from "./indexStyles";
+import { StudyPopularContainer, StudyPopularTitle, StudyPopularTitleWrapper, StudyingInnerWrapper, StudyingItem, StudyingSwiper, StudyingTitle, StudyingWrapper, StudyTodayPhraseContent, StudyTodayPhraseLine, StudyTodayPhraseTitle, StudyContainer, StudyTodayPhraseContainer, StudyTodayPhraseWrapper, StudyingNoData } from "./indexStyles";
 import { useControlStudy } from "./index.control";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { CommonLoading } from "@/components/common/loading";
+import { CommonStudyingItem } from "@/components/common/studying-item";
 
 /**
  * @brief 스터디
@@ -32,19 +33,29 @@ export const Study = (props: Props) => {
                         <StudyingTitle>{props.userName}님이<br />현재 진행중인 스터디</StudyingTitle>
         
                         <StudyingInnerWrapper>
-                            <StudyingSwiper
-                                slidesPerView={1.15} // 다음 카드가 살짝 보임
-                                spaceBetween={16}
-                                centeredSlides={false}
-                            >
-                                {Array.from({ length: 3 }).map((_, index) => (
-                                    <SwiperSlide key={index}>
-                                        <StudyingItem>
-                                            {/* <CommonStudyingItem /> */}
-                                        </StudyingItem>
-                                    </SwiperSlide>
-                                ))}
-                            </StudyingSwiper>
+                            {controller.studyingList.length > 0 ? (
+                                <StudyingSwiper
+                                    slidesPerView={1.15} // 다음 카드가 살짝 보임
+                                    spaceBetween={16}
+                                    centeredSlides={false}
+                                >
+                                    {controller.studyingList.map((study, index) => (
+                                        <SwiperSlide key={index}>
+                                            <StudyingItem>
+                                                <CommonStudyingItem
+                                                    item={study}
+                                                    prevUrl={location.pathname}
+                                                />
+                                            </StudyingItem>
+                                        </SwiperSlide>
+                                    ))}
+                                </StudyingSwiper>
+                            ) : (
+                                <StudyingNoData>
+                                    현재 진행 중인 스터디가<br />
+                                    존재하지 않습니다.
+                                </StudyingNoData>
+                            )}
         
                             {controller.todayQuote && (
                                 <StudyTodayPhraseContainer>
