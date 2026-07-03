@@ -87,7 +87,7 @@ export const Board = (props: Props) => {
                                         <BoardAsgmtImageList>
                                             {item.imgList.slice(0, count).map((image, index) => (
                                                 <BoardAsgmtImageWrapper key={index}>
-                                                    <BoardAsgmtImage $src={`${BASE_URL}${image.imgUrl}`} />
+                                                    <BoardAsgmtImage $src={`${BASE_URL}${image.folderName}${image.imgUrl}`} />
                                                     {item.imgList.length > count && <BoardAsgmtImageCount className="count">+ {(item.imgList.length - count)}</BoardAsgmtImageCount>}
                                                 </BoardAsgmtImageWrapper>
                                             ))}

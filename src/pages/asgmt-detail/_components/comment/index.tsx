@@ -1,23 +1,51 @@
+import React, { useEffect, useRef } from "react";
 import { format } from "date-fns";
+import { Spin, Upload } from "antd";
+import { RcFile, UploadChangeParam, UploadFile } from "antd/es/upload";
+import { LoadingOutlined } from "@ant-design/icons";
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import { BASE_URL } from "@/util/api";
+import { HiMiniXMark } from "react-icons/hi2";
+import { BsImages } from "react-icons/bs";
 import { CommonOverflowMenu } from "@/components/common/overflow-menu";
-import { IAsgmtCommentItem } from "../../index.type";
-import { CommentContainer, CommentProfile, CommentWrapper, CommentContent, CommentContentText, CommentInfo, CommentInfoName, CommentInfoDate, CommentImage, CommentImageList } from "./indexStyles";
-import { useControlComment } from "./index.control";
 import { CommonConfirmModal } from "@/components/molecules/modal/confirm";
+import { IAsgmtCommentItem } from "../../index.type";
 import { ImgView } from "../img-view";
+import { CommentContainer, CommentProfile, CommentWrapper, CommentContent, CommentContentText, CommentInfo, CommentInfoName, CommentInfoDate, CommentImage, CommentImageList, CommentContentTextarea, CommentRemoveButton, CommentImageWrapper, CommentSaveWrapper, CommentSaveButton, CommentUploadImage } from "./indexStyles";
+import { useControlComment } from "./index.control";
 
 /**
  * @breif 과제 댓글
  */
 
-interface Props {
+export interface CommentProps {
     data: IAsgmtCommentItem;
 }
 
-export const Comment = (props: Props) => {
-    const controller = useControlComment();
+export const Comment = (props: CommentProps) => {
+    const controller = useControlComment(props);
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+    const resizeTextarea = (textarea: HTMLTextAreaElement) => {
+        textarea.style.height = "40px";
+    
+        const maxHeight = 5 * 16;
+        const height = Math.min(textarea.scrollHeight, maxHeight);
+    
+        textarea.style.height = `${height}px`;
+        textarea.style.overflowY =
+            textarea.scrollHeight > maxHeight ? "auto" : "hidden";
+    };
+
+    const onTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        resizeTextarea(e.target);
+        controller.setValue(e.target.value);
+    }
+
+    useEffect(() => {
+        if (textareaRef.current) {
+            resizeTextarea(textareaRef.current);
+        }
+    }, [props.data.comment, controller.status]);
 
     return (
         <CommentContainer>
@@ -42,7 +70,7 @@ export const Comment = (props: Props) => {
                                         open={controller.overflowMenuOpen}
                                         setOpen={controller.setOverflowMenuOpen}
                                         options={[
-                                            { text: "수정하기", textColor: "white", onClick: () => {} },
+                                            { text: "수정하기", textColor: "white", onClick: () => controller.setStatus("update") },
                                             { text: "삭제하기", textColor: "var(--red)", onClick: () => controller.setDeleteAsgmtCmtOpen(true) },
                                         ]}
                                         className="small"
@@ -52,36 +80,135 @@ export const Comment = (props: Props) => {
                         </div>
                     </CommentInfo>
 
-                    <CommentContentText>{props.data.comment}</CommentContentText>
+                    {controller.status === "read" ? (
+                        <CommentContentText>{props.data.comment}</CommentContentText>
+                    ) : (
+                        <CommentContentTextarea
+                            id="comment"
+                            ref={textareaRef}
+                            placeholder="댓글 내용을 입력하세요"
+                            value={controller.value}
+                            onChange={onTextareaChange}
+                        />
+                    )}
                 </CommentContent>
 
                 <CommentImageList>
-                    {props.data.imgList.map((img, index) => (
-                        <CommentImage
-                            key={index}
-                            $src={`${BASE_URL}${img}`}
-                            onClick={() => {
-                                controller.setImgViewStartIndex(index);
-                                controller.setImgViewOpen(true);
-                            }}
-                        />
+                    {controller.previewImgList.map((img, index) => (
+                        <CommentImageWrapper>
+                            <CommentImage
+                                key={index}
+                                $src={img}
+                                onClick={() => {
+                                    controller.setImgViewStartIndex(index);
+                                    controller.setImgViewOpen(true);
+                                }}
+                            />
+
+                            {controller.status === "update" && (
+                                <CommentRemoveButton
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        e.preventDefault();
+
+                                        controller.setImgList(
+                                            controller.imgList.filter(prev => prev !== controller.imgList[index])
+                                        );
+
+                                        controller.setPreviewImgList(
+                                            controller.previewImgList.filter(prev => prev !== img)
+                                        );
+                                    }}
+                                >
+                                    <HiMiniXMark size={16} color="white" />
+                                </CommentRemoveButton>
+                            )}
+                        </CommentImageWrapper>
                     ))}
+
+                    {(controller.status === "update" && 
+                        controller.previewImgList.length < 3) && (
+                            <CommentImageWrapper>
+                                <Upload
+                                    name="image-file"
+                                    accept="image/*"
+                                    showUploadList={false}
+                                    multiple={true}
+                                    maxCount={3}
+                                    className="w-full! h-full! cursor-pointer"
+                                    style={{ width: "100%", height: "100%" }}
+                                    beforeUpload={(file) => {
+                                        const isLt10MB = file.size / 1024 / 1024 <= 10;
+                                
+                                        if (!isLt10MB) {
+                                            alert("이미지 용량은 10MB 이하만 업로드 가능합니다.");
+                                            return Upload.LIST_IGNORE;
+                                        }
+        
+                                        if (!file.type.includes("image")) {
+                                            alert("이미지만 업로드가 가능합니다.")
+                                            return Upload.LIST_IGNORE;
+                                        }
+                                
+                                        return false; // 자동 업로드 방지
+                                    }}
+                                    onChange={(info: UploadChangeParam<UploadFile>) => {
+                                        const file = info.file as RcFile;
+                                        controller.setImgList(prev => [ ...prev, file ]);
+                                        controller.setPreviewImgList(prev => [ ...prev, URL.createObjectURL(file) ]);
+                                    }}
+                                >
+                                    <CommentUploadImage>
+                                        <BsImages size={20} color="white" />
+                                        {`이미지 추가하기 (${controller.previewImgList.length} / 3)`}
+                                    </CommentUploadImage>
+                                </Upload>
+                            </CommentImageWrapper>
+                    )}
                 </CommentImageList>
+
+                {controller.status === "update" && (
+                    <CommentSaveWrapper>
+                        <CommentSaveButton
+                            disabled={controller.updateLoading}
+                            onClick={controller.onUpdateAsgmtCmt}
+                        >
+                            {!controller.updateLoading ? 
+                                "수정하기" 
+                            : (
+                                <Spin indicator={<LoadingOutlined spin style={{ color: "white", fontSize: "0.875rem" }} />} />
+                            )}
+                        </CommentSaveButton>
+                    </CommentSaveWrapper>
+                )}
             </CommentWrapper>
+
+            <CommonConfirmModal
+                open={controller.updateOpen}
+                setOpen={controller.setUpdateOpen}
+                title="댓글이 수정되었습니다!"
+                content=""
+                cancelTitle="계속 수정하기"
+                onOk={() => {
+                    controller.onFetch();
+                    controller.setStatus("read");
+                    controller.setUpdateOpen(false);
+                }}
+            />
 
             <CommonConfirmModal
                 open={controller.deleteAsgmtCmtOpen}
                 setOpen={controller.setDeleteAsgmtCmtOpen}
                 title="댓글을 삭제하시겠습니까?"
                 content="삭제할 댓글과 관련된 정보는 복구할 수 없습니다."
-                onOk={() => controller.onDeleteAsgmtCmt(props.data.code)}
+                onOk={controller.onDeleteAsgmtCmt}
             />
 
             <ImgView
                 open={controller.imgViewOpen}
                 setOpen={controller.setImgViewOpen}
                 startIndex={controller.imgViewStartIndex}
-                imgUrlList={props.data.imgList}
+                imgUrlList={props.data.imgList.map(item => item.imgUrl)}
             />
         </CommentContainer>
     )

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AxiosError } from "axios";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { IStudyBoard } from "@/components/types/study";
 import { queryClient } from "@/queryClient";
 import { getAsgmtApi } from "./_api/GET";
 import { postAsgmtApi } from "./_api/POST";

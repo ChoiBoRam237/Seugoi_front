@@ -67,7 +67,7 @@ export const useControlStudyUpdate = () => {
 
     useEffect(() => {
         if (studyData) {
-            setPreviewBgFile(`${BASE_URL}${studyData.bgImageUrl}`);
+            setPreviewBgFile(`${BASE_URL}${studyData.bgImg.folderName}${studyData.bgImg.imgUrl}`);
             setStudyName(studyData.studyName);
             setCategories([...studyData.categories, ...Array(Math.max(0, 3 - studyData.categories.length)).fill("")]);
             setPeopleCount(studyData.peopleCount);

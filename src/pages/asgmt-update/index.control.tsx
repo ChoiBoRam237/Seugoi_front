@@ -52,16 +52,6 @@ export const useControlAsgmtUpdate = () => {
         patchAsgmtUpdate.mutate();
     }
 
-    useEffect(() => {
-        if (!asgmtData) return;
-
-        const removeCodeList = asgmtData.imgList
-            .filter(origin => !previewImgList.includes(`${BASE_URL}${origin.imgUrl}`))
-            .map(item => item.code);
-
-        setRemoveImgCodeList(removeCodeList);
-    }, [asgmtData, previewImgList]);
-
 
     useEffect(() => {
         if (asgmtData) {
@@ -70,10 +60,20 @@ export const useControlAsgmtUpdate = () => {
             setLinkName(asgmtData.linkName);
             setLinkUrl(asgmtData.linkUrl);
             setPreviewImgList(
-                asgmtData.imgList.map(item => `${BASE_URL}${item.imgUrl}`)
+                asgmtData.imgList.map(item => `${BASE_URL}${item.folderName}${item.imgUrl}`)
             );
         }
     }, [asgmtData]);
+
+    useEffect(() => {
+        if (!asgmtData) return;
+
+        const removeCodeList = asgmtData.imgList
+            .filter(origin => !previewImgList.includes(`${BASE_URL}${origin.folderName}${origin.imgUrl}`))
+            .map(item => item.code);
+
+        setRemoveImgCodeList(removeCodeList);
+    }, [asgmtData, previewImgList]);
 
     return {
         title, setTitle,

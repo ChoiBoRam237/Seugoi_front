@@ -14,6 +14,6 @@ export const deleteAsgmtApi = {
     // 과제 댓글 삭제
     deleteAsgmtCmt: async (asgmtCmtCode: number) =>
         await (
-            await privateBase.delete(`/v3/api/asgmt/comment/${asgmtCmtCode}`)
+            await privateBase.delete(`/v3/api/asgmt-cmt/${asgmtCmtCode}`)
         ).data.data,
 }

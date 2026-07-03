@@ -30,7 +30,7 @@ export const CommonStudyItem = (props: Props) => {
                 });
             }}
         >
-            <StudyImg $src={`${BASE_URL}${props.item.bgImageUrl}`} />
+            <StudyImg $src={`${BASE_URL}${props.item.bgImg.folderName}${props.item.bgImg.imgUrl}`} />
             <StudyGradient />
             <StudyContent>
                 <StudyTitle>{props.item.studyName}</StudyTitle>

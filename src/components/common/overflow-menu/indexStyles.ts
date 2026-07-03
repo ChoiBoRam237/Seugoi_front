@@ -17,6 +17,7 @@ export const MenuContainer = styled.div`
     border-radius: 0.625rem;
     background-color: #1B1D24;
     box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.75);
+    z-index: 1;
 
     &.small { width: 8.0625rem; }
 `;

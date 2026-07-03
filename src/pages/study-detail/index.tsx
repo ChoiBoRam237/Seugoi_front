@@ -42,7 +42,7 @@ export const StudyDetail = () => {
                         />
 
                         <CommonStudyInfoAndImage
-                            bgImage={`${BASE_URL}${controller.studyData.bgImageUrl.imgUrl}`}
+                            bgImage={`${BASE_URL}${controller.studyData.bgImg.folderName}${controller.studyData.bgImg.imgUrl}`}
                             studyName={controller.studyData.studyName}
                             categories={controller.studyData.categories}
                             dDay={controller.studyData.dDay}

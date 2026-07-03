@@ -44,6 +44,7 @@ export const CommonOverflowMenu = (props: Props) => {
                         e.stopPropagation();
                         e.preventDefault();
                         option.onClick();
+                        props.setOpen(false);
                     }}
                 >
                     {option.text}
