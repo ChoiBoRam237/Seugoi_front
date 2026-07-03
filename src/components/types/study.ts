@@ -47,6 +47,8 @@ export interface IStudyBoard {
     linkUrl?: string; // 링크 url
     imgList?: ICommonImgResponse[]; // 이미지 리스트
     isAdmin: boolean; // 관리자 여부
+    submitted: boolean; // 과제 제출 여부
+    notSubmitCount: number; // 과제 미제출한 인원수
     createdAt: Date; // 생성 날짜
 }
 

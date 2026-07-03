@@ -14,6 +14,7 @@ export const CommentProfile = styled.div<{ $src: string }>`
     width: 2.3125rem;
     height: 2.3125rem;
     border-radius: 50%;
+    flex-shrink: 0;
 
     background-image: ${({ $src }) => `url("${$src}")`};
     background-size: contain;
@@ -26,6 +27,7 @@ export const CommentWrapper = styled.div`
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
+    overflow: hidden;
 `;
 
 export const CommentContent = styled.div`
@@ -33,6 +35,21 @@ export const CommentContent = styled.div`
     display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
+`;
+
+export const CommentAdminButton = styled.button`
+    width: 4.4375rem;
+    height: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+
+    font-size: 0.875rem;
+    color: white;
+
+    &.true { background-color: var(--disabled); }
+    &.false { background-color: var(--primary); }
 `;
 
 export const CommentContentText = styled.pre`
@@ -117,16 +134,15 @@ export const CommentImageList = styled.div`
 export const CommentImageWrapper = styled.div`
     position: relative;
     display: flex;
-    width: 100%;
-    max-width: 17.5rem;
+    width: 17.5rem;
     height: 9.375rem;
+    flex-shrink: 0;
 `;
 
 export const CommentImage = styled.div<{ $src: string }>`
     width: 100%;
     height: 100%;
     border-radius: 0.375rem;
-    flex-shrink: 0;
     cursor: pointer;
 
     background-image: ${({ $src }) => `url("${$src}")`};

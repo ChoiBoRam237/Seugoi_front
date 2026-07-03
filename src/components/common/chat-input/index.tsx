@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Spin, Upload } from "antd";
-import { UploadChangeParam, UploadFile } from "antd/es/upload";
+import { RcFile } from "antd/es/upload";
 import { IoMdImage } from "react-icons/io";
 import { IoSend } from "react-icons/io5";
 import { HiMiniXMark } from "react-icons/hi2";
@@ -79,7 +79,6 @@ export const CommonChatInput = (props: Props) => {
                             accept="image/*"
                             showUploadList={false}
                             multiple={true}
-                            maxCount={3}
                             className="w-7! h-7!"
                             beforeUpload={(file) => {
                                 const isLt10MB = file.size / 1024 / 1024 <= 10;
@@ -96,21 +95,20 @@ export const CommonChatInput = (props: Props) => {
                         
                                 return false; // 자동 업로드 방지
                             }}
-                            onChange={(info: UploadChangeParam<UploadFile>) => {
-                                const validFiles = info.fileList.filter(file => {
-                                    const isLt10MB = (file.size ?? 0) / 1024 / 1024 <= 10;
-                                    return isLt10MB && file.originFileObj;
+                            onChange={(info) => {
+                                const file = info.file as RcFile;
+                            
+                                if (!file) return;
+                            
+                                props.setImageList(prev => {
+                                    if (prev.length >= 3) return prev;
+                                    return [...prev, file];
                                 });
-                                
-                                props.setImageList(
-                                    validFiles.map(file => file.originFileObj as File)
-                                );
-
-                                props.setPreviewImgList(
-                                    validFiles.map(file =>
-                                        URL.createObjectURL(file.originFileObj as File)
-                                    )
-                                );
+                            
+                                props.setPreviewImgList(prev => {
+                                    if (prev.length >= 3) return prev;
+                                    return [...prev, URL.createObjectURL(file)];
+                                });
                             }}
                         >
                             <button>

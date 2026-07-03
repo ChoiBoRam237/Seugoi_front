@@ -15,4 +15,12 @@ export const postAsgmtApi = {
                 },
             })
         ).data.data,
+
+    // 과제 댓글 확인 처리 (관리자용)
+    postAsgmtCmtSubmit: async (asgmtCmtCode: number) =>
+        await (
+            await privateBase.post(`/v3/api/asgmt-cmt/submit`, null, {
+                params: { asgmtCmtCode } 
+            })
+        ).data.data,
 }

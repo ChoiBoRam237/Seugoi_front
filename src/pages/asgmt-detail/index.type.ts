@@ -14,6 +14,7 @@ export interface IAsgmtCommentItem {
     comment: string;
     imgList: ICommonImgResponse[];
     isWriter: boolean;
+    isAdminCheck: boolean;
     createdAt: Date;
     user: {
         code: number;

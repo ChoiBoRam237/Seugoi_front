@@ -90,9 +90,8 @@ export const BoardAsgmtInfoText = styled.p`
     font-size: 0.75rem;
     color: var(--primary);
 
-    &.error {
-        color: var(--red);
-    }
+    &.dark { color: var(--gray-dark); }
+    &.error { color: var(--red); }
 `;
 
 export const BoardAsgmtTitle = styled.p`

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { format } from "date-fns";
 import { Spin, Upload } from "antd";
-import { RcFile, UploadChangeParam, UploadFile } from "antd/es/upload";
+import { RcFile } from "antd/es/upload";
 import { LoadingOutlined } from "@ant-design/icons";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { HiMiniXMark } from "react-icons/hi2";
@@ -10,7 +10,7 @@ import { CommonOverflowMenu } from "@/components/common/overflow-menu";
 import { CommonConfirmModal } from "@/components/molecules/modal/confirm";
 import { IAsgmtCommentItem } from "../../index.type";
 import { ImgView } from "../img-view";
-import { CommentContainer, CommentProfile, CommentWrapper, CommentContent, CommentContentText, CommentInfo, CommentInfoName, CommentInfoDate, CommentImage, CommentImageList, CommentContentTextarea, CommentRemoveButton, CommentImageWrapper, CommentSaveWrapper, CommentSaveButton, CommentUploadImage } from "./indexStyles";
+import { CommentContainer, CommentProfile, CommentWrapper, CommentContent, CommentContentText, CommentInfo, CommentInfoName, CommentInfoDate, CommentImage, CommentImageList, CommentContentTextarea, CommentRemoveButton, CommentImageWrapper, CommentSaveWrapper, CommentSaveButton, CommentUploadImage, CommentAdminButton } from "./indexStyles";
 import { useControlComment } from "./index.control";
 
 /**
@@ -18,6 +18,7 @@ import { useControlComment } from "./index.control";
  */
 
 export interface CommentProps {
+    isAdmin: boolean;
     data: IAsgmtCommentItem;
 }
 
@@ -60,7 +61,37 @@ export const Comment = (props: CommentProps) => {
                         </div>
 
                         <div className="flex items-center gap-1">
-                            <CommentContentText className="success">체크 완료</CommentContentText>
+                            {props.isAdmin ? (
+                                <>
+                                    {!props.data.isWriter && (
+                                        <CommentAdminButton
+                                            disabled={props.data.isAdminCheck || controller.submitLoading}
+                                            className={props.data.isAdminCheck.toString()}
+                                            onClick={controller.onSubmit}
+                                        >
+                                            {props.data.isAdminCheck ? (
+                                                <span>확인 완료</span>
+                                            ) : (
+                                                <span>확인</span>
+                                            )}
+                                        </CommentAdminButton>
+                                    )}
+                                </>
+                            ) : (
+                                <>
+                                    {!controller.submitLoading ? (
+                                        <>
+                                            {props.data.isAdminCheck ? (
+                                                <CommentContentText className="success">체크 완료</CommentContentText>
+                                            ) : (
+                                                <CommentContentText className="wait">체크 대기중</CommentContentText>
+                                            )}
+                                        </>
+                                    ) : (
+                                        <Spin indicator={<LoadingOutlined spin style={{ color: "white", fontSize: "0.75rem" }} />} />
+                                    )}
+                                </>
+                            )}
                             
                             {props.data.isWriter && (
                                 <div className="relative cursor-pointer" onClick={() => controller.setOverflowMenuOpen(true)}>
@@ -95,9 +126,8 @@ export const Comment = (props: CommentProps) => {
 
                 <CommentImageList>
                     {controller.previewImgList.map((img, index) => (
-                        <CommentImageWrapper>
+                        <CommentImageWrapper key={index}>
                             <CommentImage
-                                key={index}
                                 $src={img}
                                 onClick={() => {
                                     controller.setImgViewStartIndex(index);
@@ -152,10 +182,20 @@ export const Comment = (props: CommentProps) => {
                                 
                                         return false; // 자동 업로드 방지
                                     }}
-                                    onChange={(info: UploadChangeParam<UploadFile>) => {
+                                    onChange={(info) => {
                                         const file = info.file as RcFile;
-                                        controller.setImgList(prev => [ ...prev, file ]);
-                                        controller.setPreviewImgList(prev => [ ...prev, URL.createObjectURL(file) ]);
+                                    
+                                        if (!file) return;
+                                    
+                                        controller.setImgList(prev => {
+                                            if (prev.length >= 3) return prev;
+                                            return [...prev, file];
+                                        });
+                                    
+                                        controller.setPreviewImgList(prev => {
+                                            if (prev.length >= 3) return prev;
+                                            return [...prev, URL.createObjectURL(file)];
+                                        });
                                     }}
                                 >
                                     <CommentUploadImage>

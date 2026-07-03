@@ -1,6 +1,6 @@
 import React from "react";
 import { Upload } from "antd";
-import { RcFile, UploadChangeParam, UploadFile } from "antd/es/upload";
+import { RcFile } from "antd/es/upload";
 import { HiOutlineLink } from "react-icons/hi";
 import { FiPlus } from "react-icons/fi";
 import { GoXCircle } from "react-icons/go";
@@ -95,7 +95,6 @@ export const CommonAsgmtForm = (props: Props) => {
                             accept="image/*"
                             showUploadList={false}
                             multiple={true}
-                            maxCount={5}
                             beforeUpload={(file) => {
                                 const isLt10MB = file.size / 1024 / 1024 <= 10;
                         
@@ -111,10 +110,20 @@ export const CommonAsgmtForm = (props: Props) => {
                         
                                 return false; // 자동 업로드 방지
                             }}
-                            onChange={(info: UploadChangeParam<UploadFile>) => {
+                            onChange={(info) => {
                                 const file = info.file as RcFile;
-                                props.setImgList(prev => [ ...prev, file ]);
-                                props.setPreviewImgList(prev => [ ...prev, URL.createObjectURL(file) ]);
+                            
+                                if (!file) return;
+                            
+                                props.setImgList(prev => {
+                                    if (prev.length >= 3) return prev;
+                                    return [...prev, file];
+                                });
+                            
+                                props.setPreviewImgList(prev => {
+                                    if (prev.length >= 3) return prev;
+                                    return [...prev, URL.createObjectURL(file)];
+                                });
                             }}
                         >
                             <AsgmtFormImageUplaod>

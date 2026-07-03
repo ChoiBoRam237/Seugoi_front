@@ -54,6 +54,7 @@ export const AsgmtInfoText = styled.p`
     color: var(--primary);
     text-align: start;
 
+    &.dark { color: var(--gray-dark); }
     &.link { color: #0075FF; }
     &.error { color: var(--red); }
 `;

@@ -68,10 +68,31 @@ export const Board = (props: Props) => {
                                 <BoardAsgmtInfoWrapper>
                                     <BoardAsgmtInfoText>{format(item.createdAt, "yyyy.MM.dd")}</BoardAsgmtInfoText>
                 
-                                    <BoardAsgmtInfoTextWrapper>
-                                        <FaRegCircleXmark size={17} color="#DD5252" />
-                                        <BoardAsgmtInfoText className="error">미제출 과제</BoardAsgmtInfoText>
-                                    </BoardAsgmtInfoTextWrapper>
+                                    {item.isAdmin ? (
+                                        <>
+                                            {item.notSubmitCount === 0 ? (
+                                                <BoardAsgmtInfoText>전원 제출</BoardAsgmtInfoText>
+                                            ) : item.notSubmitCount === -1 ? (
+                                                <BoardAsgmtInfoText className="dark">가입자 없음</BoardAsgmtInfoText>
+                                            ) : (
+                                                <BoardAsgmtInfoText>{item.notSubmitCount}명 미제출</BoardAsgmtInfoText>
+                                            )}
+                                        </>
+                                    ) : (
+                                        <>
+                                            {item.submitted ? (
+                                                <BoardAsgmtInfoTextWrapper>
+                                                    <FaRegCircleXmark size={17} color="#DD5252" />
+                                                    <BoardAsgmtInfoText className="error">제출한 과제</BoardAsgmtInfoText>
+                                                </BoardAsgmtInfoTextWrapper>
+                                            ) : (
+                                                <BoardAsgmtInfoTextWrapper>
+                                                    <FaRegCircleXmark size={17} color="#DD5252" />
+                                                    <BoardAsgmtInfoText className="error">미제출한 과제</BoardAsgmtInfoText>
+                                                </BoardAsgmtInfoTextWrapper>
+                                            )}
+                                        </>
+                                    )}
                                 </BoardAsgmtInfoWrapper>
                 
                                 <BoardAsgmtTitle>{item.title}</BoardAsgmtTitle>

@@ -6,6 +6,7 @@ import { deleteAsgmtApi } from "../../_api/DELETE";
 import { CommentProps } from ".";
 import { BASE_URL } from "@/util/api";
 import { patchAsgmtDetail } from "../../_api/PATCH";
+import { postAsgmtApi } from "../../_api/POST";
 
 /**
  * @brief 과제 댓글 컨트롤
@@ -53,12 +54,31 @@ export const useControlComment = (props: CommentProps) => {
         },
     });
 
+    // 과제 댓글 확인 처리 api
+    const postAsgmtCmtSubmit = useMutation({
+        mutationFn: () => postAsgmtApi.postAsgmtCmtSubmit(props.data.code),
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["asgmtDetail"] });
+            queryClient.invalidateQueries({ queryKey: ["asgmtComment"] });
+        },
+        onError: (error: AxiosError) => {
+            console.error("과제 댓글 확인 처리 에러 : ", error);
+        }
+    });
+
+    // 댓글 업데이트
     const onUpdateAsgmtCmt = () => {
         updateAsgmtCmt.mutate();
     }
 
+    // 댓글 삭제
     const onDeleteAsgmtCmt = () => {
         deleteAsgmtCmt.mutate();
+    }
+
+    // 댓글 확인 처리
+    const onSubmit = () => {
+        postAsgmtCmtSubmit.mutate();
     }
 
     const onFetch = () => {
@@ -104,5 +124,8 @@ export const useControlComment = (props: CommentProps) => {
         onUpdateAsgmtCmt,
         onDeleteAsgmtCmt,
         onFetch,
+
+        submitLoading: postAsgmtCmtSubmit.isPending,
+        onSubmit,
     }
 }

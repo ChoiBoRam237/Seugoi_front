@@ -46,10 +46,32 @@ export const AsgmtDetail = () => {
                                 <AsgmtInfoContent>
                                     <AsgmtInfo>
                                         <AsgmtInfoText>{format(controller.asgmtData.createdAt, "yyyy.MM.dd")}</AsgmtInfoText>
-                                        <AsgmtInfoTextWrapper>
-                                            <FaRegCircleCheck size={17} color="var(--primary)" />
-                                            <AsgmtInfoText>제출한 과제</AsgmtInfoText>
-                                        </AsgmtInfoTextWrapper>
+                                        
+                                        {controller.asgmtData.isAdmin ? (
+                                            <>
+                                                {controller.asgmtData.notSubmitCount === 0 ? (
+                                                    <AsgmtInfoText>전원 제출</AsgmtInfoText>
+                                                ) : controller.asgmtData.notSubmitCount === -1 ? (
+                                                    <AsgmtInfoText className="dark">가입자 없음</AsgmtInfoText>
+                                                ) : (
+                                                    <AsgmtInfoText>{controller.asgmtData.notSubmitCount}명 미제출</AsgmtInfoText>
+                                                )}
+                                            </>
+                                        ) : (
+                                            <>
+                                                {controller.asgmtComment.submitted ? (
+                                                    <AsgmtInfoTextWrapper>
+                                                        <FaRegCircleCheck size={17} color="var(--primary)" />
+                                                        <AsgmtInfoText>제출한 과제</AsgmtInfoText>
+                                                    </AsgmtInfoTextWrapper>
+                                                ) : (
+                                                    <AsgmtInfoTextWrapper>
+                                                        <FaRegCircleXmark size={17} color="var(--red)" />
+                                                        <AsgmtInfoText className="error">미제출한 과제</AsgmtInfoText>
+                                                    </AsgmtInfoTextWrapper>
+                                                )}
+                                            </>
+                                        )}
                                     </AsgmtInfo>
 
                                     <AsgmtInfoTitle>{controller.asgmtData.title}</AsgmtInfoTitle>
@@ -70,7 +92,11 @@ export const AsgmtDetail = () => {
                         {(controller.asgmtComment.submitted && controller.asgmtComment.comments?.length > 0) ? (
                             <AsgmtCommentList>
                                 {controller.asgmtComment.comments?.map((comment, index) => (
-                                    <Comment key={index} data={comment} />
+                                    <Comment
+                                        key={index}
+                                        isAdmin={controller.asgmtData.isAdmin}
+                                        data={comment}
+                                    />
                                 ))}
                             </AsgmtCommentList>
                         ) : (
