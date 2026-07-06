@@ -22,6 +22,7 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 interface Props {
     studyCode: number;
     isAdmin: boolean;
+    isStudying: boolean;
 }
 
 export const Board = (props: Props) => {
@@ -132,7 +133,7 @@ export const Board = (props: Props) => {
                 </React.Fragment>
             ))}
 
-            {props.isAdmin && (
+            {(props.isAdmin && props.isStudying) && (
                 <BoardAddButton onClick={() => navigate(`/${LinkEnum.STUDY}/${props.studyCode}/${LinkEnum.GENERATE}`)}>
                     <FiPlus size={35} color="white" />
                 </BoardAddButton>

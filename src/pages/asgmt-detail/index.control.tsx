@@ -3,12 +3,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AxiosError } from "axios";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { queryClient } from "@/queryClient";
+import { LinkEnum } from "@/meta/link";
+import { useAsgmtDetail } from "@/hooks/_api/useAsgmtDetail";
 import { getAsgmtApi } from "./_api/GET";
 import { postAsgmtApi } from "./_api/POST";
 import { IAsgmtComment } from "./index.type";
 import { deleteAsgmtApi } from "./_api/DELETE";
-import { LinkEnum } from "@/meta/link";
-import { useAsgmtDetail } from "@/hooks/_api/useAsgmtDetail";
 
 /**
  * @brief 과제 상세 컨트롤
@@ -22,7 +22,7 @@ export const useControlAsgmtDetail = () => {
     const [previewImgList, setPreviewImgList] = useState<string[]>([]); // 미리보기 이미지 파일
     const [asgmtComment, setAsgmtComment] = useState<IAsgmtComment>({
         submitted: false,
-        comments: [],
+        comments: []
     }); // 댓글 목록
     
     const [deleteAsgmtOpen, setDeleteAsgmtOpen] = useState<boolean>(false); // 과제 삭제 확인 팝업

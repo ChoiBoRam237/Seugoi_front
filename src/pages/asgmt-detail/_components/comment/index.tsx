@@ -20,6 +20,7 @@ import { useControlComment } from "./index.control";
 export interface CommentProps {
     isAdmin: boolean;
     data: IAsgmtCommentItem;
+    isStudying: boolean;
 }
 
 export const Comment = (props: CommentProps) => {
@@ -93,7 +94,7 @@ export const Comment = (props: CommentProps) => {
                                 </>
                             )}
                             
-                            {props.data.isWriter && (
+                            {(props.data.isWriter && props.isStudying) && (
                                 <div className="relative cursor-pointer" onClick={() => controller.setOverflowMenuOpen(true)}>
                                     <HiOutlineDotsVertical size={16} color="white" />
 

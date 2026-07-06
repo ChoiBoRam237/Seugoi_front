@@ -14,6 +14,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 interface Props {
     isLoading: boolean;
     loadingText: string;
+    disabled?: boolean;
     placeholder: string;
     value: string;
     setValue: React.Dispatch<React.SetStateAction<string>>;
@@ -70,6 +71,7 @@ export const CommonChatInput = (props: Props) => {
                             id="chat-input"
                             ref={textareaRef}
                             placeholder={props.placeholder}
+                            disabled={props.disabled}
                             value={props.value}
                             onChange={onTextareaChange}
                         />
@@ -79,6 +81,7 @@ export const CommonChatInput = (props: Props) => {
                             accept="image/*"
                             showUploadList={false}
                             multiple={true}
+                            disabled={props.disabled}
                             className="w-7! h-7!"
                             beforeUpload={(file) => {
                                 const isLt10MB = file.size / 1024 / 1024 <= 10;
@@ -111,12 +114,15 @@ export const CommonChatInput = (props: Props) => {
                                 });
                             }}
                         >
-                            <button>
+                            <button disabled={props.disabled}>
                                 <IoMdImage size={28} color="#D2D7E8" />
                             </button>
                         </Upload>
 
-                        <button onClick={props.onSend}>
+                        <button
+                            disabled={props.disabled}
+                            onClick={props.onSend}
+                        >
                             <IoSend size={26} color="#D2D7E8" />
                         </button>
                     </ChatInputWrapper>

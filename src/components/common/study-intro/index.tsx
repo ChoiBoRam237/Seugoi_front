@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { IoPerson } from "react-icons/io5";
+import { IoWarningOutline } from "react-icons/io5";
 import { PiInfinityBold } from "react-icons/pi";
 import { FaExclamation } from "react-icons/fa";
 import { FaLightbulb } from "react-icons/fa";
-import { IntroContainer, IntroContentBox, IntroContentBoxInput, IntroContentBoxInputWrapper, IntroContentInnerWrapper, IntroContentPre, IntroContentSubTitle, IntroContentTextarea, IntroContentWrapper, IntroPeopleCount, IntroPeopleCountText, IntroProfile, IntroProfileImg, IntroProfileText, IntroStudyTitle, IntroStudyTitlePre } from "./indexStyles";
+import { IntroContainer, IntroContentBox, IntroContentBoxInput, IntroContentBoxInputWrapper, IntroContentInnerWrapper, IntroContentPre, IntroContentSubTitle, IntroContentTextarea, IntroContentWrapper, IntroPeopleCount, IntroPeopleCountText, IntroProfile, IntroProfileImg, IntroProfileText, IntroStudyTitle, IntroStudyTitlePre, IntroWarning } from "./indexStyles";
 
 /**
  * @brief 스터디 정보 입력 및 읽기전용 컴포넌트
@@ -23,7 +24,8 @@ interface Props {
     setDescription?: React.Dispatch<React.SetStateAction<string>>;
     recommend: string[]; // 추천글
     setRecommend?: React.Dispatch<React.SetStateAction<string[]>>;
-
+    isStudying: boolean; // 스터디 진행중인지
+    
     profileImgUrl: string; // 관리자 이미지
     userName: string; // 관리자 이름
 }
@@ -73,6 +75,20 @@ export const CommonStudyIntro = (props: Props) => {
 
     return (
         <IntroContainer>
+            {/* 스터디 경고 메시지 */}
+            {!props.isStudying && (
+                <IntroWarning>
+                    <div className="flex items-center gap-0.5">
+                        <IoWarningOutline size={16} color="var(--red)" />
+                        <span className="font-bold">이 스터디는 종료되었습니다</span>
+                    </div>
+                    <span>
+                        현재는 <span className="font-bold">읽기만 가능</span>하며, 
+                        <span className="font-bold">10일 후 자동으로 삭제</span>됩니다.
+                    </span>
+                </IntroWarning>
+            )}
+
             {/* 스터디 제목 */}
             {props.readOnly ? (
                 <IntroStudyTitlePre>{props.studyTitle}</IntroStudyTitlePre>

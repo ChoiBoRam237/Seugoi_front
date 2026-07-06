@@ -6,6 +6,7 @@ import { CommonStudyInfoAndImage } from "@/components/common/study-info&image";
 import { CommonLoading } from "@/components/common/loading";
 import { LayoutInnerWrapper } from "@/components/layout";
 import { CommonConfirmModal } from "@/components/molecules/modal/confirm";
+import { IStudyStatus } from "@/components/types/study";
 import { Study } from "./_components/study";
 import { Board } from "./_components/board";
 import { useControlStudyDetail } from "./index.control";
@@ -42,6 +43,7 @@ export const StudyDetail = () => {
                         />
 
                         <CommonStudyInfoAndImage
+                            isStudying={controller.studyData.studyStatus === IStudyStatus.STUDYING}
                             bgImage={`${BASE_URL}${controller.studyData.bgImg.folderName}${controller.studyData.bgImg.imgUrl}`}
                             studyName={controller.studyData.studyName}
                             categories={controller.studyData.categories}
@@ -79,6 +81,7 @@ export const StudyDetail = () => {
                                 <Board
                                     studyCode={controller.studyCode}
                                     isAdmin={controller.isAdmin}
+                                    isStudying={controller.studyData.status === IStudyStatus.STUDYING}
                                 />
                             )}
                         </DetailWrapper>

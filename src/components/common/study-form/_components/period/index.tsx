@@ -12,8 +12,8 @@ import { PeriodCalendar, PeriodCalendarDate, PeriodCalendarMonth, PeriodCalendar
  */
 
 interface Props {
-    endPeriod: string; // 종료기간
-    setEndPeriod: React.Dispatch<React.SetStateAction<string>>;
+    endPeriod: Date | null; // 종료기간
+    setEndPeriod: React.Dispatch<React.SetStateAction<Date | null>>;
     dDay: number | null;
     setDDay: React.Dispatch<React.SetStateAction<number | null>>;
     isDataCheck: boolean; // 필수 작성 데이터 체크
@@ -42,17 +42,15 @@ export const Period = (props: Props) => {
                             return;
                         }
 
-                        const selectedDate = format(value, "yyyy-MM-dd");
-
                         // 이미 선택한 날짜와 같은 날짜를 클릭할 경우 취소
-                        if (selectedDate === props.endPeriod) {
-                            props.setEndPeriod("");
+                        if (value === props.endPeriod) {
+                            props.setEndPeriod(null);
                             props.setDDay(null);
                             return;
                         }
 
                         const dday = differenceInDays(value, new Date());
-                        props.setEndPeriod(selectedDate);
+                        props.setEndPeriod(value);
                         props.setDDay(dday);
                     }}
                     hideWeekdays={true}

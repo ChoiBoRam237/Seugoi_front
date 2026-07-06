@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { IoBookmarkOutline } from "react-icons/io5";
 import { IoBookmark } from "react-icons/io5";
-import { IStudy } from "@/components/types/study";
+import { IStudy, IStudyStatus } from "@/components/types/study";
 import { LinkEnum } from "@/meta/link";
 import { BASE_URL } from "@/util/api";
-import { StudyBookmark, StudyContainer, StudyContent, StudyGradient, StudyImg, StudyText, StudyTitle } from "./indexStyles";
+import { StudyBookmark, StudyContainer, StudyContent, StudyDarkBg, StudyGradient, StudyImg, StudyText, StudyTitle } from "./indexStyles";
 import { useControlStudyItem } from "./index.control";
 import React from "react";
 
@@ -43,6 +43,10 @@ export const CommonStudyItem = (props: Props) => {
                     </StudyText>
                 )}
             </StudyContent>
+
+            {props.item.status === IStudyStatus.FINISHED && (
+                <StudyDarkBg>종료</StudyDarkBg>
+            )}
 
             {!props.item.isAdmin && (
                 <StudyBookmark

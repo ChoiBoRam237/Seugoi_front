@@ -11,6 +11,15 @@ export const IntroContainer = styled.div`
     row-gap: 1.25rem;
 `;
 
+export const IntroWarning = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -0.75rem;
+    
+    font-size: 0.875rem;
+    color: var(--red);
+`;
+
 // 스터디 제목
 export const IntroStudyTitle = styled.textarea`
     width: 100%;

@@ -4,6 +4,8 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { FaRegCircleXmark } from "react-icons/fa6";
 import { HiOutlineLink } from "react-icons/hi";
 import { LinkEnum } from "@/meta/link";
+import { BASE_URL } from "@/util/api";
+import { IStudyStatus } from "@/components/types/study";
 import { CommonLoading } from "@/components/common/loading";
 import { CommonConfirmModal } from "@/components/molecules/modal/confirm";
 import { Comment } from "./_components/comment";
@@ -13,7 +15,6 @@ import { CommonChatInput } from "@/components/common/chat-input";
 import logoSad from "./_assets/logo-sad.svg";
 import { AsgmtCommentList, AsgmtCommentNoData, AsgmtCommentNoDataImg, AsgmtContainer, AsgmtImageItem, AsgmtImageList, AsgmtInfo, AsgmtInfoContainer, AsgmtInfoContent, AsgmtInfoInnerWrapper, AsgmtInfoPre, AsgmtInfoText, AsgmtInfoTextWrapper, AsgmtInfoTitle, AsgmtInfoWrapper, AsgmtLine, AsgmtLinkWrapper } from "./indexStyles";
 import { useControlAsgmtDetail } from "./index.control";
-import { BASE_URL } from "@/util/api";
 
 /**
  * @brief 과제 상세
@@ -110,6 +111,7 @@ export const AsgmtDetail = () => {
                                         key={index}
                                         isAdmin={controller.asgmtData.isAdmin}
                                         data={comment}
+                                        isStudying={controller.asgmtData.studyStatus === IStudyStatus.STUDYING}
                                     />
                                 ))}
                             </AsgmtCommentList>
@@ -124,10 +126,13 @@ export const AsgmtDetail = () => {
                     <CommonChatInput
                         isLoading={controller.isGenerateLoading}
                         loadingText="과제 제출 중..."
+                        disabled={controller.asgmtData.studyStatus === IStudyStatus.FINISHED}
                         placeholder={
-                            controller.asgmtData.isAdmin
-                            ? "내용을 입력해 주세요! (이미지 최대 3장)"
-                            : "과제를 제출해주세요! (이미지 최대 3장)"
+                            controller.asgmtData.studyStatus === IStudyStatus.STUDYING
+                            ? controller.asgmtData.isAdmin
+                                ? "내용을 입력해 주세요! (이미지 최대 3장)"
+                                : "과제를 제출해주세요! (이미지 최대 3장)"
+                            : "스터디가 종료되어 입력할 수 없습니다."
                         }
                         value={controller.comment}
                         setValue={controller.setComment}

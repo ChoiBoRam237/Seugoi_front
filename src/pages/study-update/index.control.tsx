@@ -1,10 +1,10 @@
-import { useMutation } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { patchStudyUpdateApi } from "./_api/PATCH";
 import { useParams } from "react-router-dom";
 import { AxiosError } from "axios";
+import { useMutation } from "@tanstack/react-query";
 import { useStudyDetail } from "@/hooks/_api/useStudyDetail";
 import { BASE_URL } from "@/util/api";
+import { patchStudyUpdateApi } from "./_api/PATCH";
 
 /**
  * @brief 스터디 수정 컨트롤
@@ -18,7 +18,7 @@ export const useControlStudyUpdate = () => {
     const [categories, setCategories] = useState<string[]>(["", "", ""]); // 카테고리
     const [peopleCount, setPeopleCount] = useState<string>(""); // 모집 인원
 
-    const [endPeriod, setEndPeriod] = useState<string>(""); // 종료 기간
+    const [endPeriod, setEndPeriod] = useState<Date | null>(null); // 종료 기간
     const [dDay, setDDay] = useState<number | null>(null); // 종료 기간 디데이
 
     const [studyTitle, setStudyTitle] = useState<string>(""); // 스터디 제목

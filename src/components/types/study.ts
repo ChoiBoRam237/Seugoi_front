@@ -11,6 +11,7 @@ export interface IStudy {
     bgImg: ICommonImgResponse; // 배경 이미지
     isAdmin: boolean; // 관리자인지 아닌지
     isBookmark: boolean; // 찜 여부
+    status: IStudyStatus; // 스터디 상태
 }
 
 export interface IStudyDetail {
@@ -23,12 +24,13 @@ export interface IStudyDetail {
     description: string; // 설명글
     recommend: string[]; // 추천글
     progress: number; // 과제 진행상황
-    endPeriod: string; // 종료기간
+    endPeriod: Date; // 종료기간
     dDay: number; // 디데이
     peopleCount: string; // 모집 인원
     joinCount: number; // 가입한 인원수
     isJoined: boolean; // 가입 여부
     bgImg: ICommonImgResponse; // 배경 이미지
+    status: IStudyStatus; // 스터디 상태
 }
 
 export interface ICommonStudyResponse {
@@ -49,6 +51,7 @@ export interface IStudyBoard {
     isAdmin: boolean; // 관리자 여부
     submitted: boolean; // 과제 제출 여부
     notSubmitCount: number; // 과제 미제출한 인원수
+    studyStatus: IStudyStatus; // 스터디 상태
     createdAt: Date; // 생성 날짜
 }
 
@@ -56,4 +59,9 @@ export interface ICommonImgResponse {
     code: number;
     folderName: string;
     imgUrl: string;
+}
+
+export enum IStudyStatus {
+    STUDYING = "STUDYING",
+    FINISHED = "FINISHED",
 }
