@@ -19,6 +19,7 @@ import { AsgmtDetail } from "./pages/asgmt-detail";
 import { StudyUpdate } from "./pages/study-update";
 import { NoticeUpdate } from "./pages/notice-update";
 import { AsgmtUpdate } from "./pages/asgmt-update";
+import { ChatList } from "./pages/chat-list";
 
 const router = createBrowserRouter([
     {
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
                     { // 찜한 스터디
                         path: `/${LinkEnum.MYPAGE}/${LinkEnum.BOOKMARK}`,
                         element: <MypageBookmarkStudy />
+                    },
+                    {
+                        path: `/${LinkEnum.CHAT}`,
+                        element: <ChatList />
                     }
                 ]
             },

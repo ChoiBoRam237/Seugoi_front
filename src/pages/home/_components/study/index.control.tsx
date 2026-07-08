@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { IStudy } from "@/components/types/study";
-import { getHomeApi } from "../../_api/GET";
 import { queryClient } from "@/queryClient";
-import { IQuote } from "../../index.type";
+import { IStudy } from "@/components/types/study";
+import { IQuote } from "@/components/types/quote";
+import { getHomeApi } from "../../_api/GET";
 
 /**
  * @brief 스터디 컨트롤

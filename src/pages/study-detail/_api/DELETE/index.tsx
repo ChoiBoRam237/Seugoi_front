@@ -8,9 +8,7 @@ export const deleteStudyDetailApi = {
     // 스터디 삭제
     deleteStudy: async (studyCode: number) =>
         await (
-            await privateBase.delete(`/v3/api/study`, {
-                params: { studyCode }
-            })
+            await privateBase.delete(`/v3/api/study/${studyCode}`)
         ).data.data,
 
     // 공지 삭제

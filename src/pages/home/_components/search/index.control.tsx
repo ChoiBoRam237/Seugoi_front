@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { AxiosError } from 'axios';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { queryClient } from '@/queryClient';
-import { IStudy } from '@/components/types/study';
 import { useLatestStudy } from '@/hooks/_api/useLatestStudy';
+import { IStudy } from '@/components/types/study';
+import { ISearchKeyword } from '@/components/types/search';
 import { getHomeApi } from '../../_api/GET';
 import { deleteHomeApi } from '../../_api/DELETE';
-import { ISearchKeyword } from './index.type';
 import { SearchProps } from './index';
 
 /**

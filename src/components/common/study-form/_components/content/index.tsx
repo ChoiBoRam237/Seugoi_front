@@ -51,7 +51,7 @@ export const Content = (props: Props) => {
                     studyTitle={props.studyTitle}
                     setStudyTitle={props.setStudyTitle}
                     peopleCount={props.peopleCount}
-                    joinCount={1}
+                    joinCount={0}
                     summary={props.summary}
                     setSummary={props.setSummary}
                     introduction={props.introduction}

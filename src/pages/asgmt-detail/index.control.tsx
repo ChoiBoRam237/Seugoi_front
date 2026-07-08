@@ -5,9 +5,9 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { queryClient } from "@/queryClient";
 import { LinkEnum } from "@/meta/link";
 import { useAsgmtDetail } from "@/hooks/_api/useAsgmtDetail";
+import { IAsgmtComment } from "@/components/types/asgmt";
 import { getAsgmtApi } from "./_api/GET";
 import { postAsgmtApi } from "./_api/POST";
-import { IAsgmtComment } from "./index.type";
 import { deleteAsgmtApi } from "./_api/DELETE";
 
 /**

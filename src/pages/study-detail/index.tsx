@@ -43,7 +43,7 @@ export const StudyDetail = () => {
                         />
 
                         <CommonStudyInfoAndImage
-                            isStudying={controller.studyData.studyStatus === IStudyStatus.STUDYING}
+                            isStudying={controller.studyData.status === IStudyStatus.STUDYING}
                             bgImage={`${BASE_URL}${controller.studyData.bgImg.folderName}${controller.studyData.bgImg.imgUrl}`}
                             studyName={controller.studyData.studyName}
                             categories={controller.studyData.categories}

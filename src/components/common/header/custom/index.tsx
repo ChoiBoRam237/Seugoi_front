@@ -13,8 +13,8 @@ import { LinkEnum } from "@/meta/link";
 interface Props {
     logo: React.ReactNode;
     isSearch: boolean;
-    searchIng?: boolean; // 검색중인지 아닌지
-    setSearchIng?: React.Dispatch<React.SetStateAction<boolean>>;
+    searching?: boolean; // 검색중인지 아닌지
+    setSearching?: React.Dispatch<React.SetStateAction<boolean>>;
     searchValue?: string; // 검색어
     setSearchValue?: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -27,13 +27,13 @@ export const CommonCustomHeader = (props: Props) => {
             <CustomHeaderContainer>
                 {props.isSearch ? (
                     <>
-                        {!props.searchIng ? (
+                        {!props.searching ? (
                             <>
                                 <button onClick={() => navigate(`/${LinkEnum.HOME}`)}>
                                     {props.logo}
                                 </button>
 
-                                <button onClick={() => props.setSearchIng(true)}>
+                                <button onClick={() => props.setSearching(true)}>
                                     <RiSearchLine size={26} color="white" />
                                 </button>
                             </>
@@ -42,7 +42,7 @@ export const CommonCustomHeader = (props: Props) => {
                                 <button
                                     className="shrink-0"
                                     onClick={() => {
-                                        props.setSearchIng(false);
+                                        props.setSearching(false);
                                         props.setSearchValue("");
                                     }}
                                 >

@@ -4,12 +4,13 @@ import "swiper/css";
 import { motion } from "motion/react";
 import { BiSolidBarChartAlt2 } from "react-icons/bi";
 import { CommonStudyItem } from "@/components/common/study-item";
-import { StudyList } from "../../indexStyles";
-import { StudyPopularContainer, StudyPopularTitle, StudyPopularTitleWrapper, StudyingInnerWrapper, StudyingItem, StudyingSwiper, StudyingTitle, StudyingWrapper, StudyTodayPhraseContent, StudyTodayPhraseLine, StudyTodayPhraseTitle, StudyContainer, StudyTodayPhraseContainer, StudyTodayPhraseWrapper, StudyingNoData } from "./indexStyles";
-import { useControlStudy } from "./index.control";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { CommonLoading } from "@/components/common/loading";
 import { CommonStudyingItem } from "@/components/common/studying-item";
+import { CommonMenuBar } from "@/components/common/menuBar";
+import { StudyList } from "../../indexStyles";
+import { StudyPopularContainer, StudyPopularTitle, StudyPopularTitleWrapper, StudyingInnerWrapper, StudyingItem, StudyingSwiper, StudyingTitle, StudyingWrapper, StudyTodayPhraseContent, StudyTodayPhraseLine, StudyTodayPhraseTitle, StudyContainer, StudyTodayPhraseContainer, StudyTodayPhraseWrapper, StudyingNoData } from "./indexStyles";
+import { useControlStudy } from "./index.control";
 
 /**
  * @brief 스터디
@@ -124,6 +125,9 @@ export const Study = (props: Props) => {
             ) : (
                 <CommonLoading />
             )}
+
+            {/* 메뉴바 컴포넌트 */}
+            <CommonMenuBar />
         </>
     )
 }

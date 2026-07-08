@@ -1,7 +1,7 @@
-import { ICommonImgResponse } from "@/components/types/study";
+import { ICommonImgResponse } from "./study";
 
 /**
- * @brief 과제 상세 타입
+ * @brief 과제 관련 타입
  */
 
 export interface IAsgmtComment {

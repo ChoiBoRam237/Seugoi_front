@@ -1,5 +1,5 @@
 /**
- * @brief 스터디 검색 관련 타입
+ * @brief 검색 관련 타입
  */
 
 export interface ISearchKeyword {

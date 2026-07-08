@@ -33,18 +33,18 @@ export const useControlStudyGenerate = () => {
             formData.append("studyName", studyName); // 스터디 이름
             categories.filter(item => item !== "").forEach(category => formData.append("categories", category.replace(/^#\s+/, "#"))); // 카테고리
             formData.append("peopleCount", peopleCount); // 모집 인원
-            endPeriod !== null && formData.append("endPeriod", endPeriod); // 스터디 종료 기간
+            endPeriod !== null && formData.append("endPeriod", endPeriod.toDateString()); // 스터디 종료 기간
             studyTitle !== "" && formData.append("studyTitle", studyTitle); // 스터디 제목
             summary !== "" && formData.append("summary", summary); // 간단 요약
             introduction.filter(item => item !== "").forEach(intro => formData.append("introduction", intro)); // 소개글
             description !== "" && formData.append("description", description); // 설명글
             recommend.filter(item => item !== "").forEach(recom => formData.append("recommend", recom)); // 추천글
-            formData.append("bgImageUrl", bgFile); // 배경 이미지
+            formData.append("imgUrl", bgFile); // 배경 이미지
             dDay !== null && formData.append("dday", dDay.toString()); // 디데이
             return await postStudyGenerateApi.postStudyGenerate(formData);
         },
         onSuccess: (data) => {
-            setStudyCode(data.id);
+            setStudyCode(data.code);
             setGenerateOpen(true);
         },
         onError: (error: AxiosError) => {

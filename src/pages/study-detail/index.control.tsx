@@ -32,7 +32,7 @@ export const useControlStudyDetail = () => {
     const deleteStudy = useMutation({
         mutationFn: () => deleteStudyDetailApi.deleteStudy(Number(params.studyCode)!),
         onSuccess: () => {
-            navigate(`/${LinkEnum.STUDY}/${LinkEnum.LIST}`);
+            navigate(location?.state?.prevUrl ?? `/${LinkEnum.STUDY}/${LinkEnum.LIST}`);
         },
         onError: (error: AxiosError) => {
             console.error("스터디 삭제 에러 : ", error);

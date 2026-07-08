@@ -1,6 +1,5 @@
 import { useUserInfo } from "@/hooks/useUserInfo";
 import { LayoutInnerWrapper } from "@/components/layout";
-import { CommonMenuBar } from "@/components/common/menuBar";
 import { CommonCustomHeader } from "@/components/common/header/custom";
 import { HeaderLogo } from "@/components/common/header/indexStyles";
 import logoImg from "@/assets/text-logo.svg";
@@ -23,15 +22,15 @@ export const Home = () => {
             <CommonCustomHeader
                 logo={<HeaderLogo $src={logoImg} />}
                 isSearch={true}
-                searchIng={controller.searchIng}
-                setSearchIng={controller.setSearchIng}
+                searching={controller.searching}
+                setSearching={controller.setSearching}
                 searchValue={controller.searchValue}
                 setSearchValue={controller.setSearchValue}
             />
 
             <LayoutInnerWrapper className="custom">
                 <HomeContainer>
-                    {controller.searchIng ? (
+                    {controller.searching ? (
                         <Search
                             userName={userName}
                             keyword={controller.debouncedKeyword}
@@ -42,9 +41,6 @@ export const Home = () => {
                     )}
                 </HomeContainer>
             </LayoutInnerWrapper>
-
-            {/* 메뉴바 컴포넌트 */}
-            <CommonMenuBar />
         </>
     )
 }

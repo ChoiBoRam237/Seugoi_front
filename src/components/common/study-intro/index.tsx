@@ -24,7 +24,7 @@ interface Props {
     setDescription?: React.Dispatch<React.SetStateAction<string>>;
     recommend: string[]; // 추천글
     setRecommend?: React.Dispatch<React.SetStateAction<string[]>>;
-    isStudying: boolean; // 스터디 진행중인지
+    isStudying?: boolean; // 스터디 진행중인지
     
     profileImgUrl: string; // 관리자 이미지
     userName: string; // 관리자 이름
@@ -76,7 +76,7 @@ export const CommonStudyIntro = (props: Props) => {
     return (
         <IntroContainer>
             {/* 스터디 경고 메시지 */}
-            {!props.isStudying && (
+            {!(props.isStudying ?? true) && (
                 <IntroWarning>
                     <div className="flex items-center gap-0.5">
                         <IoWarningOutline size={16} color="var(--red)" />

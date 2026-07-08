@@ -24,8 +24,8 @@ interface Props {
     peopleCount: string; // 모집 인원
     setPeopleCount: React.Dispatch<React.SetStateAction<string>>;
     
-    endPeriod: string; // 종료기간
-    setEndPeriod: React.Dispatch<React.SetStateAction<string>>;
+    endPeriod: Date | null; // 종료기간
+    setEndPeriod: React.Dispatch<React.SetStateAction<Date | null>>;
     dDay: number | null; // 디데이
     setDDay: React.Dispatch<React.SetStateAction<number | null>>;
 
