@@ -1,6 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
-import { getChatListApi } from "./_api/GET";
+import { useState } from "react";
+import useDebounce from "@/hooks/useDebounce";
 
 /**
  * @brief 채팅 목록 컨트롤
@@ -8,10 +7,11 @@ import { getChatListApi } from "./_api/GET";
 
 export const useControlChatList = () => {
     const [searching, setSearching] = useState<boolean>(false);
-    const [keyword, setKeyword] = useState<string>("");
+    const [keyword, setKeyword] = useState<string>(""); // 검색어
+    const debouncedKeyword = useDebounce(keyword, 800);
 
     return {
         searching, setSearching,
-        keyword, setKeyword,
+        keyword, setKeyword, debouncedKeyword,
     }
 }

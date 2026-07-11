@@ -29,4 +29,12 @@ export const commonApi = {
         await (
             await privateBase.get(`/v3/api/study/view`)
         ).data.data,
+
+    // 모든 채팅방 목록 조회
+    getChatRoom: async (keyword: string) =>
+        await (
+            await privateBase.get(`/v3/api/chat/room`, {
+                params: { keyword }
+            })
+        ).data.data,
 }

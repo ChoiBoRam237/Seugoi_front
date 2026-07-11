@@ -14,7 +14,6 @@ import { LatestSearch, LatestStudy, NoData, SearchContainer, SearchLatestLabel, 
 export interface SearchProps {
     userName: string;
     keyword: string; // 검색 키워드
-    setKeyword: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const Search = (props: SearchProps) => {

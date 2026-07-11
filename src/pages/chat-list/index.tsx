@@ -1,7 +1,6 @@
 import { CommonCustomHeader } from "@/components/common/header/custom";
 import { useControlChatList } from "./index.control";
-import { ChatListContainer, ChatListTitle, ChatListWrapper } from "./indexStyles";
-import { ChatItem } from "./_components/chat-item";
+import { ChatListTitle } from "./indexStyles";
 import { List } from "./_components/list";
 import { Search } from "./_components/search";
 
@@ -24,9 +23,9 @@ export const ChatList = () => {
             />
 
             {controller.searching ? (
-                <Search />
+                <Search keyword={controller.debouncedKeyword} />
             ) : (
-                <List />
+                <List keyword={controller.debouncedKeyword} />
             )}
         </>
     )

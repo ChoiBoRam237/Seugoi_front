@@ -34,7 +34,6 @@ export const Home = () => {
                         <Search
                             userName={userName}
                             keyword={controller.debouncedKeyword}
-                            setKeyword={controller.setSearchValue}
                         />
                     ) : (
                         <Study userName={userName} />

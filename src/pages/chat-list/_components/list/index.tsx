@@ -1,26 +1,49 @@
 import { CommonMenuBar } from "@/components/common/menuBar";
+import { CommonLoading } from "@/components/common/loading";
+import { useChatRoomList } from "@/hooks/_api/useChatRoomList";
 import { ChatItem } from "../chat-item";
-import { CommonChatListContainer } from "../../indexStyles";
+import { CommonChatListContainer, CommonNoData } from "../../indexStyles";
 import { ListWrapper } from "./indexStyles";
-import { useControlList } from "./index.control";
 
 /**
  * @brief 채팅 목록
  */
 
-export const List = () => {
-    const controller = useControlList();
+interface Props {
+    keyword: string;
+}
+
+export const List = (props: Props) => {
+    const { 
+        chatRoomLoading, 
+        chatRoomList,
+    } = useChatRoomList({ keyword: props.keyword, enabled: props.keyword === "" });
 
     return (
         <>
             <CommonChatListContainer>
                 <ListWrapper>
-                    {controller.chatList.map((item, index) => (
-                        <ChatItem
-                            key={index}
-                            data={item}
-                        />
-                    ))}
+                    {!chatRoomLoading ? (
+                        <>
+                            {chatRoomList.length > 0 ? (
+                                <>
+                                    {chatRoomList.map((item, index) => (
+                                        <ChatItem
+                                            key={index}
+                                            data={item}
+                                        />
+                                    ))}
+                                </>
+                            ) : (
+                                <CommonNoData>
+                                    참여 중인 채팅방이 없습니다. <br />
+                                    스터디에 가입하고 다른 멤버들과 대화를 시작해 보세요.
+                                </CommonNoData>
+                            )}
+                        </>
+                    ) : (
+                        <CommonLoading />
+                    )}
                 </ListWrapper>
             </CommonChatListContainer>
 
