@@ -86,3 +86,7 @@ input, textarea {
         color: var(--white-50);
     }
 }
+
+pre {
+    white-space: pre-wrap;
+}

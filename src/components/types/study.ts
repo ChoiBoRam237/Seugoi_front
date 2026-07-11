@@ -9,8 +9,8 @@ export interface IStudy {
     progress: number; // 과제 진행상황
     dDay: number; // 디데이
     bgImg: ICommonImgResponse; // 배경 이미지
-    isAdmin: boolean; // 관리자인지 아닌지
-    isBookmark: boolean; // 찜 여부
+    owner: boolean; // 관리자인지 아닌지
+    bookmarking: boolean; // 찜 여부
     status: IStudyStatus; // 스터디 상태
 }
 
@@ -28,7 +28,7 @@ export interface IStudyDetail {
     dDay: number; // 디데이
     peopleCount: string; // 모집 인원
     joinCount: number; // 가입한 인원수
-    isJoined: boolean; // 가입 여부
+    joined: boolean; // 가입 여부
     bgImg: ICommonImgResponse; // 배경 이미지
     status: IStudyStatus; // 스터디 상태
 }
@@ -48,7 +48,7 @@ export interface IStudyBoard {
     linkName?: string; // 링크제목
     linkUrl?: string; // 링크 url
     imgList?: ICommonImgResponse[]; // 이미지 리스트
-    isAdmin: boolean; // 관리자 여부
+    owner: boolean; // 관리자 여부
     submitted: boolean; // 과제 제출 여부
     notSubmitCount: number; // 과제 미제출한 인원수
     studyStatus: IStudyStatus; // 스터디 상태

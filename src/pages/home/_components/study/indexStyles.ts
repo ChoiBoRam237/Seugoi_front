@@ -130,3 +130,15 @@ export const StudyPopularTitle = styled.p`
     font-size: 1rem;
     color: white;
 `;
+
+export const StudyPopularNoData = styled.div`
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: rem;
+    color: var(--white-50);
+    text-align: center;
+`;

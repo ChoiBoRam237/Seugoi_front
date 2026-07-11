@@ -13,7 +13,7 @@ export interface IAsgmtCommentItem {
     code: number;
     comment: string;
     imgList: ICommonImgResponse[];
-    isWriter: boolean;
+    writerOwner: boolean;
     isAdminCheck: boolean;
     createdAt: Date;
     user: {

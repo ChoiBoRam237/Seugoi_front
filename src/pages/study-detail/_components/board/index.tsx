@@ -21,7 +21,7 @@ import { useWindowSize } from "@/hooks/useWindowSize";
 
 interface Props {
     studyCode: number;
-    isAdmin: boolean;
+    owner: boolean;
     isStudying: boolean;
 }
 
@@ -69,7 +69,7 @@ export const Board = (props: Props) => {
                                 <BoardAsgmtInfoWrapper>
                                     <BoardAsgmtInfoText>{format(item.createdAt, "yyyy.MM.dd")}</BoardAsgmtInfoText>
                 
-                                    {item.isAdmin ? (
+                                    {item.owner ? (
                                         <>
                                             {item.notSubmitCount === 0 ? (
                                                 <BoardAsgmtInfoText>전원 제출</BoardAsgmtInfoText>
@@ -100,17 +100,17 @@ export const Board = (props: Props) => {
                 
                                 <BoardPre>{item.content}</BoardPre>
                 
-                                {item.imgList.length > 0 && (() => {
+                                {item?.imgList?.length > 0 && (() => {
                                     const count = windowSize.width > 767 ? 5
                                         : windowSize.width > 376 ? 4
                                         : 3
 
                                     return (
                                         <BoardAsgmtImageList>
-                                            {item.imgList.slice(0, count).map((image, index) => (
+                                            {item?.imgList?.slice(0, count).map((image, index) => (
                                                 <BoardAsgmtImageWrapper key={index}>
                                                     <BoardAsgmtImage $src={`${BASE_URL}${image.folderName}${image.imgUrl}`} />
-                                                    {item.imgList.length > count && <BoardAsgmtImageCount className="count">+ {(item.imgList.length - count)}</BoardAsgmtImageCount>}
+                                                    {item?.imgList?.length > count && <BoardAsgmtImageCount className="count">+ {(item.imgList.length - count)}</BoardAsgmtImageCount>}
                                                 </BoardAsgmtImageWrapper>
                                             ))}
                                         </BoardAsgmtImageList>   
@@ -118,22 +118,24 @@ export const Board = (props: Props) => {
                                 })()}
                             </BoardAsgmtInfoContainer>
             
-                            <BoardAsgmtLinkWrapper
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    e.preventDefault();
-                                    window.open(item.linkUrl, "_blank");
-                                }}
-                            >
-                                <HiOutlineLink size={16} color="#0075FF" />
-                                <BoardAsgmtLinkText>{item.linkName}</BoardAsgmtLinkText>
-                            </BoardAsgmtLinkWrapper>
+                           {item.linkUrl && (
+                                <BoardAsgmtLinkWrapper
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        e.preventDefault();
+                                        window.open(item.linkUrl, "_blank");
+                                    }}
+                                >
+                                    <HiOutlineLink size={16} color="#0075FF" />
+                                    <BoardAsgmtLinkText>{item.linkName}</BoardAsgmtLinkText>
+                                </BoardAsgmtLinkWrapper>
+                           )}
                         </BoardAsgmtItem>
                     )}
                 </React.Fragment>
             ))}
 
-            {(props.isAdmin && props.isStudying) && (
+            {(props.owner && props.isStudying) && (
                 <BoardAddButton onClick={() => navigate(`/${LinkEnum.STUDY}/${props.studyCode}/${LinkEnum.GENERATE}`)}>
                     <FiPlus size={35} color="white" />
                 </BoardAddButton>

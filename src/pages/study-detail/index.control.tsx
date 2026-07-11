@@ -24,7 +24,7 @@ export const useControlStudyDetail = () => {
         studyDetailLoading,
         studyData,
         adminData,
-        isAdmin,
+        owner,
         onFetchStudyDetail,
     } = useStudyDetail({ studyCode: params.studyCode });
 
@@ -65,7 +65,7 @@ export const useControlStudyDetail = () => {
         isLoading: studyDetailLoading,
         studyData, adminData,
         studyCode: Number(params.studyCode),
-        isAdmin: isAdmin ?? false,
+        owner: owner ?? false,
         
         deleteStudyOpen, setDeleteStudyOpen,
         exitStudyOpen, setExitStudyOpen,

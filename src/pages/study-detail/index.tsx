@@ -39,7 +39,7 @@ export const StudyDetail = () => {
                     <DetailContainer>
                         <CommonArrowHeader
                             moveUrl={location?.state?.prevUrl ?? `/${LinkEnum.HOME}`}
-                            options={controller.isAdmin ? adminOptions : controller.studyData.isJoined ? userOptions : []}
+                            options={controller.owner ? adminOptions : controller.studyData.joined ? userOptions : []}
                         />
 
                         <CommonStudyInfoAndImage
@@ -50,7 +50,7 @@ export const StudyDetail = () => {
                             dDay={controller.studyData.dDay}
                         />
 
-                        {(controller.isAdmin || controller.studyData.isJoined) && (
+                        {(controller.owner || controller.studyData.joined) && (
                             <DetailSelectWrapper>
                                 <DetailSelection
                                     className={controller.status === "assignment" ? "active" : ""}
@@ -74,13 +74,13 @@ export const StudyDetail = () => {
                                     studyCode={controller.studyCode}
                                     studyData={controller.studyData}
                                     adminData={controller.adminData}
-                                    isAdmin={controller.isAdmin}
+                                    owner={controller.owner}
                                     onFetch={controller.onFetchStudyDetail}
                                 />
                             ) : (
                                 <Board
                                     studyCode={controller.studyCode}
-                                    isAdmin={controller.isAdmin}
+                                    owner={controller.owner}
                                     isStudying={controller.studyData.status === IStudyStatus.STUDYING}
                                 />
                             )}

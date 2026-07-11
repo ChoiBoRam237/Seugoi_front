@@ -48,7 +48,7 @@ export const CommonStudyItem = (props: Props) => {
                 <StudyDarkBg>종료</StudyDarkBg>
             )}
 
-            {!props.item.isAdmin && (
+            {!props.item.owner && (
                 <StudyBookmark
                     onClick={(e) => {
                         e.preventDefault();
@@ -56,7 +56,7 @@ export const CommonStudyItem = (props: Props) => {
                         controller.onBookmark(props.item.code);
                     }}
                 >
-                    {props.item.isBookmark ? (
+                    {props.item.bookmarking ? (
                         <IoBookmark size={20} color="white" />
                     ) : (
                         <IoBookmarkOutline size={20} color="white" />

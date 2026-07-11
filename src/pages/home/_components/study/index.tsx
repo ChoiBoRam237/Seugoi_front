@@ -9,7 +9,7 @@ import { CommonLoading } from "@/components/common/loading";
 import { CommonStudyingItem } from "@/components/common/studying-item";
 import { CommonMenuBar } from "@/components/common/menuBar";
 import { StudyList } from "../../indexStyles";
-import { StudyPopularContainer, StudyPopularTitle, StudyPopularTitleWrapper, StudyingInnerWrapper, StudyingItem, StudyingSwiper, StudyingTitle, StudyingWrapper, StudyTodayPhraseContent, StudyTodayPhraseLine, StudyTodayPhraseTitle, StudyContainer, StudyTodayPhraseContainer, StudyTodayPhraseWrapper, StudyingNoData } from "./indexStyles";
+import { StudyPopularContainer, StudyPopularTitle, StudyPopularTitleWrapper, StudyingInnerWrapper, StudyingItem, StudyingSwiper, StudyingTitle, StudyingWrapper, StudyTodayPhraseContent, StudyTodayPhraseLine, StudyTodayPhraseTitle, StudyContainer, StudyTodayPhraseContainer, StudyTodayPhraseWrapper, StudyingNoData, StudyPopularNoData } from "./indexStyles";
 import { useControlStudy } from "./index.control";
 
 /**
@@ -110,16 +110,23 @@ export const Study = (props: Props) => {
                             <StudyPopularTitle>요즘 뜨고있는</StudyPopularTitle>
                         </StudyPopularTitleWrapper>
         
-                        <StudyList>
-                            {controller.trendStudyList.map((item, index) => (
-                                <CommonStudyItem
-                                    key={index}
-                                    item={item}
-                                    prevUrl={location.pathname}
-                                    onFetch={controller.onTrendStudyFetch}
-                                />
-                            ))}
-                        </StudyList>
+                        {controller.trendStudyList.length > 0 ? (
+                            <StudyList>
+                                {controller.trendStudyList.map((item, index) => (
+                                    <CommonStudyItem
+                                        key={index}
+                                        item={item}
+                                        prevUrl={location.pathname}
+                                        onFetch={controller.onTrendStudyFetch}
+                                    />
+                                ))}
+                            </StudyList>
+                        ) : (
+                            <StudyPopularNoData>
+                                요즘 뜨고있는 스터디가<br />
+                                존재하지 않습니다.
+                            </StudyPopularNoData>
+                        )}
                     </StudyPopularContainer>
                 </StudyContainer>
             ) : (

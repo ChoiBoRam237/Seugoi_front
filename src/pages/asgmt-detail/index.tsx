@@ -32,7 +32,7 @@ export const AsgmtDetail = () => {
                         moveUrl={`/${LinkEnum.STUDY}/${controller.studyCode}`}
                         urlState={{ status: "assignment" }}
                         options={
-                            controller.asgmtData.isAdmin 
+                            controller.asgmtData.owner 
                                 ? [
                                     { text: "수정하기", textColor: "white", onClick: () => navigate(`/${LinkEnum.ASGMT}/${controller.asgmtData.code}/${LinkEnum.UPDATE}`) },
                                     { text: "삭제하기", textColor: "var(--red)", onClick: () => controller.setDeleteAsgmtOpen(true) }
@@ -49,7 +49,7 @@ export const AsgmtDetail = () => {
                                     <AsgmtInfo>
                                         <AsgmtInfoText>{format(controller.asgmtData.createdAt, "yyyy.MM.dd")}</AsgmtInfoText>
                                         
-                                        {controller.asgmtData.isAdmin ? (
+                                        {controller.asgmtData.owner ? (
                                             <>
                                                 {controller.asgmtData.notSubmitCount === 0 ? (
                                                     <AsgmtInfoText>전원 제출</AsgmtInfoText>
@@ -82,9 +82,9 @@ export const AsgmtDetail = () => {
                                 </AsgmtInfoContent>
 
                                 <AsgmtInfoInnerWrapper>
-                                    {controller.asgmtData.imgList.length > 0 && (
+                                    {controller.asgmtData?.imgList?.length > 0 && (
                                         <AsgmtImageList>
-                                            {controller.asgmtData.imgList.map((img, index) => (
+                                            {controller.asgmtData?.imgList?.map((img, index) => (
                                                 <AsgmtImageItem
                                                     key={index}
                                                     $src={`${BASE_URL}${img.folderName}${img.imgUrl}`}
@@ -93,10 +93,12 @@ export const AsgmtDetail = () => {
                                         </AsgmtImageList>
                                     )}
 
-                                    <AsgmtLinkWrapper onClick={() => window.open(controller.asgmtData.linkUrl, "_blank")}>
-                                        <HiOutlineLink size={16} color="#0075FF" className="shrink-0 mt-1" />
-                                        <AsgmtInfoText className="link">{controller.asgmtData.linkName}</AsgmtInfoText>
-                                    </AsgmtLinkWrapper>
+                                    {controller.asgmtData.linkUrl && (
+                                        <AsgmtLinkWrapper onClick={() => window.open(controller.asgmtData.linkUrl, "_blank")}>
+                                            <HiOutlineLink size={16} color="#0075FF" className="shrink-0 mt-1" />
+                                            <AsgmtInfoText className="link">{controller.asgmtData.linkName}</AsgmtInfoText>
+                                        </AsgmtLinkWrapper>
+                                    )}
                                 </AsgmtInfoInnerWrapper>
                             </AsgmtInfoWrapper>
 
@@ -104,17 +106,26 @@ export const AsgmtDetail = () => {
                         </AsgmtInfoContainer>
 
                         {/* 댓글 */}
-                        {(controller.asgmtComment.submitted && controller.asgmtComment.comments?.length > 0) ? (
-                            <AsgmtCommentList>
-                                {controller.asgmtComment.comments?.map((comment, index) => (
-                                    <Comment
-                                        key={index}
-                                        isAdmin={controller.asgmtData.isAdmin}
-                                        data={comment}
-                                        isStudying={controller.asgmtData.studyStatus === IStudyStatus.STUDYING}
-                                    />
-                                ))}
-                            </AsgmtCommentList>
+                        {controller.asgmtComment.submitted ? (
+                            <>
+                                {controller.asgmtComment.comments?.length > 0 ? (
+                                    <AsgmtCommentList>
+                                        {controller.asgmtComment.comments?.map((comment, index) => (
+                                            <Comment
+                                                key={index}
+                                                owner={controller.asgmtData.owner}
+                                                data={comment}
+                                                isStudying={controller.asgmtData.studyStatus === IStudyStatus.STUDYING}
+                                            />
+                                        ))}
+                                    </AsgmtCommentList>
+                                ) : (
+                                    <AsgmtCommentNoData>
+                                        <AsgmtCommentNoDataImg $src={logoSad} />
+                                        {"제출된 과제가 존재하지 않습니다 ;("}
+                                    </AsgmtCommentNoData>
+                                )}
+                            </>
                         ) : (
                             <AsgmtCommentNoData>
                                 <AsgmtCommentNoDataImg $src={logoSad} />
@@ -129,7 +140,7 @@ export const AsgmtDetail = () => {
                         disabled={controller.asgmtData.studyStatus === IStudyStatus.FINISHED}
                         placeholder={
                             controller.asgmtData.studyStatus === IStudyStatus.STUDYING
-                            ? controller.asgmtData.isAdmin
+                            ? controller.asgmtData.owner
                                 ? "내용을 입력해 주세요! (이미지 최대 3장)"
                                 : "과제를 제출해주세요! (이미지 최대 3장)"
                             : "스터디가 종료되어 입력할 수 없습니다."

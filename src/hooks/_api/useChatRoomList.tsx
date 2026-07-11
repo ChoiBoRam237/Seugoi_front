@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { commonApi } from "@/util/_api";
-import { queryClient } from "@/queryClient";
 import { IChat } from "@/components/types/chat";
 
 /**
- * @brief 모든 채팅방 목록 조회 API 훅
+ * @brief 모든 채팅방 목록 조회 API hook
  */
 
 interface Props {

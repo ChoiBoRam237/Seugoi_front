@@ -29,7 +29,7 @@ export const ChatItemInfo = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    row-gap: 0.3125rem;
+    row-gap: 0.25rem;
 `;
 
 export const ChatItemTime = styled.p`
@@ -55,6 +55,12 @@ export const ChatItemStudyName = styled.p`
 `;
 
 export const ChatItemLastMessage = styled.p`
+    max-width: 13rem;
+    white-space: nowrap;
+    overflow: hidden;
     font-size: 0.875rem;
     color: var(--white-50);
+    text-overflow: ellipsis;
+    word-break:break-all;
+    -webkit-box-orient:vertical;
 `;

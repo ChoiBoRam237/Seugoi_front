@@ -37,7 +37,7 @@ export const List = (props: Props) => {
                             ) : (
                                 <CommonNoData>
                                     참여 중인 채팅방이 없습니다. <br />
-                                    스터디에 가입하고 다른 멤버들과 대화를 시작해 보세요.
+                                    스터디에 가입하고 다른 멤버들과<br />대화를 시작해 보세요.
                                 </CommonNoData>
                             )}
                         </>

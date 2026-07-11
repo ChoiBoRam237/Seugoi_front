@@ -146,6 +146,7 @@ export const CommonStudyIntro = (props: Props) => {
                                 <IntroContentBoxInputWrapper key={index}>
                                     <FaExclamation size={14} color="red" />
                                     <IntroContentBoxInput
+                                        id={`introduction-${index}`}
                                         readOnly={props.readOnly}
                                         placeholder="스터디 소개를 적어주세요"
                                         value={value}
@@ -178,6 +179,7 @@ export const CommonStudyIntro = (props: Props) => {
                                 <IntroContentBoxInputWrapper key={index}>
                                     <FaLightbulb size={15} color="var(--yellow)" />
                                     <IntroContentBoxInput
+                                        id={`recomment-${index}`}
                                         readOnly={props.readOnly}
                                         placeholder="이 스터디를 추천할 유형을 적어주세요"
                                         value={value}

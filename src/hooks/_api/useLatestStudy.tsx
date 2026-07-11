@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { queryClient } from "@/queryClient";
-import { IStudy } from "@/components/types/study";
 import { commonApi } from "@/util/_api";
+import { IStudy } from "@/components/types/study";
 
 /**
- * @brief 최근 조회한 스터디 API 훅
+ * @brief 최근 조회한 스터디 API hook
  */
 
 interface Props {

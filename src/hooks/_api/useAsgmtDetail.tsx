@@ -5,7 +5,7 @@ import { commonApi } from "@/util/_api";
 import { IStudyBoard } from "@/components/types/study";
 
 /**
- * @brief 특정 과제 상세 조회 API 훅
+ * @brief 특정 과제 상세 조회 API hook
  */
 
 interface Props {

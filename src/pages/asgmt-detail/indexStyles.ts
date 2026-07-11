@@ -11,7 +11,7 @@ export const AsgmtContainer = styled.div`
     flex-direction: column;
     row-gap: 1.5rem;
     padding: 0 1.5rem;
-    padding-bottom: 4.875rem;
+    padding-bottom: calc(4.875rem + 1rem);
 `;
 
 // 과제 정보

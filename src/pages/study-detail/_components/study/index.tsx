@@ -12,7 +12,7 @@ export interface StudyProps {
     studyCode: number;
     adminData: IUser;
     studyData: IStudyDetail;
-    isAdmin: boolean;
+    owner: boolean;
     onFetch: () => void;
 }
 
@@ -36,7 +36,7 @@ export const Study = (props: StudyProps) => {
                 userName={props.adminData.name}
             />
             
-            {(!props.isAdmin && !props.studyData.isJoined) && (
+            {(!props.owner && !props.studyData.joined) && (
                 <CommonButton
                     loading={controller.isJoinLoading}
                     bgColor="var(--primary)"

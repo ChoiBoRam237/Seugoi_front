@@ -9,6 +9,7 @@ import "./index.css";
 // 767px : 태블릿 크기
 // 376px : 모바일 크기
 
+(window as any).global = window;
 const rootNode = document.getElementById("root") as HTMLElement;
 ReactDOM.createRoot(rootNode).render(
   <QueryClientProvider client={queryClient}>

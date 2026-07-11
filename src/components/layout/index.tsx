@@ -52,5 +52,6 @@ export const LayoutInnerWrapper = styled.div`
     flex-direction: column;
     
     &.custom { padding-top: 6.0625rem; }
-    &.arrow { padding-top: 4.6875rem; }
+    &.arrow,
+    &.chat { padding-top: 4.6875rem; }
 `;

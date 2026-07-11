@@ -11,12 +11,16 @@ export const HeaderContainer = styled.div`
     transform: translateX(-50%);
     width: 100%;
     max-width: 47.9375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 1.5rem;
     background-color: var(--background);
     z-index: 10;
 
     &.custom { height: 6.0625rem; }
-    &.arrow { height: 4.6875rem; }
+    &.arrow,
+    &.chat { height: 4.6875rem; }
 `;
 
 export const HeaderLogo = styled.div<{ $src: string }>`

@@ -18,7 +18,7 @@ import { useControlComment } from "./index.control";
  */
 
 export interface CommentProps {
-    isAdmin: boolean;
+    owner: boolean;
     data: IAsgmtCommentItem;
     isStudying: boolean;
 }
@@ -62,9 +62,9 @@ export const Comment = (props: CommentProps) => {
                         </div>
 
                         <div className="flex items-center gap-1">
-                            {props.isAdmin ? (
+                            {props.owner ? (
                                 <>
-                                    {!props.data.isWriter && (
+                                    {!props.data.writerOwner && (
                                         <CommentAdminButton
                                             disabled={props.data.isAdminCheck || controller.submitLoading}
                                             className={props.data.isAdminCheck.toString()}
@@ -94,7 +94,7 @@ export const Comment = (props: CommentProps) => {
                                 </>
                             )}
                             
-                            {(props.data.isWriter && props.isStudying) && (
+                            {(props.data.writerOwner && props.isStudying) && (
                                 <div className="relative cursor-pointer" onClick={() => controller.setOverflowMenuOpen(true)}>
                                     <HiOutlineDotsVertical size={16} color="white" />
 

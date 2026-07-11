@@ -6,7 +6,7 @@ import { IStudyDetail } from "@/components/types/study";
 import { IUser } from "@/components/types/user";
 
 /**
- * @brief 특정 스터디 상세 조회 API 훅
+ * @brief 특정 스터디 상세 조회 API hook
  */
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
 export const useStudyDetail = (props: Props) => {
     const [studyData, setStudyData] = useState<IStudyDetail | null>(null); // 스터디 정보
     const [adminData, setAdminData] = useState<IUser | null>(null); // 관리자 정보
-    const [isAdmin, setIsAdmin] = useState<boolean>(false); // 관리자인지 아닌지
+    const [owner, setIsAdmin] = useState<boolean>(false); // 관리자인지 아닌지
 
     // 특정 스터디 상세 조회 api
     const { data, isLoading, isFetching } = useQuery({
@@ -35,13 +35,13 @@ export const useStudyDetail = (props: Props) => {
         if (data) {
             setStudyData(data.study);
             setAdminData(data.admin);
-            setIsAdmin(data.isAdmin);
+            setIsAdmin(data.owner);
         }
     }, [data]);
 
     return {
         studyDetailLoading: isLoading || isFetching,
-        studyData, adminData, isAdmin,
+        studyData, adminData, owner,
         onFetchStudyDetail,
     }
 }

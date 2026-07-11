@@ -20,6 +20,7 @@ import { StudyUpdate } from "./pages/study-update";
 import { NoticeUpdate } from "./pages/notice-update";
 import { AsgmtUpdate } from "./pages/asgmt-update";
 import { ChatList } from "./pages/chat-list";
+import { ChatRoom } from "./pages/chat-room";
 
 const router = createBrowserRouter([
     {
@@ -90,7 +91,16 @@ const router = createBrowserRouter([
                     },
                     {
                         path: `/${LinkEnum.CHAT}`,
-                        element: <ChatList />
+                        children: [
+                            {
+                                path: ``,
+                                element: <ChatList />
+                            },
+                            {
+                                path: `:chatRoomCode`,
+                                element: <ChatRoom />
+                            }
+                        ]
                     }
                 ]
             },
