@@ -1,5 +1,5 @@
 import { IChat } from "@/components/types/chat";
-import { ChatItemContainer, ChatItemImg, ChatItemInfo, ChatItemLastMessage, ChatItemStudyName, ChatItemTime, ChatItemWrapper } from "./indexStyles";
+import { ChatItemContainer, ChatItemImg, ChatItemInfo, ChatItemLastMessage, ChatItemStudyName, ChatItemTime, ChatItemOneWrapper, ChatItemTwoWrapper, ChatItemUnreadCount } from "./indexStyles";
 import { format } from "date-fns";
 import { BASE_URL } from "@/util/api";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ export const ChatItem = (props: Props) => {
 
     return (
         <ChatItemContainer onClick={() => navigate(`${props.data.code}`)}>
-            <ChatItemWrapper>
+            <ChatItemOneWrapper>
                 <ChatItemImg $src={`${BASE_URL}${props.data.study.bgImg.folderName}${props.data.study.bgImg.imgUrl}`} />
 
                 <ChatItemInfo>
@@ -28,9 +28,12 @@ export const ChatItem = (props: Props) => {
                         <ChatItemLastMessage>아직 대화가 없습니다.</ChatItemLastMessage>
                     )}
                 </ChatItemInfo>
-            </ChatItemWrapper>
+            </ChatItemOneWrapper>
 
-            {props.data.lastMessageDate && <ChatItemTime>{format(props.data.lastMessageDate, "HH:MM")}</ChatItemTime>}
+            <ChatItemTwoWrapper>
+                {props.data.lastMessageDate && <ChatItemTime>{format(props.data.lastMessageDate, "HH:MM")}</ChatItemTime>}
+                {props.data.unreadMessageCount && <ChatItemUnreadCount>{props.data.unreadMessageCount}</ChatItemUnreadCount>}
+            </ChatItemTwoWrapper>
         </ChatItemContainer>
     )
 }

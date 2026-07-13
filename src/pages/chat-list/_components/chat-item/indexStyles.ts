@@ -19,10 +19,17 @@ export const ChatItemContainer = styled.button`
     }
 `;
 
-export const ChatItemWrapper = styled.div`
+export const ChatItemOneWrapper = styled.div`
     display: flex;
     align-items: center;
     column-gap: 0.625rem;
+`;
+
+export const ChatItemTwoWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 0.25rem;
 `;
 
 export const ChatItemInfo = styled.div`
@@ -35,6 +42,21 @@ export const ChatItemInfo = styled.div`
 export const ChatItemTime = styled.p`
     font-size: 0.875rem;
     color: var(--white-50);
+`;
+
+export const ChatItemUnreadCount = styled.div`
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--primary);
+
+    font-family: "Pretendard-Bold" !important;
+    font-size: 0.75rem;
+    line-height: 0.5rem;
+    color: white;
 `;
 
 export const ChatItemImg = styled.div<{ $src: string }>`

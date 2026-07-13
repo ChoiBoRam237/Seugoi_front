@@ -45,7 +45,7 @@ export const Study = (props: StudyProps) => {
                         props.studyData.status === IStudyStatus.FINISHED
                         ? "종료된 스터디입니다"
                         : props.studyData.studyFull
-                            ? "정원 마감"
+                            ? "모집인원 마감"
                             : "스터디 가입하기"
                     }
                     onClick={controller.onStudyJoin}

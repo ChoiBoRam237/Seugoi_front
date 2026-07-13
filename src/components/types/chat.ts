@@ -11,6 +11,7 @@ export interface IChat {
     study: IStudy;
     lastMessage: string; // 마지막 메시지
     lastMessageDate: Date; // 마지막 메시지 시간
+    unreadMessageCount: number; // 안 읽은 메시지 개수
 }
 
 export interface IChatMessage {
