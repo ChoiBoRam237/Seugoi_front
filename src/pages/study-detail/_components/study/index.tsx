@@ -43,8 +43,10 @@ export const Study = (props: StudyProps) => {
                     disabled={props.studyData.status === IStudyStatus.FINISHED}
                     text={
                         props.studyData.status === IStudyStatus.FINISHED
-                        ? "종료된 스터디입니다" 
-                        : "스터디 가입하기"
+                        ? "종료된 스터디입니다"
+                        : props.studyData.studyFull
+                            ? "정원 마감"
+                            : "스터디 가입하기"
                     }
                     onClick={controller.onStudyJoin}
                 />

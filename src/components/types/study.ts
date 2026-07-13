@@ -31,6 +31,7 @@ export interface IStudyDetail {
     joined: boolean; // 가입 여부
     bgImg: ICommonImgResponse; // 배경 이미지
     status: IStudyStatus; // 스터디 상태
+    studyFull: boolean; // 정원 마감 여부
 }
 
 export interface ICommonStudyResponse {
