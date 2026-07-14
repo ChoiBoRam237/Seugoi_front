@@ -81,6 +81,7 @@ export const MypageLatestList = styled.div`
 export const MypageLatestStudyItem = styled.div`
     width: 10.125rem;
     height: 100%;
+    flex-shrink: 0;
 `;
 
 // 찜한 스터디

@@ -32,7 +32,7 @@ export const ChatItem = (props: Props) => {
 
             <ChatItemTwoWrapper>
                 {props.data.lastMessageDate && <ChatItemTime>{format(props.data.lastMessageDate, "HH:MM")}</ChatItemTime>}
-                {props.data.unreadMessageCount && <ChatItemUnreadCount>{props.data.unreadMessageCount}</ChatItemUnreadCount>}
+                {props.data.unreadMessageCount > 0 && <ChatItemUnreadCount>{props.data.unreadMessageCount}</ChatItemUnreadCount>}
             </ChatItemTwoWrapper>
         </ChatItemContainer>
     )

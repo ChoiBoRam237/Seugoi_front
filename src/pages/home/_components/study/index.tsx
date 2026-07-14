@@ -66,12 +66,12 @@ export const Study = (props: Props) => {
                                     <StudyTodayPhraseWrapper>
                                         <motion.div
                                             animate={
-                                                windowSize.width > 376
+                                                windowSize.width > 767
                                                     ? { x: "0%" }
                                                     : { x: ["0%", "-50%"] }
                                             }
                                             transition={
-                                                windowSize.width > 376
+                                                windowSize.width > 767
                                                     ? undefined
                                                     : {
                                                         duration: 12,
@@ -86,13 +86,13 @@ export const Study = (props: Props) => {
                                                 whiteSpace: "nowrap"
                                             }}
                                         >
-                                            {[...Array(windowSize.width > 376 ? 1 : 2)].map((_, index) => (
+                                            {[...Array(windowSize.width > 767 ? 1 : 2)].map((_, index) => (
                                                 <div
                                                     key={index}
                                                     className="flex items-center quote"
                                                 >
                                                     <StudyTodayPhraseContent>
-                                                        {controller.todayQuote.quote}
+                                                        {controller.todayQuote?.quote}
                                                     </StudyTodayPhraseContent>
                                                 </div>
                                             ))}

@@ -7,6 +7,8 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     port: 3000, // 개발 서버를 3000번 포트에서 실행
+    host: true,
+    allowedHosts: true
   },
   // 모듈 경로 별칭 설정
   resolve: {
