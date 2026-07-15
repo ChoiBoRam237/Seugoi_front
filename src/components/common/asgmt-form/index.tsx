@@ -116,12 +116,12 @@ export const CommonAsgmtForm = (props: Props) => {
                                 if (!file) return;
                             
                                 props.setImgList(prev => {
-                                    if (prev.length >= 3) return prev;
+                                    if (prev.length >= 5) return prev;
                                     return [...prev, file];
                                 });
                             
                                 props.setPreviewImgList(prev => {
-                                    if (prev.length >= 3) return prev;
+                                    if (prev.length >= 5) return prev;
                                     return [...prev, URL.createObjectURL(file)];
                                 });
                             }}
