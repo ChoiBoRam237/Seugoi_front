@@ -9,9 +9,9 @@ import { cookie } from "@/util/cookies";
 
 export const useTokenInfo = () => {
     const tokenInfo = cookie.getCookie("token");
-    const accessToken = tokenInfo.accessToken ?? "";
-    const refreshToken = tokenInfo.refreshToken ?? "";
-
+    const accessToken = tokenInfo?.accessToken ?? "";
+    const refreshToken = tokenInfo?.refreshToken ?? "";
+    
     return {
         accessToken,
         refreshToken,

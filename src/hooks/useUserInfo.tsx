@@ -11,10 +11,10 @@ import { cookie } from "@/util/cookies";
 
 export const useUserInfo = () => {
     const userInfo = cookie.getCookie("user");
-    const userCode = userInfo.userCode ?? 0;
-    const userName = userInfo.name ?? "";
-    const userEmail = userInfo.email ?? "";
-    const userProfileUrl = userInfo.profileImgUrl ?? "";
+    const userCode = userInfo?.userCode ?? 0;
+    const userName = userInfo?.name ?? "";
+    const userEmail = userInfo?.email ?? "";
+    const userProfileUrl = userInfo?.profileImgUrl ?? "";
 
     return {
         userCode,
