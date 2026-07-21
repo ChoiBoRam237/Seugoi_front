@@ -4,7 +4,7 @@ import axios from "axios";
  * @brief API 주소
  */
 
-// 카카오 로그인 주소소
+// 카카오 로그인 주소
 export const KAKAO_AUTH_URL = import.meta.env.VITE_KAKAO_AUTH_URL;
 
 // 카카오 클라이언트 아이디
